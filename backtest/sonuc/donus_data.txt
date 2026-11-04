@@ -1,0 +1,52 @@
+'Yükselmeye başlayınca gir' — 2026-09-01 – 2026-10-30 · 43 gün · 3125 sinyal
+kayma: limit girişlerde %0,5, piyasa (sonraki açılış) girişlerinde %0,5 ve %1 · komisyon %0,2 dahil
+
+SİNYALDE GÜN ≤ %20 (sitedeki filtre)
+------------------------------------
+  limit −%5 (şu anki)                    +5    kayma %0.5  584 işlem | ort  +0.22% | kârlı % 65 | + hafta 4/9 | ilk %60 -0.00 / son %40 +0.60
+  limit −%5 (şu anki)                    yarı  kayma %0.5  584 işlem | ort  +0.48% | kârlı % 52 | + hafta 7/9 | ilk %60 +0.31 / son %40 +0.76
+  dönüş mumu                             +5    kayma %0.5  523 işlem | ort  -0.27% | kârlı % 60 | + hafta 4/9 | ilk %60 -0.28 / son %40 -0.25
+  dönüş mumu                             +5    kayma %1    523 işlem | ort  -0.77% | kârlı % 59 | + hafta 2/9 | ilk %60 -0.78 / son %40 -0.75
+  dönüş mumu                             yarı  kayma %0.5  523 işlem | ort  +0.10% | kârlı % 48 | + hafta 4/9 | ilk %60 +0.07 / son %40 +0.16
+  dönüş mumu                             yarı  kayma %1    523 işlem | ort  -0.40% | kârlı % 47 | + hafta 2/9 | ilk %60 -0.43 / son %40 -0.34
+  sinyal fiyatını geri aldı              +5    kayma %0.5  242 işlem | ort  -0.92% | kârlı % 56 | + hafta 2/9 | ilk %60 -0.85 / son %40 -1.03
+  sinyal fiyatını geri aldı              +5    kayma %1    242 işlem | ort  -1.42% | kârlı % 56 | + hafta 1/9 | ilk %60 -1.35 / son %40 -1.53
+  sinyal fiyatını geri aldı              yarı  kayma %0.5  242 işlem | ort  -0.28% | kârlı % 43 | + hafta 3/9 | ilk %60 -0.40 / son %40 -0.09
+  sinyal fiyatını geri aldı              yarı  kayma %1    242 işlem | ort  -0.78% | kârlı % 41 | + hafta 2/9 | ilk %60 -0.90 / son %40 -0.59
+  VWAP üstüne dönüş                      +5    kayma %0.5  360 işlem | ort  -0.55% | kârlı % 58 | + hafta 2/9 | ilk %60 -0.55 / son %40 -0.55
+  VWAP üstüne dönüş                      +5    kayma %1    360 işlem | ort  -1.05% | kârlı % 57 | + hafta 2/9 | ilk %60 -1.05 / son %40 -1.05
+  VWAP üstüne dönüş                      yarı  kayma %0.5  360 işlem | ort  -0.45% | kârlı % 44 | + hafta 2/9 | ilk %60 -0.49 / son %40 -0.38
+  VWAP üstüne dönüş                      yarı  kayma %1    360 işlem | ort  -0.95% | kârlı % 42 | + hafta 2/9 | ilk %60 -0.99 / son %40 -0.88
+  sinyal mumu tepesini kırdı             +5    kayma %0.5  204 işlem | ort  -0.69% | kârlı % 58 | + hafta 2/9 | ilk %60 -0.59 / son %40 -0.84
+  sinyal mumu tepesini kırdı             +5    kayma %1    204 işlem | ort  -1.19% | kârlı % 58 | + hafta 1/9 | ilk %60 -1.09 / son %40 -1.34
+  sinyal mumu tepesini kırdı             yarı  kayma %0.5  204 işlem | ort  -0.40% | kârlı % 42 | + hafta 4/9 | ilk %60 -0.26 / son %40 -0.60
+  sinyal mumu tepesini kırdı             yarı  kayma %1    204 işlem | ort  -0.90% | kârlı % 40 | + hafta 2/9 | ilk %60 -0.76 / son %40 -1.10
+  stop sonrası tekrar giriş (ek işlem)   +5    kayma %0.5   67 işlem | ort  -0.70% | kârlı % 60 | + hafta 4/9 | ilk %60 -0.23 / son %40 -1.36
+  stop sonrası tekrar giriş (ek işlem)   +5    kayma %1     67 işlem | ort  -1.20% | kârlı % 58 | + hafta 3/9 | ilk %60 -0.73 / son %40 -1.86
+  stop sonrası tekrar giriş (ek işlem)   yarı  kayma %0.5   67 işlem | ort  +0.51% | kârlı % 48 | + hafta 5/9 | ilk %60 +0.78 / son %40 +0.14
+  stop sonrası tekrar giriş (ek işlem)   yarı  kayma %1     67 işlem | ort  +0.01% | kârlı % 45 | + hafta 5/9 | ilk %60 +0.28 / son %40 -0.36
+
+TÜM SİNYALLER
+-------------
+  limit −%5 (şu anki)                    +5    kayma %0.5  837 işlem | ort  -0.31% | kârlı % 63 | + hafta 2/9 | ilk %60 -0.48 / son %40 -0.01
+  limit −%5 (şu anki)                    yarı  kayma %0.5  837 işlem | ort  +0.03% | kârlı % 49 | + hafta 5/9 | ilk %60 +0.01 / son %40 +0.06
+  dönüş mumu                             +5    kayma %0.5  759 işlem | ort  -0.49% | kârlı % 60 | + hafta 2/9 | ilk %60 -0.49 / son %40 -0.48
+  dönüş mumu                             +5    kayma %1    759 işlem | ort  -0.99% | kârlı % 60 | + hafta 0/9 | ilk %60 -0.99 / son %40 -0.98
+  dönüş mumu                             yarı  kayma %0.5  759 işlem | ort  -0.01% | kârlı % 47 | + hafta 3/9 | ilk %60 +0.01 / son %40 -0.04
+  dönüş mumu                             yarı  kayma %1    759 işlem | ort  -0.51% | kârlı % 45 | + hafta 2/9 | ilk %60 -0.49 / son %40 -0.54
+  sinyal fiyatını geri aldı              +5    kayma %0.5  359 işlem | ort  -0.96% | kârlı % 58 | + hafta 2/9 | ilk %60 -0.82 / son %40 -1.16
+  sinyal fiyatını geri aldı              +5    kayma %1    359 işlem | ort  -1.46% | kârlı % 58 | + hafta 0/9 | ilk %60 -1.32 / son %40 -1.66
+  sinyal fiyatını geri aldı              yarı  kayma %0.5  359 işlem | ort  -0.53% | kârlı % 40 | + hafta 3/9 | ilk %60 -0.34 / son %40 -0.82
+  sinyal fiyatını geri aldı              yarı  kayma %1    359 işlem | ort  -1.03% | kârlı % 39 | + hafta 1/9 | ilk %60 -0.84 / son %40 -1.32
+  VWAP üstüne dönüş                      +5    kayma %0.5  528 işlem | ort  -0.67% | kârlı % 59 | + hafta 2/9 | ilk %60 -0.67 / son %40 -0.67
+  VWAP üstüne dönüş                      +5    kayma %1    528 işlem | ort  -1.17% | kârlı % 59 | + hafta 0/9 | ilk %60 -1.17 / son %40 -1.17
+  VWAP üstüne dönüş                      yarı  kayma %0.5  528 işlem | ort  -0.36% | kârlı % 44 | + hafta 4/9 | ilk %60 -0.27 / son %40 -0.50
+  VWAP üstüne dönüş                      yarı  kayma %1    528 işlem | ort  -0.86% | kârlı % 43 | + hafta 3/9 | ilk %60 -0.77 / son %40 -1.00
+  sinyal mumu tepesini kırdı             +5    kayma %0.5  309 işlem | ort  -0.74% | kârlı % 60 | + hafta 1/9 | ilk %60 -0.76 / son %40 -0.72
+  sinyal mumu tepesini kırdı             +5    kayma %1    309 işlem | ort  -1.24% | kârlı % 60 | + hafta 0/9 | ilk %60 -1.26 / son %40 -1.22
+  sinyal mumu tepesini kırdı             yarı  kayma %0.5  309 işlem | ort  -0.64% | kârlı % 39 | + hafta 2/9 | ilk %60 -0.51 / son %40 -0.83
+  sinyal mumu tepesini kırdı             yarı  kayma %1    309 işlem | ort  -1.14% | kârlı % 39 | + hafta 2/9 | ilk %60 -1.01 / son %40 -1.33
+  stop sonrası tekrar giriş (ek işlem)   +5    kayma %0.5  135 işlem | ort  -1.35% | kârlı % 57 | + hafta 2/9 | ilk %60 -1.16 / son %40 -1.68
+  stop sonrası tekrar giriş (ek işlem)   +5    kayma %1    135 işlem | ort  -1.85% | kârlı % 56 | + hafta 2/9 | ilk %60 -1.66 / son %40 -2.18
+  stop sonrası tekrar giriş (ek işlem)   yarı  kayma %0.5  135 işlem | ort  -0.93% | kârlı % 39 | + hafta 2/9 | ilk %60 -0.47 / son %40 -1.70
+  stop sonrası tekrar giriş (ek işlem)   yarı  kayma %1    135 işlem | ort  -1.43% | kârlı % 36 | + hafta 2/9 | ilk %60 -0.97 / son %40 -2.20

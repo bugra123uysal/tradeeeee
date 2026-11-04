@@ -1,0 +1,106 @@
+//@version=6
+// ════════════════════════════════════════════════════════════════════
+//  Buğra Çoklu Hisse Swing Intraday MACD  ·  30 Ekim 2026
+//  1 DAKİKALIK ve 5 DAKİKALIK grafikler içindir (ikisinde de çalışır).
+//  Kaynak: "Buğra Çoklu Hisse Swing 5dk". Kurallar aynı, tek ek:
+//  MACD FİLTRESİ — AL yalnızca MACD çizgisi (mavi) sinyal çizgisinin
+//  (turuncu) ÜSTÜNDEYKEN verilir.
+//  Python canlı motoru (sistem/engine.py) birebir aynı kuralları kullanır.
+// ════════════════════════════════════════════════════════════════════
+
+//   AL   : [Kapanış BB üst bandını (20, 2) yukarı keser
+//           VEYA ADX(14) > 25 ve +DI > −DI durumu yeni başlar]
+//          VE (MACD filtresi açıksa) MACD(12,26,9) > sinyal
+//          VE (açıksa) önceki gün kapanışına göre artış ≥ minGain %
+//   SAT  : Kapanış hem VWMA(20) hem EMA(50) altında
+//   STOP : Giriş − 1.5 × ATR(14) (kapanış bazlı)
+//   SÜRE : N mum doldu (varsayılan 20)
+//   GÜN SONU : normal seansın son mumunda açık işlem kapanır
+// Giriş: varsayılan sadece normal seans (premarket girişi testlerde zarar yazdı, ayardan açılabilir).
+// UYARI: Heikin Ashi grafikte test sonuçları gerçek fiyatları yansıtmaz — normal mum kullan.
+
+strategy("Buğra Çoklu Hisse Swing Intraday MACD", overlay = true, initial_capital = 100000,
+         default_qty_type = strategy.percent_of_equity, default_qty_value = 100,
+         commission_type = strategy.commission.percent, commission_value = 0.1,
+         process_orders_on_close = true, pyramiding = 0, max_labels_count = 500)
+
+bbLen    = input.int(20, "Bollinger uzunluk")
+bbMult   = input.float(2.0, "Bollinger çarpan")
+diLen    = input.int(14, "DMI / ADX uzunluk")
+adxMin   = input.float(25, "ADX eşiği")
+vwLen    = input.int(20, "VWMA uzunluk")
+emaLen   = input.int(50, "EMA uzunluk")
+useStop  = input.bool(true, "ATR stop kullan")
+stopAtr  = input.float(1.5, "Stop (ATR katı)")
+maxBars  = input.int(20, "En fazla tutma (mum, 0 = kapalı)")
+eodExit  = input.bool(true, "Gün sonunda kapat")
+allowPre = input.bool(false, "Premarket'te de giriş (testte zararlı çıktı)")
+useMacd  = input.bool(true, "MACD filtresi (mavi > turuncu)", group = "MACD")
+macdFast = input.int(12, "MACD hızlı", group = "MACD")
+macdSlow = input.int(26, "MACD yavaş", group = "MACD")
+macdSig  = input.int(9,  "MACD sinyal", group = "MACD")
+minGain  = input.float(0, "Sadece günlük artış ≥ % (0 = kapalı)", group = "Yükselen hisse filtresi")
+startDt  = input.time(timestamp("2017-01-01"), "Başlangıç tarihi")
+
+// ── kurallar ──
+[bbMid, bbUp, bbLo] = ta.bb(close, bbLen, bbMult)
+[diPlus, diMinus, adx] = ta.dmi(diLen, diLen)
+vw   = ta.vwma(close, vwLen)
+e50  = ta.ema(close, emaLen)
+atr  = ta.atr(14)
+[macdLine, sigLine, hist] = ta.macd(close, macdFast, macdSlow, macdSig)
+// önceki günün (normal seans) kapanışı — tekrar boyamayan (non-repaint) yöntem
+prevDayClose = request.security(syminfo.tickerid, "D", close[1], lookahead = barmerge.lookahead_on)
+dayChg       = (close / prevDayClose - 1) * 100
+gainOk       = minGain <= 0 or dayChg >= minGain
+
+adxOn    = adx > adxMin and diPlus > diMinus
+entryBB  = ta.crossover(close, bbUp)
+entryADX = adxOn and not adxOn[1]
+macdOk   = not useMacd or macdLine > sigLine
+exitSig  = close < vw and close < e50
+
+var float stopPx   = na
+var int   entryBar = na
+inWindow  = time >= startDt and (session.ismarket or (allowPre and session.ispremarket))
+lastBar   = session.islastbar_regular
+string sigTxt = na
+
+if strategy.position_size == 0 and inWindow and not (eodExit and lastBar) and (entryBB or entryADX) and macdOk and gainOk
+    strategy.entry("AL", strategy.long, comment = (entryBB ? "AL (BB)" : "AL (ADX)") + " g=" + str.tostring(dayChg, "#.##"))
+    stopPx   := useStop ? close - stopAtr * atr : na
+    entryBar := bar_index
+    sigTxt   := "AL"
+
+if strategy.position_size > 0
+    if exitSig
+        strategy.close("AL", comment = "SAT")
+        sigTxt := "SAT"
+    else if useStop and not na(stopPx) and close < stopPx
+        strategy.close("AL", comment = "STOP")
+        sigTxt := "STOP"
+    else if maxBars > 0 and bar_index - entryBar >= maxBars
+        strategy.close("AL", comment = "SÜRE")
+        sigTxt := "SÜRE"
+    else if eodExit and lastBar
+        strategy.close("AL", comment = "GÜN SONU")
+        sigTxt := "GÜN SONU"
+
+plot(vw, "VWMA20", color.new(color.orange, 0))
+plot(e50, "EMA50", color.new(color.blue, 0))
+plot(bbUp, "BB üst", color.new(color.gray, 60))
+plotshape(sigTxt == "AL", "AL", shape.labelup, location.belowbar, color.new(color.green, 0), text = "AL", textcolor = color.white, size = size.small)
+plotshape(sigTxt == "SAT", "SAT", shape.labeldown, location.abovebar, color.new(color.red, 0), text = "SAT", textcolor = color.white, size = size.small)
+plotshape(sigTxt == "STOP", "STOP", shape.labeldown, location.abovebar, color.new(color.orange, 0), text = "STOP", textcolor = color.white, size = size.small)
+plotshape(sigTxt == "SÜRE", "SÜRE", shape.labeldown, location.abovebar, color.new(color.gray, 0), text = "SÜRE", textcolor = color.white, size = size.small)
+plotshape(sigTxt == "GÜN SONU", "GÜN SONU", shape.labeldown, location.abovebar, color.new(color.purple, 0), text = "GS", textcolor = color.white, size = size.small)
+
+if not na(sigTxt)
+    alert("Intraday MACD: " + sigTxt + " " + syminfo.ticker + " @ " + str.tostring(close, format.mintick) + " (gün " + str.tostring(dayChg, "#.#") + "%)", alert.freq_once_per_bar_close)
+
+// ── sürüm etiketi + zaman dilimi uyarısı ──
+okTf = timeframe.period == "1" or timeframe.period == "5"
+var table tbG = table.new(position.top_right, 1, 1, bgcolor = color.new(#131722, 10), border_width = 1, border_color = color.new(#363a45, 0))
+if barstate.islast
+    table.cell(tbG, 0, 0, (okTf ? "Intraday MACD · " : "⚠ 1dk / 5dk grafikte kullan · ") + (useMacd ? "MACD filtresi AÇIK" : "MACD filtresi KAPALI"),
+         text_color = okTf ? color.white : color.red, text_size = size.small)

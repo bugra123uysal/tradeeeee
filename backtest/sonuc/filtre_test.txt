@@ -1,0 +1,50 @@
+'yüksek' + geri çekilme alışı — ek filtre testi · 2026-09-01 – 2026-10-30 (43 gün)
+işlem = geri çekilmede dolan sinyal · net: komisyon %0,2 düşülmüş · iki yarı da + olan filtre işe yarar aday
+
+TÜM SİNYALLER (veri seçimi yüzünden iyimser olabilir)
+-----------------------------------------------------
+— filtresiz (şu anki hal)                         3125 sinyal |  936 işlem | ort  +0.62% | kârlı % 67 | 1. yarı  +0.49% · 2. yarı  +0.76% | toplam  +577.3%
+dolar hacmi (04:00'dan) ≥ 50 bin $                3004 sinyal |  890 işlem | ort  +0.60% | kârlı % 67 | 1. yarı  +0.49% · 2. yarı  +0.72% | toplam  +529.6%
+dolar hacmi (04:00'dan) ≥ 250 bin $               2113 sinyal |  609 işlem | ort  +0.29% | kârlı % 65 | 1. yarı  +0.15% · 2. yarı  +0.46% | toplam  +174.6%
+dolar hacmi (04:00'dan) ≥ 1 milyon $              1130 sinyal |  302 işlem | ort  +0.18% | kârlı % 65 | 1. yarı  +0.18% · 2. yarı  +0.19% | toplam   +55.3%
+dolar hacmi (son 30 dk) ≥ 100 bin $               2128 sinyal |  639 işlem | ort  +0.39% | kârlı % 65 | 1. yarı  +0.31% · 2. yarı  +0.50% | toplam  +250.5%
+dolar hacmi (son 30 dk) ≥ 500 bin $                916 sinyal |  241 işlem | ort  -0.05% | kârlı % 63 | 1. yarı  -0.13% · 2. yarı  +0.06% | toplam   -12.5%
+likidite: 1 dk mum aralığı medyanı ≤ %1,5         2973 sinyal |  822 işlem | ort  +0.74% | kârlı % 67 | 1. yarı  +0.55% · 2. yarı  +0.94% | toplam  +606.4%
+likidite: 1 dk mum aralığı medyanı ≤ %3           3094 sinyal |  910 işlem | ort  +0.59% | kârlı % 66 | 1. yarı  +0.50% · 2. yarı  +0.69% | toplam  +535.1%
+fiyat ≥ 1 $                                       2271 sinyal |  596 işlem | ort  +0.23% | kârlı % 64 | 1. yarı  +0.12% · 2. yarı  +0.37% | toplam  +138.8%
+fiyat < 1 $                                        854 sinyal |  340 işlem | ort  +1.29% | kârlı % 72 | 1. yarı  +1.20% · 2. yarı  +1.38% | toplam  +438.5%
+float ≥ 20 milyon                                 1178 sinyal |  229 işlem | ort  +0.63% | kârlı % 66 | 1. yarı  +1.04% · 2. yarı  +0.17% | toplam  +143.5%
+float < 20 milyon                                 1860 sinyal |  669 işlem | ort  +0.57% | kârlı % 67 | 1. yarı  +0.20% · 2. yarı  +0.97% | toplam  +381.5%
+VWAP'ın en çok %15 üstü                           3064 sinyal |  896 işlem | ort  +0.62% | kârlı % 67 | 1. yarı  +0.51% · 2. yarı  +0.74% | toplam  +556.8%
+VWAP'ın en çok %8 üstü                            2553 sinyal |  621 işlem | ort  +0.80% | kârlı % 68 | 1. yarı  +0.54% · 2. yarı  +1.09% | toplam  +495.4%
+gün değişimi ≤ %20                                2676 sinyal |  669 işlem | ort  +1.06% | kârlı % 68 | 1. yarı  +0.94% · 2. yarı  +1.19% | toplam  +709.8%
+rvol (bugün / 20 gün ort.) ≥ 1                     822 sinyal |  324 işlem | ort  +0.49% | kârlı % 67 | 1. yarı  +0.51% · 2. yarı  +0.47% | toplam  +160.2%
+son 30 dk hariç (15:30 sonrası yok)               2887 sinyal |  893 işlem | ort  +0.60% | kârlı % 67 | 1. yarı  +0.44% · 2. yarı  +0.76% | toplam  +531.8%
+sadece piyasa saati (09:30+)                      2604 sinyal |  689 işlem | ort  +0.75% | kârlı % 66 | 1. yarı  +0.73% · 2. yarı  +0.78% | toplam  +517.6%
+sadece premarket                                   521 sinyal |  247 işlem | ort  +0.24% | kârlı % 68 | 1. yarı  -0.14% · 2. yarı  +0.70% | toplam   +59.6%
+BİRLEŞİK: dolar 30dk ≥ 100 bin + aralık ≤ %3      2097 sinyal |  613 işlem | ort  +0.34% | kârlı % 65 | 1. yarı  +0.31% · 2. yarı  +0.38% | toplam  +208.3%
+BİRLEŞİK: dolar 04:00 ≥ 250 bin + VWAP ≤ %15      2073 sinyal |  583 işlem | ort  +0.24% | kârlı % 65 | 1. yarı  +0.15% · 2. yarı  +0.35% | toplam  +138.4%
+
+SİNYALDE GÜN ≥ %10 (yanlılıksız kısım)
+--------------------------------------
+— filtresiz (şu anki hal)                         1733 sinyal |  704 işlem | ort  +0.39% | kârlı % 66 | 1. yarı  +0.28% · 2. yarı  +0.51% | toplam  +273.4%
+dolar hacmi (04:00'dan) ≥ 50 bin $                1684 sinyal |  678 işlem | ort  +0.43% | kârlı % 67 | 1. yarı  +0.32% · 2. yarı  +0.57% | toplam  +293.3%
+dolar hacmi (04:00'dan) ≥ 250 bin $               1233 sinyal |  477 işlem | ort  +0.23% | kârlı % 66 | 1. yarı  +0.02% · 2. yarı  +0.50% | toplam  +111.3%
+dolar hacmi (04:00'dan) ≥ 1 milyon $               689 sinyal |  250 işlem | ort  +0.12% | kârlı % 66 | 1. yarı  -0.01% · 2. yarı  +0.31% | toplam   +30.4%
+dolar hacmi (son 30 dk) ≥ 100 bin $               1227 sinyal |  499 işlem | ort  +0.33% | kârlı % 66 | 1. yarı  +0.08% · 2. yarı  +0.64% | toplam  +165.4%
+dolar hacmi (son 30 dk) ≥ 500 bin $                531 sinyal |  198 işlem | ort  +0.08% | kârlı % 66 | 1. yarı  -0.23% · 2. yarı  +0.50% | toplam   +16.4%
+likidite: 1 dk mum aralığı medyanı ≤ %1,5         1595 sinyal |  599 işlem | ort  +0.50% | kârlı % 66 | 1. yarı  +0.30% · 2. yarı  +0.72% | toplam  +297.2%
+likidite: 1 dk mum aralığı medyanı ≤ %3           1702 sinyal |  678 işlem | ort  +0.34% | kârlı % 66 | 1. yarı  +0.28% · 2. yarı  +0.41% | toplam  +231.2%
+fiyat ≥ 1 $                                       1269 sinyal |  456 işlem | ort  +0.12% | kârlı % 64 | 1. yarı  -0.26% · 2. yarı  +0.54% | toplam   +52.6%
+fiyat < 1 $                                        464 sinyal |  248 işlem | ort  +0.89% | kârlı % 70 | 1. yarı  +1.27% · 2. yarı  +0.46% | toplam  +220.8%
+float ≥ 20 milyon                                  563 sinyal |  161 işlem | ort  +0.72% | kârlı % 67 | 1. yarı  +1.26% · 2. yarı  +0.07% | toplam  +115.9%
+float < 20 milyon                                 1107 sinyal |  516 işlem | ort  +0.26% | kârlı % 66 | 1. yarı  -0.16% · 2. yarı  +0.69% | toplam  +131.6%
+VWAP'ın en çok %15 üstü                           1681 sinyal |  670 işlem | ort  +0.40% | kârlı % 66 | 1. yarı  +0.32% · 2. yarı  +0.49% | toplam  +267.4%
+VWAP'ın en çok %8 üstü                            1296 sinyal |  438 işlem | ort  +0.59% | kârlı % 67 | 1. yarı  +0.33% · 2. yarı  +0.89% | toplam  +256.7%
+gün değişimi ≤ %20                                1284 sinyal |  437 işlem | ort  +0.93% | kârlı % 68 | 1. yarı  +0.84% · 2. yarı  +1.03% | toplam  +405.9%
+rvol (bugün / 20 gün ort.) ≥ 1                     618 sinyal |  279 işlem | ort  +0.23% | kârlı % 66 | 1. yarı  +0.33% · 2. yarı  +0.09% | toplam   +63.3%
+son 30 dk hariç (15:30 sonrası yok)               1574 sinyal |  672 işlem | ort  +0.35% | kârlı % 66 | 1. yarı  +0.23% · 2. yarı  +0.48% | toplam  +235.3%
+sadece piyasa saati (09:30+)                      1376 sinyal |  499 işlem | ort  +0.49% | kârlı % 65 | 1. yarı  +0.53% · 2. yarı  +0.45% | toplam  +246.4%
+sadece premarket                                   357 sinyal |  205 işlem | ort  +0.13% | kârlı % 68 | 1. yarı  -0.29% · 2. yarı  +0.66% | toplam   +27.0%
+BİRLEŞİK: dolar 30dk ≥ 100 bin + aralık ≤ %3      1196 sinyal |  473 işlem | ort  +0.26% | kârlı % 65 | 1. yarı  +0.08% · 2. yarı  +0.49% | toplam  +123.2%
+BİRLEŞİK: dolar 04:00 ≥ 250 bin + VWAP ≤ %15      1201 sinyal |  456 işlem | ort  +0.19% | kârlı % 65 | 1. yarı  +0.04% · 2. yarı  +0.38% | toplam   +84.9%

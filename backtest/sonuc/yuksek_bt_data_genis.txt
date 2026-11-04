@@ -1,0 +1,36 @@
+'yüksek' + geri çekilme — gerçekçi backtest · veri: data_genis
+2025-11-03 – 2026-06-02 · 145 gün · 20993 sinyal · dolum: seviye −%0.5 altı · kayma %0.5 + komisyon %0,2
+
+TÜMÜ — dolan 4058
+  +5 / −8                 4058 işlem | ort  -0.25% | medyan  +4.30% | kârlı % 62 | + hafta 11/31 | toplam  -1016.5%
+  yarı +5 / yarı +20      4058 işlem | ort  -0.17% | medyan  -0.36% | kârlı % 49 | + hafta 14/31 | toplam   -691.9%
+  +20 / −8                4058 işlem | ort  -0.09% | medyan  -1.80% | kârlı % 42 | + hafta 12/31 | toplam   -367.3%
+  ilk %60 / son %40 (+5): -0.35% / -0.10% · (yarı/yarı): -0.36% / +0.11%
+
+gün ≤ %20 (sitedeki filtre) — dolan 2949
+  +5 / −8                 2949 işlem | ort  +0.00% | medyan  +4.30% | kârlı % 63 | + hafta 14/31 | toplam    +10.0%
+  yarı +5 / yarı +20      2949 işlem | ort  -0.02% | medyan  +0.14% | kârlı % 51 | + hafta 14/31 | toplam    -60.8%
+  +20 / −8                2949 işlem | ort  -0.04% | medyan  -1.41% | kârlı % 43 | + hafta 15/31 | toplam   -131.6%
+  ilk %60 / son %40 (+5): -0.19% / +0.29% · (yarı/yarı): -0.30% / +0.39%
+
+gün > %20 (ALMA denenler) — dolan 1109
+  +5 / −8                 1109 işlem | ort  -0.93% | medyan  +4.30% | kârlı % 62 | + hafta 5/31 | toplam  -1026.5%
+  yarı +5 / yarı +20      1109 işlem | ort  -0.57% | medyan  -2.32% | kârlı % 43 | + hafta 9/31 | toplam   -631.1%
+  +20 / −8                1109 işlem | ort  -0.21% | medyan  -7.79% | kârlı % 39 | + hafta 16/31 | toplam   -235.7%
+  ilk %60 / son %40 (+5): -0.79% / -1.13% · (yarı/yarı): -0.52% / -0.64%
+
+gün ≥ %10 ve ≤ %20 — dolan 1574
+  +5 / −8                 1574 işlem | ort  -0.06% | medyan  +4.30% | kârlı % 63 | + hafta 15/31 | toplam    -95.4%
+  yarı +5 / yarı +20      1574 işlem | ort  -0.14% | medyan  -0.21% | kârlı % 49 | + hafta 14/31 | toplam   -212.8%
+  +20 / −8                1574 işlem | ort  -0.21% | medyan  -1.80% | kârlı % 41 | + hafta 13/31 | toplam   -330.2%
+  ilk %60 / son %40 (+5): -0.28% / +0.30% · (yarı/yarı): -0.38% / +0.26%
+
+AYLIK (gün ≤ %20, +5 / yarı-yarı)
+  2025-11:  340 işlem ·  -0.08% ·  +0.08%
+  2025-12:  348 işlem ·  -0.72% ·  -0.44%
+  2026-01:  474 işlem ·  +0.02% ·  -0.13%
+  2026-02:  402 işlem ·  -0.66% ·  -1.11%
+  2026-03:  469 işlem ·  +0.83% ·  +0.44%
+  2026-04:  384 işlem ·  -0.20% ·  +0.03%
+  2026-05:  472 işlem ·  +0.36% ·  +0.67%
+  2026-06:   60 işlem ·  +0.88% ·  +0.69%

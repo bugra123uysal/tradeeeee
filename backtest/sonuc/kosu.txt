@@ -1,0 +1,58 @@
+'yüksek' + geri çekilme alışı — çıkış kuralları · 2026-09-01 – 2026-10-30 · 929 dolan işlem
+büyük koşu (dolumdan gün içi tepe ≥ %30): 145 işlem (%16)
+
+TÜM DOLUMLAR
+------------
++%5 hedef / −%8 stop (şu anki)     ort  +0.61% | kârlı % 67 | yarılar +0.48 / +0.76 | + hafta 8/9 | koşularda ort   +3.4%
++%10 hedef / −%8 stop              ort  +0.70% | kârlı % 52 | yarılar +0.62 / +0.78 | + hafta 9/9 | koşularda ort   +7.3%
++%20 hedef / −%8 stop              ort  +1.31% | kârlı % 46 | yarılar +1.48 / +1.12 | + hafta 9/9 | koşularda ort  +15.1%
+iz %10 (tepe kapanıştan)           ort  +0.62% | kârlı % 43 | yarılar +0.46 / +0.80 | + hafta 6/9 | koşularda ort  +13.7%
+iz %15                             ort  +0.62% | kârlı % 43 | yarılar +0.65 / +0.58 | + hafta 7/9 | koşularda ort  +15.4%
+iz %20                             ort  +0.38% | kârlı % 41 | yarılar +0.27 / +0.51 | + hafta 6/9 | koşularda ort  +14.9%
+yarısı +%5, yarısı iz %15          ort  +0.61% | kârlı % 53 | yarılar +0.56 / +0.67 | + hafta 8/9 | koşularda ort   +9.4%
+yarısı +%5, yarısı iz %20          ort  +0.50% | kârlı % 52 | yarılar +0.37 / +0.63 | + hafta 8/9 | koşularda ort   +9.1%
+VWAP altı kapanış / −%8 stop       ort  +0.09% | kârlı % 45 | yarılar +0.03 / +0.17 | + hafta 6/9 | koşularda ort   +6.4%
+yarısı +%5, yarısı VWAP altı       ort  +0.35% | kârlı % 63 | yarılar +0.25 / +0.46 | + hafta 8/9 | koşularda ort   +4.9%
+
+SİNYALDE GÜN ≥ %10 (yanlılıksız)
+--------------------------------
++%5 hedef / −%8 stop (şu anki)     ort  +0.37% | kârlı % 66 | yarılar +0.26 / +0.50 | + hafta 7/9 | koşularda ort   +3.3%
++%10 hedef / −%8 stop              ort  +0.29% | kârlı % 51 | yarılar +0.28 / +0.30 | + hafta 5/9 | koşularda ort   +7.1%
++%20 hedef / −%8 stop              ort  +0.93% | kârlı % 44 | yarılar +1.43 / +0.39 | + hafta 8/9 | koşularda ort  +14.6%
+iz %10 (tepe kapanıştan)           ort  +0.05% | kârlı % 40 | yarılar +0.10 / -0.01 | + hafta 3/9 | koşularda ort  +11.7%
+iz %15                             ort  -0.13% | kârlı % 41 | yarılar +0.39 / -0.71 | + hafta 4/9 | koşularda ort  +13.0%
+iz %20                             ort  -0.26% | kârlı % 39 | yarılar +0.02 / -0.57 | + hafta 5/9 | koşularda ort  +13.2%
+yarısı +%5, yarısı iz %15          ort  +0.12% | kârlı % 50 | yarılar +0.33 / -0.11 | + hafta 5/9 | koşularda ort   +8.1%
+yarısı +%5, yarısı iz %20          ort  +0.06% | kârlı % 48 | yarılar +0.14 / -0.04 | + hafta 5/9 | koşularda ort   +8.2%
+VWAP altı kapanış / −%8 stop       ort  -0.18% | kârlı % 42 | yarılar -0.14 / -0.23 | + hafta 3/9 | koşularda ort   +6.0%
+yarısı +%5, yarısı VWAP altı       ort  +0.09% | kârlı % 60 | yarılar +0.06 / +0.13 | + hafta 5/9 | koşularda ort   +4.7%
+
+GÜN ≤ %20 FİLTRESİYLE (sitedeki)
+--------------------------------
++%5 hedef / −%8 stop (şu anki)     ort  +1.07% | kârlı % 68 | yarılar +0.95 / +1.21 | + hafta 9/9 | koşularda ort   +3.9%
++%10 hedef / −%8 stop              ort  +1.20% | kârlı % 55 | yarılar +1.05 / +1.37 | + hafta 9/9 | koşularda ort   +7.5%
++%20 hedef / −%8 stop              ort  +1.72% | kârlı % 49 | yarılar +1.46 / +2.01 | + hafta 8/9 | koşularda ort  +15.5%
+iz %10 (tepe kapanıştan)           ort  +1.21% | kârlı % 46 | yarılar +0.84 / +1.61 | + hafta 9/9 | koşularda ort  +15.5%
+iz %15                             ort  +1.23% | kârlı % 47 | yarılar +0.72 / +1.79 | + hafta 8/9 | koşularda ort  +16.7%
+iz %20                             ort  +1.08% | kârlı % 46 | yarılar +0.40 / +1.82 | + hafta 6/9 | koşularda ort  +16.0%
+yarısı +%5, yarısı iz %15          ort  +1.15% | kârlı % 57 | yarılar +0.83 / +1.50 | + hafta 9/9 | koşularda ort  +10.3%
+yarısı +%5, yarısı iz %20          ort  +1.08% | kârlı % 56 | yarılar +0.67 / +1.51 | + hafta 9/9 | koşularda ort   +9.9%
+VWAP altı kapanış / −%8 stop       ort  +0.62% | kârlı % 48 | yarılar +0.45 / +0.79 | + hafta 9/9 | koşularda ort   +8.0%
+yarısı +%5, yarısı VWAP altı       ort  +0.84% | kârlı % 65 | yarılar +0.70 / +1.00 | + hafta 9/9 | koşularda ort   +5.9%
+
+BÜYÜK KOŞU sinyal anında ayırt edilebiliyor mu? (koşu oranı, grup başına)
+----------------------------------------
+fiyat < 1 $               336 işlem · koşu %22.6
+fiyat 1–3 $               321 işlem · koşu %11.5
+fiyat > 3 $               272 işlem · koşu %11.8
+gün ≤ %15                 489 işlem · koşu %11.2
+gün %15–25                295 işlem · koşu %19.3
+gün > %25                 145 işlem · koşu %22.8
+float < 5 M               410 işlem · koşu %16.8
+float 5–20 M              256 işlem · koşu %16.0
+float > 20 M              225 işlem · koşu %13.3
+premarket (saat < 9)      195 işlem · koşu %32.3
+09–11                     370 işlem · koşu %13.8
+11 sonrası                364 işlem · koşu % 8.5
+dolar hacmi < 250 bin     324 işlem · koşu %13.0
+dolar hacmi ≥ 1 M         300 işlem · koşu %18.7

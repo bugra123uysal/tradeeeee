@@ -1,0 +1,70 @@
+CAMERON 'ilk geri çekilme' · data_tam · 2025-11-03 – 2026-11-03 · 92461 tetik · eğitim < 2026-06-11 ≤ sınav
+
+TÜM tetikler (filtresiz), 2R
+  eğitim                         51408 işlem | ort  -1.19% | medyan  -1.66 | kârlı % 23 | kırpık -1.23 | + hafta %  0 | + ay 0/8 | en kötü %5 ort   -6.6
+  sınav                          28290 işlem | ort  -1.40% | medyan  -1.81 | kârlı % 21 | kırpık -1.45 | + hafta %  0 | + ay 0/6 | en kötü %5 ort   -8.1
+tek filtre: fiyat 2–20 $, 2R
+  eğitim                         36363 işlem | ort  -1.13% | medyan  -1.60 | kârlı % 23 | kırpık -1.18 | + hafta %  0 | + ay 0/8 | en kötü %5 ort   -6.5
+  sınav                          19505 işlem | ort  -1.34% | medyan  -1.73 | kârlı % 21 | kırpık -1.39 | + hafta %  0 | + ay 0/6 | en kötü %5 ort   -8.1
+tek filtre: gün ≥ %10, 2R
+  eğitim                         30727 işlem | ort  -1.28% | medyan  -1.84 | kârlı % 23 | kırpık -1.32 | + hafta %  0 | + ay 0/8 | en kötü %5 ort   -7.6
+  sınav                          16676 işlem | ort  -1.55% | medyan  -2.08 | kârlı % 21 | kırpık -1.60 | + hafta %  0 | + ay 0/6 | en kötü %5 ort   -9.3
+tek filtre: gün ≥ %30, 2R
+  eğitim                          8492 işlem | ort  -1.60% | medyan  -2.69 | kârlı % 24 | kırpık -1.67 | + hafta %  0 | + ay 0/8 | en kötü %5 ort  -10.2
+  sınav                           5334 işlem | ort  -2.03% | medyan  -3.27 | kârlı % 23 | kırpık -2.09 | + hafta %  0 | + ay 0/6 | en kötü %5 ort  -12.0
+tek filtre: RVOL ≥ 5×, 2R
+  eğitim                          6914 işlem | ort  -1.58% | medyan  -2.47 | kârlı % 23 | kırpık -1.64 | + hafta %  0 | + ay 0/8 | en kötü %5 ort  -10.0
+  sınav                           4286 işlem | ort  -1.96% | medyan  -2.96 | kârlı % 22 | kırpık -2.02 | + hafta %  0 | + ay 0/6 | en kötü %5 ort  -11.7
+tek filtre: float < 20 M, 2R
+  eğitim                         32097 işlem | ort  -1.21% | medyan  -1.65 | kârlı % 22 | kırpık -1.25 | + hafta %  0 | + ay 0/8 | en kötü %5 ort   -7.1
+  sınav                          19480 işlem | ort  -1.46% | medyan  -1.90 | kârlı % 21 | kırpık -1.50 | + hafta %  0 | + ay 0/6 | en kötü %5 ort   -8.5
+tek filtre: float < 10 M, 2R
+  eğitim                         24768 işlem | ort  -1.21% | medyan  -1.66 | kârlı % 22 | kırpık -1.26 | + hafta %  0 | + ay 0/8 | en kötü %5 ort   -7.3
+  sınav                          16013 işlem | ort  -1.50% | medyan  -1.96 | kârlı % 21 | kırpık -1.54 | + hafta %  0 | + ay 0/6 | en kötü %5 ort   -8.8
+tek filtre: 07:00–10:00, 2R
+  eğitim                         12845 işlem | ort  -1.30% | medyan  -1.91 | kârlı % 24 | kırpık -1.34 | + hafta %  0 | + ay 0/8 | en kötü %5 ort   -7.3
+  sınav                           6805 işlem | ort  -1.53% | medyan  -2.02 | kârlı % 23 | kırpık -1.59 | + hafta %  0 | + ay 0/6 | en kötü %5 ort   -8.9
+tek filtre: hedef(HOD) ≥ 2×risk, 2R
+  eğitim                         16066 işlem | ort  -1.12% | medyan  -1.35 | kârlı % 19 | kırpık -1.14 | + hafta %  0 | + ay 0/8 | en kötü %5 ort   -5.1
+  sınav                           8963 işlem | ort  -1.31% | medyan  -1.50 | kârlı % 18 | kırpık -1.35 | + hafta %  0 | + ay 0/6 | en kötü %5 ort   -6.2
+tek filtre: risk ≤ %5, 2R
+  eğitim                         49435 işlem | ort  -1.14% | medyan  -1.64 | kârlı % 22 | kırpık -1.15 | + hafta %  0 | + ay 0/8 | en kötü %5 ort   -4.8
+  sınav                          26376 işlem | ort  -1.28% | medyan  -1.76 | kârlı % 21 | kırpık -1.29 | + hafta %  0 | + ay 0/6 | en kötü %5 ort   -5.0
+
+CAMERON 5 SÜTUN (fiyat 2–20, gün ≥10, RVOL ≥5, float <20M; haber hariç) — çıkış / saat / ilk işlem
+  çıkış 2r_s16
+  eğitim                          3701 işlem | ort  -1.56% | medyan  -2.60 | kârlı % 24 | kırpık -1.63 | + hafta %  0 | + ay 0/8 | en kötü %5 ort  -10.3
+  sınav                           2402 işlem | ort  -1.89% | medyan  -3.16 | kârlı % 23 | kırpık -1.96 | + hafta %  0 | + ay 0/6 | en kötü %5 ort  -12.1
+  çıkış 2rI_s16
+  eğitim                          3690 işlem | ort  -1.27% | medyan  -2.63 | kârlı % 31 | kırpık -1.35 | + hafta %  0 | + ay 0/8 | en kötü %5 ort  -12.3
+  sınav                           2394 işlem | ort  -1.70% | medyan  -3.27 | kârlı % 29 | kırpık -1.81 | + hafta %  0 | + ay 0/6 | en kötü %5 ort  -14.0
+  çıkış ilkk_s16
+  eğitim                          3701 işlem | ort  -1.19% | medyan  -1.93 | kârlı % 20 | kırpık -1.42 | + hafta %  3 | + ay 0/8 | en kötü %5 ort   -8.3
+  sınav                           2402 işlem | ort  -1.42% | medyan  -2.28 | kârlı % 21 | kırpık -1.64 | + hafta %  0 | + ay 0/6 | en kötü %5 ort   -9.7
+  çıkış yari_s16
+  eğitim                          3701 işlem | ort  -1.36% | medyan  -2.17 | kârlı % 30 | kırpık -1.49 | + hafta %  0 | + ay 0/8 | en kötü %5 ort   -9.8
+  sınav                           2402 işlem | ort  -1.85% | medyan  -2.66 | kârlı % 30 | kırpık -1.94 | + hafta %  0 | + ay 0/6 | en kötü %5 ort  -11.9
+  çıkış yariI_s16
+  eğitim                          3690 işlem | ort  -1.14% | medyan  -2.19 | kârlı % 35 | kırpık -1.32 | + hafta %  3 | + ay 0/8 | en kötü %5 ort  -12.0
+  sınav                           2394 işlem | ort  -1.75% | medyan  -2.72 | kârlı % 35 | kırpık -1.85 | + hafta %  0 | + ay 0/6 | en kötü %5 ort  -13.7
+  çıkış 2r_s20
+  eğitim                          4900 işlem | ort  -1.75% | medyan  -2.73 | kârlı % 23 | kırpık -1.82 | + hafta %  0 | + ay 0/8 | en kötü %5 ort  -10.6
+  sınav                           3307 işlem | ort  -2.06% | medyan  -3.15 | kârlı % 22 | kırpık -2.11 | + hafta %  0 | + ay 0/6 | en kötü %5 ort  -11.9
+  çıkış yari_s20
+  eğitim                          4900 işlem | ort  -1.52% | medyan  -2.28 | kârlı % 29 | kırpık -1.64 | + hafta %  0 | + ay 0/8 | en kötü %5 ort  -10.0
+  sınav                           3307 işlem | ort  -1.98% | medyan  -2.72 | kârlı % 27 | kırpık -2.08 | + hafta %  0 | + ay 0/6 | en kötü %5 ort  -11.6
+  + 07:00–10:00, 2R
+  eğitim                           820 işlem | ort  -2.22% | medyan  -4.17 | kârlı % 24 | kırpık -2.32 | + hafta %  3 | + ay 0/8 | en kötü %5 ort  -12.1
+  sınav                            567 işlem | ort  -3.11% | medyan  -4.65 | kârlı % 20 | kırpık -3.17 | + hafta %  5 | + ay 1/6 | en kötü %5 ort  -12.6
+  + 07:00–10:00 + hissede ilk işlem, 2R
+  eğitim                           306 işlem | ort  -2.18% | medyan  -4.01 | kârlı % 25 | kırpık -2.20 | + hafta %  9 | + ay 0/8 | en kötü %5 ort  -12.7
+  sınav                            208 işlem | ort  -3.68% | medyan  -5.36 | kârlı % 18 | kırpık -3.78 | + hafta %  9 | + ay 1/6 | en kötü %5 ort  -13.8
+  + hedef ≥ 2×risk + 07–10, 2R
+  eğitim                           337 işlem | ort  -2.14% | medyan  -3.65 | kârlı % 24 | kırpık -2.18 | + hafta % 17 | + ay 0/8 | en kötü %5 ort   -9.7
+  sınav                            262 işlem | ort  -2.65% | medyan  -3.93 | kârlı % 20 | kırpık -2.69 | + hafta %  9 | + ay 1/6 | en kötü %5 ort   -9.8
+  + gün ≥ 30 + float < 10M + 07–10 (en kaliteli), yarı
+  eğitim                           538 işlem | ort  -2.05% | medyan  -3.93 | kârlı % 31 | kırpık -2.11 | + hafta % 16 | + ay 0/8 | en kötü %5 ort  -12.4
+  sınav                            458 işlem | ort  -3.22% | medyan  -4.64 | kârlı % 27 | kırpık -3.23 | + hafta %  5 | + ay 1/6 | en kötü %5 ort  -13.0
+  + gün ≥ 30 + float < 10M + 07–10 (en kaliteli), 2R
+  eğitim                           538 işlem | ort  -2.25% | medyan  -4.38 | kârlı % 24 | kırpık -2.32 | + hafta % 10 | + ay 0/8 | en kötü %5 ort  -12.6
+  sınav                            458 işlem | ort  -3.18% | medyan  -5.04 | kârlı % 21 | kırpık -3.25 | + hafta %  5 | + ay 1/6 | en kötü %5 ort  -13.0

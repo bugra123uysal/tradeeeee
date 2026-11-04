@@ -1,0 +1,6 @@
+alpaca-py>=0.40
+pandas>=2.2
+numpy>=2.0
+python-dotenv>=1.0
+requests>=2.32
+pytest>=8.0

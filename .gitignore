@@ -1,0 +1,22 @@
+.env
+.venv/
+__pycache__/
+sinyaller.csv
+backtest/data/
+filtreler/son_liste_*.json
+filtreler/liste_yenile.log
+
+# ── yedekleme (5 Kas 2026): büyük backtest verisi ve çalışırken değişen durum dosyaları ──
+.pytest_cache/
+*.log
+backtest/data_genis/
+backtest/data_tam/
+backtest/sonuc/*.pkl
+backtest/sonuc/*.parquet
+filtreler/devam_sinyaller.json
+filtreler/devam_sinyaller.tmp
+filtreler/gunluk_sinyaller.json
+filtreler/kagit.json
+filtreler/telegram_gonderilen.json
+filtreler/liste_log.csv
+yedek/**/devam_sinyaller.json

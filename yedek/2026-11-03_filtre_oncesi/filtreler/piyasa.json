@@ -1,0 +1,75 @@
+{
+  "_aciklama": "PİYASA SAATİ taraması — 16:30/17:30 TR ile 23:00/00:00 TR arası. Tüm ABD borsası, 1 doların ALTI DAHİL (fiyat > 0,20 $), gün içinde %5+ yükselen, normalin 1,5 katından fazla ve en az 500 bin adet işlem gören hisseler.",
+  "_istek": "POST https://scanner.tradingview.com/america/scan  (Content-Type: text/plain, credentials: include, tradingview.com sekmesinden)",
+  "markets": [
+    "america"
+  ],
+  "symbols": {
+    "query": {
+      "types": []
+    },
+    "tickers": []
+  },
+  "options": {
+    "lang": "tr"
+  },
+  "columns": [
+    "name",
+    "close",
+    "change",
+    "volume",
+    "relative_volume_10d_calc",
+    "premarket_change",
+    "exchange",
+    "float_shares_outstanding"
+  ],
+  "filter": [
+    {
+      "left": "type",
+      "operation": "equal",
+      "right": "stock"
+    },
+    {
+      "left": "is_primary",
+      "operation": "equal",
+      "right": true
+    },
+    {
+      "left": "exchange",
+      "operation": "in_range",
+      "right": [
+        "NASDAQ",
+        "NYSE",
+        "AMEX"
+      ]
+    },
+    {
+      "left": "close",
+      "operation": "greater",
+      "right": 0.2
+    },
+    {
+      "left": "change",
+      "operation": "greater",
+      "right": 5
+    },
+    {
+      "left": "relative_volume_10d_calc",
+      "operation": "greater",
+      "right": 1.5
+    },
+    {
+      "left": "volume",
+      "operation": "greater",
+      "right": 500000
+    }
+  ],
+  "sort": {
+    "sortBy": "change",
+    "sortOrder": "desc"
+  },
+  "range": [
+    0,
+    100
+  ]
+}

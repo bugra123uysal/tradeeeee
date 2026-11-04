@@ -1,0 +1,72 @@
+{
+  "_aciklama": "PREMARKET taraması (ASIL ÖNEMLİ OLAN) — 11:00/12:00 TR ile 16:30/17:30 TR arası. Tüm ABD borsası, 1 doların ALTI DAHİL (premarket fiyatı > 0,20 $), premarket'te %5+ yükselen ve en az 2 bin adet işlem gören hisseler. ONEG gibi ucuz, az işlem gören ama patlayan hisseleri yakalamak için eşikler düşük tutuldu (30 Ekim: ONEG premarket 0,88 $ / 4.244 adet, gün içinde +%108).",
+  "_istek": "POST https://scanner.tradingview.com/america/scan  (Content-Type: text/plain, credentials: include, tradingview.com sekmesinden)",
+  "markets": [
+    "america"
+  ],
+  "symbols": {
+    "query": {
+      "types": []
+    },
+    "tickers": []
+  },
+  "options": {
+    "lang": "tr"
+  },
+  "columns": [
+    "name",
+    "premarket_close",
+    "premarket_change",
+    "premarket_volume",
+    "premarket_gap",
+    "close",
+    "average_volume_10d_calc",
+    "exchange",
+    "premarket_high",
+    "float_shares_outstanding"
+  ],
+  "filter": [
+    {
+      "left": "type",
+      "operation": "equal",
+      "right": "stock"
+    },
+    {
+      "left": "is_primary",
+      "operation": "equal",
+      "right": true
+    },
+    {
+      "left": "exchange",
+      "operation": "in_range",
+      "right": [
+        "NASDAQ",
+        "NYSE",
+        "AMEX"
+      ]
+    },
+    {
+      "left": "premarket_close",
+      "operation": "greater",
+      "right": 0.2
+    },
+    {
+      "left": "premarket_change",
+      "operation": "greater",
+      "right": 5
+    },
+    {
+      "left": "premarket_volume",
+      "operation": "greater",
+      "right": 2000
+    }
+  ],
+  "sort": {
+    "sortBy": "premarket_change",
+    "sortOrder": "desc"
+  },
+  "range": [
+    0,
+    100
+  ]
+}

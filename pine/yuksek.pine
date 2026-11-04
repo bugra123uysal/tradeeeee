@@ -1,0 +1,111 @@
+//@version=6
+// ════════════════════════════════════════════════════════════════════
+//  yüksek — büyük yükselişten önce gelen AL'ları seçer, az sinyal verir.  2 Kas 2026
+//  1 DAKİKA grafik için ayarlandı (43 gün 1 dk veriyle seçildi). Başka zaman diliminde uyarı çıkar.
+//
+//  Sinyal "YÜKSEK" (günde en çok 1, Ayarlar'dan değişir) — hepsi aynı mumda:
+//    • Swing 5dk AL'ı: kapanış BB(20,2) üst bandını yukarı keser VEYA ADX(14)>25 ve +DI>−DI yeni başlar
+//    • günlük değişim %5–40 arası (büyük yükseliş öncesi, henüz çok yükselmemiş)
+//    • son 5 mumda en az +%2 (ivme)            • MACD histogramı pozitif ve artıyor
+//    • kapanış VWAP üstünde                     • hacim son 30 mum ortalamasının ≥ 2 katı
+//    • Bollinger genişliği ≥ %3 (hareket genişliyor)
+//  Giriş "GERİ AL": sinyalden sonra 30 mum içinde fiyat sinyal kapanışının %5 altına inerse (limit emir).
+//  Çıkış: +%5 hedef (limit) · STOP: 1 dk kapanış alışın %8 altı · seans sonu (16:00 NY) kapat.
+//
+//  43 gün testi (gün ≥ %10 girişler, komisyon %0,2): sinyal hisse başına günde ~1 (ham AL ~8);
+//  sonradan +%30 koşu oranı %7,8 (ham AL %4,4); geri çekilme girişi ort +%0,43, %66 kârlı,
+//  iki yarıda da artıda (+%0,30 / +%0,58). Sinyalde hemen almak zararda (−%0,34) — o yüzden geri çekilme.
+//  Kanıt değildir; bilgi amaçlıdır, al-sat tavsiyesi değildir.
+// ════════════════════════════════════════════════════════════════════
+strategy("yüksek", overlay = true, initial_capital = 100000,
+         default_qty_type = strategy.percent_of_equity, default_qty_value = 100,
+         commission_type = strategy.commission.percent, commission_value = 0.1,
+         pyramiding = 0, max_labels_count = 500)
+
+grpS = "Sinyal"
+gunMin   = input.float(5.0,  "Günlük değişim en az %", group = grpS)
+gunMax   = input.float(40.0, "Günlük değişim en çok %", group = grpS)
+momMin   = input.float(2.0,  "Son 5 mum ivme en az %", group = grpS)
+hacimKat = input.float(2.0,  "Hacim ≥ 30 mum ortalaması ×", group = grpS)
+bbwMin   = input.float(3.0,  "Bollinger genişliği en az %", group = grpS)
+gunlukMax = input.int(1,     "Günde en çok sinyal", minval = 1, group = grpS)
+grpG = "Giriş / çıkış"
+geriYuzde = input.float(5.0, "Geri çekilme alışı (sinyal kapanışı −%)", group = grpG)
+geriMum   = input.int(30,    "Geri çekilme bekleme (mum)", group = grpG)
+hedefY    = input.float(5.0, "Hedef +%", group = grpG)
+stopY     = input.float(8.0, "Stop (kapanış) −%", group = grpG)
+seansKapat = input.bool(true, "16:00 NY'de pozisyonu kapat", group = grpG)
+
+// ── göstergeler (Swing 5dk ile aynı) ──
+[bbMid, bbUp, bbLo] = ta.bb(close, 20, 2.0)
+[diPlus, diMinus, adx] = ta.dmi(14, 14)
+adxOn    = adx > 25 and diPlus > diMinus
+entryBB  = ta.crossover(close, bbUp)
+entryADX = adxOn and not adxOn[1]
+alSwing  = entryBB or entryADX
+
+[macdL, sigL, hist] = ta.macd(close, 12, 26, 9)
+vwapS   = ta.vwap(close)
+oncekiK = request.security(syminfo.tickerid, "D", close[1], lookahead = barmerge.lookahead_on)
+gunDeg  = (close / oncekiK - 1) * 100
+mom5    = (close / close[5] - 1) * 100
+hacimOrt = ta.sma(volume, 30)[1]
+bbw     = (bbUp - bbMid) * 2 / bbMid * 100
+
+filtre = gunDeg >= gunMin and gunDeg <= gunMax and mom5 >= momMin and hist > 0 and hist > hist[1]
+         and close > vwapS and volume >= hacimKat * hacimOrt and bbw >= bbwMin
+
+// ── günlük sayaç ──
+var int gunSay = 0
+yeniGun = ta.change(time("D")) != 0
+if yeniGun
+    gunSay := 0
+
+// ── durum ──
+var float seviye   = na     // geri çekilme limit seviyesi
+var int   sinyalBar = na
+var float alis     = na
+yuksek = alSwing and filtre and gunSay < gunlukMax and strategy.position_size == 0 and na(seviye)
+
+if yuksek
+    gunSay    += 1
+    seviye    := close * (1 - geriYuzde / 100)
+    sinyalBar := bar_index
+    strategy.entry("GERİ AL", strategy.long, limit = seviye, comment = "GERİ AL")
+    label.new(bar_index, low, "YÜKSEK\n" + str.tostring(gunDeg, "#.#") + "%", style = label.style_label_up,
+              color = color.new(#7b2ff7, 0), textcolor = color.white, size = size.small)
+
+// limit süresi doldu → iptal
+if not na(seviye) and strategy.position_size == 0 and bar_index - sinyalBar > geriMum
+    strategy.cancel("GERİ AL")
+    seviye := na
+
+// doldu
+if strategy.position_size > 0 and na(alis)
+    alis   := strategy.position_avg_price
+    seviye := na
+    strategy.exit("HEDEF", "GERİ AL", limit = alis * (1 + hedefY / 100), comment = "HEDEF")
+
+// kapanış stopu ve seans sonu
+nyDk = hour(time, "America/New_York") * 60 + minute(time, "America/New_York")
+if strategy.position_size > 0 and not na(alis)
+    if close < alis * (1 - stopY / 100)
+        strategy.close("GERİ AL", comment = "STOP")
+    else if seansKapat and nyDk >= 15 * 60 + 59
+        strategy.close("GERİ AL", comment = "SEANS SONU")
+if strategy.position_size == 0 and not na(alis)
+    alis := na
+
+plot(seviye, "Geri çekilme seviyesi", color = color.new(#f5b942, 0), style = plot.style_linebr, linewidth = 2)
+plot(strategy.position_size > 0 ? alis * (1 + hedefY / 100) : na, "Hedef", color = color.new(color.green, 0), style = plot.style_linebr)
+plot(strategy.position_size > 0 ? alis * (1 - stopY / 100) : na, "Stop", color = color.new(color.red, 0), style = plot.style_linebr)
+
+if yuksek
+    alert("yüksek: SİNYAL " + syminfo.ticker + " @ " + str.tostring(close, format.mintick) + " · geri çekilme alışı " + str.tostring(seviye, format.mintick), alert.freq_once_per_bar_close)
+if strategy.position_size > 0 and strategy.position_size[1] == 0
+    alert("yüksek: GERİ ÇEKİLME TAMAM — AL " + syminfo.ticker + " @ " + str.tostring(strategy.position_avg_price, format.mintick), alert.freq_once_per_bar)
+
+var table tb = table.new(position.top_right, 1, 1, bgcolor = color.new(#131722, 10), border_width = 1, border_color = color.new(#363a45, 0))
+if barstate.islast
+    table.cell(tb, 0, 0, timeframe.period == "1" ? "yüksek · 1 dk" : "yüksek · ⚠ 1 DAKİKA grafikte kullan",
+               text_color = timeframe.period == "1" ? color.white : color.red, text_size = size.small)

@@ -1,0 +1,30 @@
+'yüksek' + geri çekilme — gerçekçi backtest · veri: data
+2026-09-01 – 2026-10-30 · 43 gün · 3125 sinyal · dolum: seviye −%0.5 altı · kayma %0.5 + komisyon %0,2
+
+TÜMÜ — dolan 837
+  +5 / −8                  837 işlem | ort  -0.31% | medyan  +4.30% | kârlı % 63 | + hafta 2/9 | toplam   -257.4%
+  yarı +5 / yarı +20       837 işlem | ort  +0.03% | medyan  -0.15% | kârlı % 49 | + hafta 5/9 | toplam    +25.8%
+  +20 / −8                 837 işlem | ort  +0.37% | medyan  -1.86% | kârlı % 41 | + hafta 6/9 | toplam   +308.9%
+  ilk %60 / son %40 (+5): -0.48% / -0.01% · (yarı/yarı): +0.01% / +0.06%
+
+gün ≤ %20 (sitedeki filtre) — dolan 584
+  +5 / −8                  584 işlem | ort  +0.22% | medyan  +4.30% | kârlı % 65 | + hafta 4/9 | toplam   +130.0%
+  yarı +5 / yarı +20       584 işlem | ort  +0.48% | medyan  +0.67% | kârlı % 52 | + hafta 7/9 | toplam   +281.2%
+  +20 / −8                 584 işlem | ort  +0.74% | medyan  -1.22% | kârlı % 43 | + hafta 8/9 | toplam   +432.5%
+  ilk %60 / son %40 (+5): -0.00% / +0.60% · (yarı/yarı): +0.31% / +0.76%
+
+gün > %20 (ALMA denenler) — dolan 253
+  +5 / −8                  253 işlem | ort  -1.53% | medyan  +4.30% | kârlı % 60 | + hafta 1/9 | toplam   -387.3%
+  yarı +5 / yarı +20       253 işlem | ort  -1.01% | medyan  -2.40% | kârlı % 43 | + hafta 2/9 | toplam   -255.5%
+  +20 / −8                 253 işlem | ort  -0.49% | medyan  -6.04% | kârlı % 36 | + hafta 4/9 | toplam   -123.7%
+  ilk %60 / son %40 (+5): -1.60% / -1.42% · (yarı/yarı): -0.69% / -1.53%
+
+gün ≥ %10 ve ≤ %20 — dolan 392
+  +5 / −8                  392 işlem | ort  +0.07% | medyan  +4.30% | kârlı % 64 | + hafta 5/9 | toplam    +29.1%
+  yarı +5 / yarı +20       392 işlem | ort  +0.21% | medyan  -0.37% | kârlı % 49 | + hafta 5/9 | toplam    +81.3%
+  +20 / −8                 392 işlem | ort  +0.34% | medyan  -1.59% | kârlı % 42 | + hafta 6/9 | toplam   +133.5%
+  ilk %60 / son %40 (+5): -0.08% / +0.32% · (yarı/yarı): +0.21% / +0.20%
+
+AYLIK (gün ≤ %20, +5 / yarı-yarı)
+  2026-09:  300 işlem ·  +0.01% ·  +0.21%
+  2026-10:  284 işlem ·  +0.45% ·  +0.76%

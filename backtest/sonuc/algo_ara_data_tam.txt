@@ -1,0 +1,60 @@
+YENİ ALGORİTMA ARAMASI · veri data_tam · 2025-11-03 – 2026-11-03 (252 gün)
+eğitim < 2026-06-11 ≤ sınav · maliyet RTH %0.7 / uzatılmış seans %1.5 (kısa +%0.5)
+
+ŞU ANKİ 'yüksek' (gün ≤ 20, g5, +5/−8, 16:00)
+  eğitim                          2919 işlem | ort  -0.38% | medyan  +3.50 | kârlı % 61 | kırpık -0.39 | + hafta % 34 | + ay 2/8 | en kötü %5 ort  -12.9
+  sınav                           2303 işlem | ort  -0.37% | medyan  +3.50 | kârlı % 62 | kırpık -0.37 | + hafta % 41 | + ay 1/6 | en kötü %5 ort  -13.4
+
+EĞİTİMDE EN İYİ 8 — UZUN (seçim: en iyi %1 kırpılmış ort × hafta tutarlılığı)
+------------------------------------------------------------
+uzun · gün 10–40 · mom≥0 · hacim≥1.5× · bbw≥3 · VWAP üstü · MACD+ · g12 · çıkış 20_12 · s16
+  eğitim                           750 işlem | ort  +1.91% | medyan  +0.73 | kârlı % 52 | kırpık +1.91 | + hafta % 75 | + ay 7/8 | en kötü %5 ort  -19.5
+  SINAV                            699 işlem | ort  -0.87% | medyan  -2.49 | kârlı % 44 | kırpık -0.87 | + hafta % 23 | + ay 1/6 | en kötü %5 ort  -21.0
+uzun · gün 10–40 · mom≥2 · hacim≥2× · bbw≥3 · VWAP üstü · MACD+ · g12 · çıkış 20_12 · s16
+  eğitim                           742 işlem | ort  +1.86% | medyan  +0.41 | kârlı % 51 | kırpık +1.86 | + hafta % 69 | + ay 6/8 | en kötü %5 ort  -19.0
+  SINAV                            699 işlem | ort  -0.63% | medyan  -2.35 | kârlı % 45 | kırpık -0.63 | + hafta % 32 | + ay 1/6 | en kötü %5 ort  -21.1
+uzun · gün 5–40 · mom≥0 · hacim≥1.5× · bbw≥3 · VWAP üstü · MACD+ · g12 · çıkış 20_12 · s16
+  eğitim                           767 işlem | ort  +1.85% | medyan  +0.89 | kârlı % 53 | kırpık +1.85 | + hafta % 75 | + ay 7/8 | en kötü %5 ort  -19.7
+  SINAV                            631 işlem | ort  -0.77% | medyan  -2.25 | kârlı % 45 | kırpık -0.77 | + hafta % 36 | + ay 2/6 | en kötü %5 ort  -21.0
+uzun · gün 5–20 · mom≥0 · hacim≥1.5× · bbw≥3 · VWAP üstü · MACD+ · g12 · çıkış 20_12 · s16
+  eğitim                           402 işlem | ort  +1.82% | medyan  +1.15 | kârlı % 53 | kırpık +1.82 | + hafta % 69 | + ay 7/8 | en kötü %5 ort  -18.3
+  SINAV                            351 işlem | ort  -0.05% | medyan  -0.70 | kârlı % 48 | kırpık -0.05 | + hafta % 50 | + ay 3/6 | en kötü %5 ort  -19.3
+uzun · gün 5–40 · mom≥2 · hacim≥2× · bbw≥3 · VWAP üstü · MACD+ · g12 · çıkış 20_12 · s16
+  eğitim                           766 işlem | ort  +1.80% | medyan  +0.76 | kârlı % 52 | kırpık +1.80 | + hafta % 69 | + ay 7/8 | en kötü %5 ort  -19.4
+  SINAV                            628 işlem | ort  -0.47% | medyan  -1.99 | kârlı % 46 | kırpık -0.47 | + hafta % 36 | + ay 1/6 | en kötü %5 ort  -21.4
+uzun · gün 5–20 · mom≥0 · hacim≥1.5× · bbw≥3 · VWAP üstü · MACD+ · g12 · çıkış 20_8 · s16
+  eğitim                           402 işlem | ort  +1.72% | medyan  +0.08 | kârlı % 50 | kırpık +1.72 | + hafta % 69 | + ay 7/8 | en kötü %5 ort  -16.2
+  SINAV                            351 işlem | ort  -0.68% | medyan  -3.51 | kârlı % 42 | kırpık -0.68 | + hafta % 36 | + ay 2/6 | en kötü %5 ort  -16.7
+uzun · gün 5–20 · mom≥2 · hacim≥2× · bbw≥3 · VWAP üstü · MACD+ · g12 · çıkış 20_12 · s16
+  eğitim                           388 işlem | ort  +1.64% | medyan  +0.36 | kârlı % 51 | kırpık +1.64 | + hafta % 69 | + ay 7/8 | en kötü %5 ort  -18.4
+  SINAV                            339 işlem | ort  -0.19% | medyan  -1.27 | kârlı % 47 | kırpık -0.19 | + hafta % 36 | + ay 2/6 | en kötü %5 ort  -20.1
+uzun · gün 5–20 · mom≥2 · hacim≥2× · bbw≥3 · VWAP üstü · MACD+ · g12 · çıkış 20_8 · s16
+  eğitim                           388 işlem | ort  +1.64% | medyan  -0.24 | kârlı % 49 | kırpık +1.64 | + hafta % 66 | + ay 7/8 | en kötü %5 ort  -16.3
+  SINAV                            339 işlem | ort  -0.73% | medyan  -4.40 | kârlı % 40 | kırpık -0.73 | + hafta % 36 | + ay 2/6 | en kötü %5 ort  -16.8
+
+EĞİTİMDE EN İYİ 8 — KISA (seçim: en iyi %1 kırpılmış ort × hafta tutarlılığı)
+------------------------------------------------------------
+kisa · gün 30–80 · mom≥2 · hacim≥2× · bbw≥3 · VWAP üstü · MACD+ · hemen sat · çıkış 20_15 · s16
+  eğitim                          2324 işlem | ort  +0.26% | medyan  +1.87 | kârlı % 55 | kırpık +0.26 | + hafta % 56 | + ay 4/8 | en kötü %5 ort  -30.0
+  SINAV                           1585 işlem | ort  +0.73% | medyan  +4.05 | kârlı % 57 | kırpık +0.73 | + hafta % 59 | + ay 5/6 | en kötü %5 ort  -33.7
+kisa · gün 30–80 · mom≥0 · hacim≥1.5× · bbw≥3 · VWAP üstü · MACD+ · hemen sat · çıkış 20_15 · s16
+  eğitim                          2483 işlem | ort  +0.00% | medyan  +1.23 | kârlı % 54 | kırpık +0.00 | + hafta % 56 | + ay 4/8 | en kötü %5 ort  -29.9
+  SINAV                           1680 işlem | ort  +0.72% | medyan  +3.46 | kârlı % 57 | kırpık +0.72 | + hafta % 68 | + ay 5/6 | en kötü %5 ort  -33.3
+kisa · gün 20–80 · mom≥2 · hacim≥2× · bbw≥3 · VWAP üstü · MACD+ · hemen sat · çıkış 5_8 · s20
+  eğitim                          5207 işlem | ort  -1.33% | medyan  +3.00 | kârlı % 67 | kırpık -1.33 | + hafta %  0 | + ay 0/8 | en kötü %5 ort  -21.6
+  SINAV                           3585 işlem | ort  -1.24% | medyan  +3.00 | kârlı % 69 | kırpık -1.24 | + hafta % 14 | + ay 1/6 | en kötü %5 ort  -22.2
+kisa · gün 20–80 · mom≥0 · hacim≥1.5× · bbw≥3 · VWAP üstü · MACD+ · hemen sat · çıkış 5_8 · s20
+  eğitim                          5827 işlem | ort  -1.36% | medyan  +3.00 | kârlı % 65 | kırpık -1.36 | + hafta %  0 | + ay 0/8 | en kötü %5 ort  -21.1
+  SINAV                           3891 işlem | ort  -1.03% | medyan  +3.00 | kârlı % 70 | kırpık -1.03 | + hafta % 14 | + ay 1/6 | en kötü %5 ort  -21.4
+kisa · gün 20–80 · mom≥0 · hacim≥1.5× · bbw≥3 · VWAP üstü · MACD+ · hemen sat · çıkış 10_8 · s20
+  eğitim                          5827 işlem | ort  -1.32% | medyan  +0.52 | kârlı % 51 | kırpık -1.32 | + hafta %  0 | + ay 0/8 | en kötü %5 ort  -22.7
+  SINAV                           3891 işlem | ort  -0.66% | medyan  +3.13 | kârlı % 56 | kırpık -0.66 | + hafta % 23 | + ay 1/6 | en kötü %5 ort  -22.7
+kisa · gün 10–40 · mom≥2 · hacim≥2× · bbw≥3 · VWAP üstü · MACD+ · hemen sat · çıkış 5_8 · s20
+  eğitim                         11419 işlem | ort  -1.44% | medyan  +3.00 | kârlı % 59 | kırpık -1.44 | + hafta %  0 | + ay 0/8 | en kötü %5 ort  -17.8
+  SINAV                           7379 işlem | ort  -1.16% | medyan  +3.00 | kârlı % 63 | kırpık -1.16 | + hafta %  0 | + ay 0/6 | en kötü %5 ort  -17.8
+kisa · gün 10–40 · mom≥2 · hacim≥2× · bbw≥3 · VWAP üstü · MACD+ · hemen sat · çıkış 10_8 · s16
+  eğitim                         10142 işlem | ort  -1.52% | medyan  -0.76 | kârlı % 46 | kırpık -1.52 | + hafta %  0 | + ay 0/8 | en kötü %5 ort  -17.7
+  SINAV                           6302 işlem | ort  -1.23% | medyan  -0.14 | kârlı % 49 | kırpık -1.23 | + hafta %  0 | + ay 0/6 | en kötü %5 ort  -18.0
+kisa · gün 10–40 · mom≥2 · hacim≥2× · bbw≥3 · VWAP üstü · MACD+ · hemen sat · çıkış 10_8 · s20
+  eğitim                         11419 işlem | ort  -1.53% | medyan  -0.58 | kârlı % 47 | kırpık -1.53 | + hafta %  0 | + ay 0/8 | en kötü %5 ort  -19.0
+  SINAV                           7379 işlem | ort  -1.21% | medyan  +0.21 | kârlı % 51 | kırpık -1.21 | + hafta %  0 | + ay 0/6 | en kötü %5 ort  -19.2

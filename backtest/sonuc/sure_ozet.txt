@@ -1,0 +1,57 @@
+43 gün · 54205 işlem (Pine gibi pozisyonlu, AL sadece pozisyon yokken)
+
+── 1. Çıkış nedeni: büyük koşu (60 dk içinde +%20) olan / olmayan işlemler
+buyuk     diğer %  büyük koşu %
+neden                          
+GÜN SONU      2.8           0.5
+SAT          35.2          26.5
+STOP         31.1          22.8
+SÜRE         30.8          50.2
+
+── 2. AL → SAT/STOP kaç mumda? (SÜRE/GÜN SONU hariç)
+              count  mean  std  min  25%  50%   75%   max
+buyuk                                                    
+diğer       34586.0   6.2  5.3  1.0  2.0  4.0   9.0  20.0
+büyük koşu   1023.0   6.7  5.7  1.0  2.0  5.0  11.0  20.0
+   SAT/STOP'un ilk N mumda gelme oranı:  ≤2: %33  ≤3: %43  ≤5: %57  ≤8: %71  ≤12: %84
+
+── 3. Giriş/çıkış varyantları (net %, komisyon dahil)
+varyant                                               işlem  kârlı%    ort%  medyan%  toplam%
+[TÜMÜ]
+  AL'da gir, SAT/STOP/SÜRE 20 (mevcut script)         54205    28.8   -0.43    -0.68   -23118
+  AL'da gir, SÜRE yok (SAT/STOP/seans sonu)           54205    23.5   -0.43    -0.78   -23368
+  AL+2 mumda hâlâ SAT yok & AL üstü → gir, SÜRE yok   20537    30.4   -0.28    -0.70    -5844
+  AL+2 mumda hâlâ SAT yok & AL üstü → gir, SÜRE 20    20537    37.2   -0.25    -0.52    -5093
+  AL+3 mumda hâlâ SAT yok & AL üstü → gir, SÜRE yok   20669    31.1   -0.28    -0.69    -5797
+  AL+3 mumda hâlâ SAT yok & AL üstü → gir, SÜRE 20    20669    38.3   -0.23    -0.48    -4734
+  AL+5 mumda hâlâ SAT yok & AL üstü → gir, SÜRE yok   20285    32.9   -0.17    -0.63    -3484
+  AL+5 mumda hâlâ SAT yok & AL üstü → gir, SÜRE 20    20285    39.9   -0.13    -0.41    -2647
+  AL+8 mumda hâlâ SAT yok & AL üstü → gir, SÜRE yok   19326    33.6   -0.13    -0.61    -2474
+  AL+8 mumda hâlâ SAT yok & AL üstü → gir, SÜRE 20    19326    40.4   -0.08    -0.37    -1565
+  önceki işlem SÜRE ile kapandı → AL'da gir, SÜRE yok  15966    25.4   -0.33    -0.68    -5320
+  günün ilk işlemi → AL'da gir, SÜRE yok               7051    31.5   -0.15    -1.23    -1084
+  bugün ≤5 mumda SAT/STOP olmuş (sık AL-SAT) → SÜRE yok  36210    21.2   -0.49    -0.75   -17635
+  bugün hiç kısa SAT yok → SÜRE yok                   17995    28.0   -0.32    -0.84    -5733
+  hiç kısa SAT yok & AL+3 hayatta → SÜRE yok           7362    36.5   -0.17    -0.67    -1267
+[girişte gün ≥ %10 (yanlılıksız)]
+  AL'da gir, SAT/STOP/SÜRE 20 (mevcut script)         22154    24.5   -0.80    -1.02   -17799
+  AL'da gir, SÜRE yok (SAT/STOP/seans sonu)           22154    18.4   -1.01    -1.16   -22374
+  AL+2 mumda hâlâ SAT yok & AL üstü → gir, SÜRE yok    8180    22.4   -1.19    -1.18    -9735
+  AL+2 mumda hâlâ SAT yok & AL üstü → gir, SÜRE 20     8180    30.2   -0.82    -0.91    -6728
+  AL+3 mumda hâlâ SAT yok & AL üstü → gir, SÜRE yok    8073    22.6   -1.20    -1.19    -9684
+  AL+3 mumda hâlâ SAT yok & AL üstü → gir, SÜRE 20     8073    30.7   -0.81    -0.87    -6508
+  AL+5 mumda hâlâ SAT yok & AL üstü → gir, SÜRE yok    7665    23.9   -1.06    -1.12    -8144
+  AL+5 mumda hâlâ SAT yok & AL üstü → gir, SÜRE 20     7665    32.5   -0.65    -0.78    -4957
+  AL+8 mumda hâlâ SAT yok & AL üstü → gir, SÜRE yok    7165    23.9   -0.97    -1.08    -6984
+  AL+8 mumda hâlâ SAT yok & AL üstü → gir, SÜRE 20     7165    32.4   -0.54    -0.77    -3861
+  önceki işlem SÜRE ile kapandı → AL'da gir, SÜRE yok   7830    19.9   -0.84    -0.98    -6616
+  günün ilk işlemi → AL'da gir, SÜRE yok               1571    19.0   -1.97    -2.79    -3089
+  bugün ≤5 mumda SAT/STOP olmuş (sık AL-SAT) → SÜRE yok  16038    18.2   -0.89    -1.05   -14216
+  bugün hiç kısa SAT yok → SÜRE yok                    6116    19.2   -1.33    -1.48    -8158
+  hiç kısa SAT yok & AL+3 hayatta → SÜRE yok           2285    23.8   -1.69    -1.48    -3861
+
+── 4. Zaman bölünmesi (gün ≥ %10): ilk yarı / ikinci yarı
+  net          ilk yarı ort -0.73% (n=11173)  ikinci yarı ort -0.87% (n=10981)
+  net_suresiz  ilk yarı ort -0.97% (n=11173)  ikinci yarı ort -1.05% (n=10981)
+  hk3          ilk yarı ort -1.32% (n=4142)  ikinci yarı ort -1.07% (n=3931)
+  hk5          ilk yarı ort -1.12% (n=3917)  ikinci yarı ort -1.00% (n=3748)
