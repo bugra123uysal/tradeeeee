@@ -1,7 +1,7 @@
 """'yükselme-adayları' — TradingView Hisse Takipçisi'ndeki aynı adlı tarayıcı + kullanıcının giriş şartları (4 Kas 2026).
 
 Tarayıcı sorgusu, TradingView'ın kendi gönderdiği istekten birebir alındı:
-  premarket değişimi > %10 · premarket hacmi > 100 bin · float ≤ 20 milyon · fiyat (close) 1–20 $
+  premarket değişimi > %10 · premarket hacmi > 100 bin · float ≤ 20 milyon · fiyat (close) 1–1500 $ (6 Kas 2026: kullanıcı TV'de değiştirdi)
 Her aday için şartlar (kullanıcının kuralları):
   1. Haber var mı? (önceki seans kapanışından beri TradingView haber başlığı) — yoksa GEÇ
   2. İlk 5 dakika: 09:30–09:35 NY (17:30–17:35 TR) işlem yok, açılış oynaklığı geçsin
@@ -37,7 +37,7 @@ SORGU = {
     "filter": [{"left": "premarket_change", "operation": "greater", "right": 10},
                {"left": "premarket_volume", "operation": "greater", "right": 100000},
                {"left": "float_shares_outstanding_current", "operation": "eless", "right": 20000000},
-               {"left": "close", "operation": "in_range", "right": [1, 20]}],
+               {"left": "close", "operation": "in_range", "right": [1, 1500]}],     # 6 Kas: TV'deki gibi (alt 1 $)
     "filter2": {"operator": "or", "operands": [
         {"operation": {"operator": "and", "operands": [{"expression": {"left": "type", "operation": "equal", "right": "stock"}},
                                                         {"expression": {"left": "typespecs", "operation": "has", "right": ["common"]}}]}},
@@ -246,5 +246,5 @@ class Adaylar:
         liste = sorted(self.adaylar.values(), key=lambda a: (sira.get(a.karar, 9), -(a.pm_degisim or 0)))
         return {"son_tarama": self.son_tarama, "hata": self.hata,
                 "kural": {"hacim_kat": HACIM_KAT, "hacim_onceki": HACIM_ONCEKI,
-                          "sorgu": "premarket değişimi > %10 · premarket hacmi > 100 bin · float ≤ 20 M · fiyat 1–20 $"},
+                          "sorgu": "premarket değişimi > %10 · premarket hacmi > 100 bin · float ≤ 20 M · fiyat 1–1500 $"},
                 "adaylar": [asdict(a) for a in liste]}

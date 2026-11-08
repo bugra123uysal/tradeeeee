@@ -17,6 +17,7 @@ WEB = Path(__file__).parent / "web"
 # 3 Kas 2026: sadece 'yüksek' sekmesi kaldı (sinyaller TradingView alarmlarından, sistem/tv_alarm.py)
 SAYFALAR = {"/": WEB / "yuksek.html", "/index.html": WEB / "yuksek.html", "/yuksek": WEB / "yuksek.html",
             "/yukselme": WEB / "yukselme.html"}   # 4 Kas 2026: "yükselme-adayları" tarayıcısı + giriş şartları
+# 8 Kas 2026: Gece Yükselişi sayfası kaldırıldı (kullanıcı istedi; yedek/2026-11-08_temizlik_oncesi/)
 VERILER = {"/api": FILTER_DIR / "devam_sinyaller.json"}
 
 

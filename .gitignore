@@ -20,3 +20,10 @@ filtreler/kagit.json
 filtreler/telegram_gonderilen.json
 filtreler/liste_log.csv
 yedek/**/devam_sinyaller.json
+filtreler/video_ekran/
+
+# 7 Kas 2026: video programı (606 MB, kendi deposu) — GitHub'a gitmesin
+Pixelle-Video/
+
+# 8 Kas 2026: SEC EDGAR önbelleği (yeniden indirilebilir)
+veri/

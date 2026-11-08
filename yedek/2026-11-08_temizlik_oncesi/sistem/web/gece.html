@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gece Yükselişi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0d16; --panel: #141826; --panel-2: #1a1f30; --line: #262c40;
+    --text: #e6e9ef; --muted: #8a93a3; --up: #2fd47a; --down: #ff5d5d; --wait: #f5b942; --accent: #5aa2ff; --mor: #9b6bff;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    --sans: "Space Grotesk", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh;
+         background-image: radial-gradient(circle at 75% -20%, #2a1f55 0, transparent 45%); }
+  header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; padding: 20px 16px 12px;
+           max-width: 1500px; margin: 0 auto; border-bottom: 1px solid var(--line); }
+  h1 { margin: 0; font-size: 26px; letter-spacing: -0.02em; }
+  h1 span { color: var(--mor); }
+  .meta { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--mor); margin-right: 6px; animation: nabiz 1.6s infinite; }
+  .dot.eski { background: var(--down); animation: none; }
+  @keyframes nabiz { 50% { opacity: .25; } }
+  .sekme { display: flex; flex-wrap: wrap; gap: 4px; }
+  .sekme a { font-size: 13px; color: var(--muted); text-decoration: none; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line); }
+  .sekme a:hover { color: var(--text); }
+  .sekme a[aria-current] { color: #fff; background: var(--mor); border-color: var(--mor); font-weight: 700; }
+  .sekme a:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+  main { max-width: 1500px; margin: 0 auto; padding: 16px; }
+  .kural { font-size: 14px; color: var(--muted); margin: 0 0 14px; line-height: 1.6; max-width: 120ch; }
+  .kural b { color: var(--text); font-weight: 500; }
+  .uyari { color: var(--wait); }
+  .ozet { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .ozet span { font-family: var(--mono); font-size: 13px; padding: 6px 10px; border-radius: 6px; background: var(--panel); border: 1px solid var(--line); }
+  .bos { padding: 36px 16px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 10px; line-height: 1.6; }
+  .izgara { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr)); gap: 16px; }
+  .kart { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; box-shadow: 0 10px 28px rgba(0,0,0,.35); display: flex; flex-direction: column; min-width: 0; }
+  .kart.k-sicak { border-color: var(--mor); box-shadow: 0 0 0 1px rgba(155,107,255,.45), 0 10px 28px rgba(0,0,0,.35); }
+  .kart.k-soguk { opacity: .6; }
+  .bant { padding: 8px 16px; font-size: 13px; font-weight: 700; display: flex; justify-content: space-between; gap: 10px; background: rgba(155,107,255,.16); color: var(--mor); }
+  .k-sicak .bant { background: var(--mor); color: #12082a; }
+  .bant small { font-weight: 400; font-family: var(--mono); }
+  .bas { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 12px 16px 8px; }
+  .sym { font-size: 22px; font-weight: 700; letter-spacing: -.01em; }
+  .sym a { color: inherit; text-decoration: none; } .sym a:hover { color: var(--mor); }
+  .ad { font-size: 12px; color: var(--muted); max-width: 240px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .degisim { font-family: var(--mono); font-size: 22px; font-weight: 600; text-align: right; }
+  .degisim small { display: block; font-size: 11px; color: var(--muted); font-weight: 400; }
+  .up { color: var(--up); } .down { color: var(--down); }
+  .satir { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); background: var(--panel-2); }
+  .satir div { padding: 8px 12px; font-family: var(--mono); font-size: 13px; font-variant-numeric: tabular-nums; min-width: 0; }
+  .satir div + div { border-left: 1px solid var(--line); }
+  .satir span { display: block; font-family: var(--sans); font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+  .haberler { border-top: 1px solid var(--line); padding: 8px 16px 12px; display: flex; flex-direction: column; gap: 4px; }
+  .haberler div { font-size: 13px; line-height: 1.45; }
+  .haberler time { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-right: 6px; }
+  .haberler em { font-style: normal; color: var(--muted); font-size: 12px; }
+  .haber-yok { color: var(--down); }
+  @media (max-width: 520px) { .satir { grid-template-columns: repeat(2, 1fr); } .satir div:nth-child(3) { border-left: 0; } }
+  @media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
+</style>
+</head>
+<body>
+<header>
+  <h1><span>Gece</span> Yükselişi</h1>
+  <nav class="sekme" aria-label="Sayfalar"><a href="/">yüksek</a><a href="/yukselme">Yükselme Adayları</a><a href="/gece" aria-current="page">Gece Yükselişi</a></nav>
+  <span class="meta" id="meta"><span class="dot eski"></span>bağlanıyor…</span>
+</header>
+<main>
+  <p class="kural">NY kapanışından 20:00'ye kadar (<b>TR 00:00–04:00</b>) seans sonrası tarama — TradingView <b>Hisse Takipçisi → gece-yükselişi</b> ile aynı şartlar:
+    seans sonrası değişim &gt; %10 · seans sonrası hacim &gt; 50 bin · float ≤ 20 M · fiyat 1–20 $. Gece görülen hisseler sabaha kadar burada ve
+    TradingView <b>bugraaa_gece</b> listesinde kalır. <span class="uyari">Gece hacmi düşük, spread geniş, sabah sönebilir — gece girişi test edilmedi.</span></p>
+  <div class="ozet" id="ozet"></div>
+  <div class="izgara" id="izgara"><div class="bos">Veri bekleniyor…</div></div>
+</main>
+<script>
+const TR = new Intl.DateTimeFormat("tr-TR", { timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit" });
+const TRG = new Intl.DateTimeFormat("tr-TR", { timeZone: "Europe/Istanbul", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+const anSaat = (sn) => sn == null ? "—" : TR.format(new Date(sn * 1000));
+const fmt = (x) => x == null ? "—" : (x >= 10 ? x.toFixed(2) : x >= 1 ? x.toFixed(3) : x.toFixed(4));
+const yuzde = (p) => p == null ? "—" : (p >= 0 ? "+" : "") + p.toFixed(1) + "%";
+const sayi = (x) => x == null ? "—" : x >= 1e6 ? (x / 1e6).toFixed(1) + " M" : x >= 1e3 ? (x / 1e3).toFixed(0) + " B" : String(Math.round(x));
+const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+const ESIK = 10, SICAK = 30;
+
+function kart(h) {
+  const d = h.degisim ?? 0;
+  const k = el("article", "kart" + (d >= SICAK ? " k-sicak" : d < ESIK ? " k-soguk" : ""));
+  const bant = el("div", "bant");
+  bant.append(el("span", null, d >= SICAK ? "🌙🔥 GÜÇLÜ GECE YÜKSELİŞİ" : d < ESIK ? "Söndü (%10 altına indi)" : "🌙 Gece yükselişi"),
+              el("small", null, "ilk görülme " + anSaat(h.ilk_gorulme)));
+  const bas = el("div", "bas");
+  const sol = el("div");
+  const s = el("div", "sym"); const link = el("a", null, h.sym.split(":")[1]);
+  link.href = "https://tr.tradingview.com/chart/?symbol=" + encodeURIComponent(h.sym); link.target = "_blank"; link.rel = "noopener";
+  s.append(link); sol.append(s, el("div", "ad", h.ad));
+  const deg = el("div", "degisim");
+  deg.append(el("span", d >= 0 ? "up" : "down", yuzde(h.degisim)), el("small", null, "seans sonrası"));
+  bas.append(sol, deg);
+  const satir = el("div", "satir");
+  const hucre = (b, v) => { const x = el("div"); x.append(el("span", null, b), document.createTextNode(v)); return x; };
+  satir.append(hucre("kapanış → şimdi", fmt(h.kapanis) + " → " + fmt(h.fiyat)), hucre("tepe", fmt(h.tepe)),
+               hucre("hacim", sayi(h.hacim)), hucre("float", h.float_m == null ? "—" : h.float_m.toFixed(1) + " M"));
+  const hb = el("div", "haberler");
+  if ((h.haberler || []).length) {
+    for (const n of h.haberler.slice(0, 3)) {
+      const x = el("div"); x.append(el("time", null, anSaat(n.zaman)), document.createTextNode(n.baslik + " "), el("em", null, n.kaynak));
+      hb.append(x);
+    }
+  } else hb.append(el("div", "haber-yok", "Haber yok — hareketin sebebi bilinmiyor"));
+  k.append(bant, bas, satir, hb);
+  return k;
+}
+
+async function yenile() {
+  const meta = document.getElementById("meta");
+  try {
+    const r = await fetch("/api/gece", { cache: "no-store" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    const liste = d.hisseler || [];
+    const guncel = d.guncelleme ? new Date(d.guncelleme * 1000) : null;
+    const eski = !guncel || Date.now() - guncel.getTime() > 120000;
+    meta.replaceChildren(el("span", "dot" + (eski ? " eski" : "")),
+      document.createTextNode(!guncel ? "henüz gece taraması yapılmadı" : eski ? "son tarama " + TRG.format(guncel) : "canlı · " + TR.format(guncel)));
+    const ust = Math.max(0, ...liste.map(h => h.degisim ?? 0));
+    document.getElementById("ozet").replaceChildren(...[["hisse", liste.length], ["+%30 üstü", liste.filter(h => (h.degisim ?? 0) >= SICAK).length],
+      ["en yüksek", liste.length ? yuzde(ust) : "—"]].map(([a, b]) => el("span", null, a + ": " + b)));
+    document.getElementById("izgara").replaceChildren(...(liste.length ? liste.map(kart)
+      : [el("div", "bos", "Bu gece henüz yükselen yok. Tarama TR 00:00–04:00 arası çalışır; sonuçlar sabaha kadar burada kalır.")]));
+  } catch (e) {
+    meta.replaceChildren(el("span", "dot eski"), document.createTextNode("veri alınamadı: " + e.message));
+  }
+}
+yenile();
+setInterval(yenile, 10000);
+</script>
+</body>
+</html>

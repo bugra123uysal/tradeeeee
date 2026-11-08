@@ -59,6 +59,9 @@
   .bant.stop { background: rgba(240,80,80,.16); color: var(--down); font-weight: 500; }
   .bant.elendi { background: #3a3f4b; color: #e6e9ef; }
   .kart.elendi { opacity: .6; }
+  .grafik-ac { margin: 12px; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--line); background: transparent;
+    color: var(--muted); font: inherit; cursor: pointer; }
+  .grafik-ac:hover, .grafik-ac:focus-visible { color: var(--text); border-color: var(--accent); }
   .bant.seans { background: rgba(90,162,255,.16); color: var(--accent); font-weight: 500; }
   .bant.yok { background: #222a37; color: var(--muted); font-weight: 500; }
   .ust { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 12px 16px 10px; }
@@ -103,11 +106,14 @@
 const kartlar = new Map();
 let ilkYukleme = true;
 let filtreGunMax = null;
+let kirmiziMax = 0.43;
 let hedef1 = 5, hedef2 = 20;
 let kagitMap = new Map();
-const elendi = (s) => filtreGunMax != null && s.gun_degisim != null && s.gun_degisim > filtreGunMax;
+// ALMA nedeni takipçide hesaplanır (sistem/yuksek.py alma_nedeni: gün ≤ %20 · sinyal ≥ 11:30 · sakin geri çekilme)
+const elendi = (s) => s.alma !== undefined ? !!s.alma
+  : (filtreGunMax != null && s.gun_degisim != null && s.gun_degisim > filtreGunMax);
 const SIRA = { al: 0, yarim: 1, bekliyor: 2, hedef: 3, seans: 3, yok: 4, stop: 5 };
-const girilecek = (s) => s.durum === "al" && !elendi(s);
+const girilecek = (s) => s.durum === "al" && (s.karar ?? true) && !elendi(s);
 const fmt = (x) => x == null ? "—" : (x >= 10 ? x.toFixed(2) : x >= 1 ? x.toFixed(3) : x.toFixed(4));
 const yuzde = (a, b) => (a == null || b == null) ? null : (a / b - 1) * 100;
 const isaretli = (p, n = 1) => p == null ? "—" : (p >= 0 ? "+" : "") + p.toFixed(n) + "%";
@@ -153,22 +159,35 @@ function kartOlustur(s, id) {
   ust.append(sol, deg);
   const satir = el("div", "satir"), etiket = el("div", "etiketler"), grafik = el("div", "grafik");
   grafik.id = "g_" + id;
+  const ac = el("button", "grafik-ac", "grafiği aç");
+  ac.type = "button";
+  grafik.append(ac);
   k.append(bant, ust, satir, etiket, grafik);
-  kartlar.set(id, { k, bant, deg, satir, etiket, durum: null });
+  const c = { k, bant, deg, satir, etiket, grafik, sym: s.sym, acik: false, durum: null };
+  ac.addEventListener("click", () => grafikAc(c));
+  kartlar.set(id, c);
   document.getElementById("kartlar").append(k);        // widget kapsayıcıyı DOM'da arar
-  if (window.TradingView) {
-    new TradingView.widget({ container_id: grafik.id, symbol: s.sym, interval: "1", theme: "dark", style: "1",
-      locale: "tr", autosize: true, hide_top_toolbar: true, allow_symbol_change: false,
-      timezone: "Europe/Istanbul", studies: ["BB@tv-basicstudies", "VWAP@tv-basicstudies", "MACD@tv-basicstudies"] });
-  }
-  return kartlar.get(id);
+  return c;
 }
+
+// 8 Kas 2026: tüm piyasa taramasıyla günde onlarca kart olabilir — grafik sadece aktif kartlarda kendiliğinden açılır
+function grafikAc(c) {
+  if (c.acik || !window.TradingView) return;
+  c.acik = true;
+  c.grafik.replaceChildren();
+  new TradingView.widget({ container_id: c.grafik.id, symbol: c.sym, interval: "1", theme: "dark", style: "1",
+    locale: "tr", autosize: true, hide_top_toolbar: true, allow_symbol_change: false,
+    timezone: "Europe/Istanbul", studies: ["BB@tv-basicstudies", "VWAP@tv-basicstudies", "MACD@tv-basicstudies"] });
+}
+const aktifKart = (s) => ["bekliyor", "al", "yarim"].includes(s.durum) && !elendi(s);
+const kaliteYazi = (s) => s.obv_ustu == null || s.kijun_ustu == null ? null
+  : "kalite " + "CBA"[(+s.obv_ustu) + (+s.kijun_ustu)] + ": OBV " + (s.obv_ustu ? "✓" : "✗") + " · Kijun " + (s.kijun_ustu ? "✓" : "✗");
 
 function bantYaz(c, s, pencere) {
   c.k.className = "kart " + s.durum + (elendi(s) ? " elendi" : "") + (c.k.classList.contains("yeni") ? " yeni" : "");
   c.bant.className = "bant " + (elendi(s) ? "elendi" : s.durum);
   if (elendi(s)) {
-    c.bant.replaceChildren(el("span", null, "FİLTRE — ALMA: sinyalde gün " + isaretli(s.gun_degisim, 0) + " > %" + filtreGunMax + " (testte bu grup ortalama zararda)"),
+    c.bant.replaceChildren(el("span", null, "FİLTRE — ALMA: " + (s.alma || "sinyalde gün " + isaretli(s.gun_degisim, 0) + " > %" + filtreGunMax)),
       el("small", null, "durum: " + s.durum));
   } else if (s.durum === "al") {
     c.bant.replaceChildren(el("span", null, "TAMAM — ŞARTLAR SAĞLANIYOR, GİR @ " + fmt(s.dolum_fiyat) + " · yarısı +%" + hedef1 + ": " + fmt(s.hedef) +
@@ -193,12 +212,15 @@ function bantYaz(c, s, pencere) {
     c.bant.replaceChildren(el("span", null, "YÜKSEK SİNYAL — geri çekilme olmadı — sinyalden sonra tepe " + isaretli(yuzde(s.tepe, s.al_fiyat), 0)));
   } else {
     const kalan = Math.max(0, Math.round(pencere - (Date.now() / 60000 - s.al_dk)));
-    c.bant.replaceChildren(el("span", null, "YÜKSEK SİNYAL — geri çekilme bekleniyor: " + fmt(s.seviye) + " (−%5)"), el("small", null, kalan + " dk kaldı"));
+    const kr = s.kirmizi == null ? "" : " · şu ana kadar mumların %" + Math.round(s.kirmizi * 100) + "'i kırmızı" +
+      (s.kirmizi > kirmiziMax ? " (sert — böyle dolarsa ALMA)" : " (sakin)");
+    c.bant.replaceChildren(el("span", null, "YÜKSEK SİNYAL — geri çekilme bekleniyor: " + fmt(s.seviye) + " (−%5)" + kr), el("small", null, kalan + " dk kaldı"));
   }
 }
 
 function kartGuncelle(c, s, pencere) {
   bantYaz(c, s, pencere);
+  if (aktifKart(s)) grafikAc(c);
   const ref = s.dolum_fiyat || s.al_fiyat;
   const p = yuzde(s.son_fiyat, ref);
   c.deg.replaceChildren(el("span", p == null ? "" : p >= 0 ? "up" : "down", isaretli(p)), el("small", null, s.dolum_fiyat ? "alıştan beri" : "sinyalden beri"));
@@ -208,9 +230,12 @@ function kartGuncelle(c, s, pencere) {
     hucre("Sinyalde gün", isaretli(s.gun_degisim, 0)),
     hucre("Şimdi", fmt(s.son_fiyat)),
     hucre("Sonra tepe", fmt(s.tepe) + " (" + isaretli(yuzde(s.tepe, s.al_fiyat), 0) + ")"));
-  const et = [];
+  const et = [s.tur === "PY" ? "kaynak: Python tüm piyasa taraması" : "kaynak: TradingView alarmı"];
+  const kal = kaliteYazi(s);
+  if (kal) et.push(kal);
   if (s.mom5 != null) et.push("5 mum " + isaretli(s.mom5));
   if (s.hacim_kat != null) et.push("hacim " + s.hacim_kat.toFixed(1) + "x");
+  if (s.kirmizi != null && s.dolum_dk != null) et.push("geri çekilmede kırmızı %" + Math.round(s.kirmizi * 100));
   const kg = kagitMap.get(s.sym + "_" + s.al_dk);
   if (kg) et.push(kagitYazi(kg));
   et.push("siteye geldi " + anSaat(s.eklendi));
@@ -231,14 +256,18 @@ function kagitYazi(x) {
 function kuralYaz(k) {
   k = k || { gun_min: 5, gun_max: 40, mom: 2, hacim: 2, bbw: 3, gunluk_max: 1 };
   document.getElementById("kural").replaceChildren(
-    document.createTextNode("Sinyaller sadece TradingView'deki "), el("b", null, "hisse bulucu alarmlarından"),
-    document.createTextNode(" gelir (Pine script yüksek: Swing 5dk AL'ı + gün değişimi %" + k.gun_min + "–" + k.gun_max + " + son 5 mumda ≥ +%" + k.mom +
+    document.createTextNode("Sinyaller TradingView "), el("b", null, "hisse bulucu alarmlarından"),
+    document.createTextNode(" ve "), el("b", null, "Python tüm piyasa taramasından"),
+    document.createTextNode(" (gün > %5, fiyat 0,2–40 $, sadece GİR olabilecek sinyaller) gelir — aynı kural (Pine script yüksek: Swing 5dk AL'ı + gün değişimi %" + k.gun_min + "–" + k.gun_max + " + son 5 mumda ≥ +%" + k.mom +
       " + MACD histogramı artıyor + VWAP üstü + hacim ≥ " + k.hacim + "× + Bollinger genişliği ≥ %" + k.bbw + " · hisse başına "),
     el("b", null, "günde en çok " + k.gunluk_max + " sinyal"),
     document.createTextNode("). Sonra 30 dk içinde sinyal fiyatının %5 altına inerse "), el("b", null, "GERİ ÇEKİLME TAMAM — AL"),
     document.createTextNode(" — şartlar sağlanınca kart en üstteki GİRİLECEK HİSSELER bölümüne alınır. Çıkış yarı-yarı: yarısı +%" + (k.hedef1 ?? 5) +
       "'te, kalanı +%" + (k.hedef2 ?? 20) + "'de satılır, kapanış stopu −%8. Alarm gelen hiçbir kart silinmez." +
-      (k.filtre_gun_max != null ? " Ek filtre: sinyal anında gün > %" + k.filtre_gun_max + " ise kart gri ve “ALMA” (ses/bildirim yok)." : "") + " Bilgi amaçlıdır, al-sat tavsiyesi değildir."));
+      " "), el("b", null, "GİR sadece şu üçü sağlanınca:"),
+    document.createTextNode(" sinyalde gün ≤ %" + (k.filtre_gun_max ?? 20) + " · sinyal " + (k.filtre_saat || "11:30") +
+      " (NY) sonrası · sakin geri çekilme (sinyal ile alış arasındaki mumların en çok %" + Math.round((k.filtre_kirmizi_max ?? 0.43) * 100) +
+      "'i kırmızı). Diğerleri gri “ALMA” (ses/bildirim yok). 1 yıl testi: hepsi −%0,68 · seçilenler +%1,06 / +%0,99 (eğitim / sınav). Bilgi amaçlıdır, al-sat tavsiyesi değildir."));
 }
 
 async function yenile() {
@@ -257,12 +286,13 @@ async function yenile() {
   document.getElementById("durum").textContent = guncel
     ? "son tarama " + guncel.toLocaleTimeString("tr-TR") + (eski ? " (eski — takipçi durmuş olabilir)" : "") : "henüz veri yok";
   filtreGunMax = d.yuksek_kural?.filtre_gun_max ?? null;
+  kirmiziMax = d.yuksek_kural?.filtre_kirmizi_max ?? 0.43;
   hedef1 = d.yuksek_kural?.hedef1 ?? 5;
   hedef2 = d.yuksek_kural?.hedef2 ?? 20;
   const kagit = d.kagit || { acik: false, islemler: [] };
   kagitMap = new Map((kagit.islemler || []).map(x => [x.sym + "_" + x.al_dk, x]));
   kuralYaz(d.yuksek_kural);
-  const pencere = d.geri_kural?.pencere_dk ?? 30;
+  const pencere = d.yuksek_kural?.pencere_dk ?? 30;
 
   const y = d.yuksek || [];
   const say = (dr) => y.filter(x => x.durum === dr).length;

@@ -1,0 +1,56 @@
+EDGAR × 'yüksek' (gün ≤ 20, g5, +5/−8, 16:00) · 2025-11-03 … 2026-11-03
+işlem 5222 · EDGAR'da bulunan 5213 · eğitim < 2026-06-11 ≤ sınav
+R = NET % (maliyet düşülmüş) · çöken = brüt ≤ -7.5% (stop)
+
+== TÜM YIL ==
+  HEPSİ (CIK bulunan)                      n=5213  ort  -0.38  medyan  +3.50  kârlı % 62  çöken % 21
+  son 24 saatte 8-K VAR                    n= 394  ort  -1.00  medyan  +3.50  kârlı % 58  çöken % 25
+  son 24 saatte 8-K YOK                    n=4819  ort  -0.33  medyan  +3.50  kârlı % 62  çöken % 21
+  30 günde 424B (ihraç) VAR                n= 918  ort  -0.49  medyan  +3.50  kârlı % 62  çöken % 23
+  30 günde 424B YOK                        n=4295  ort  -0.35  medyan  +3.50  kârlı % 61  çöken % 21
+  30 günde S-1/S-3 kayıt VAR               n= 708  ort  -0.28  medyan  +3.50  kârlı % 63  çöken % 21
+  30 günde kayıt+ihraç YOK (temiz)         n=3903  ort  -0.34  medyan  +3.50  kârlı % 61  çöken % 21
+  FİLTRE: 424B yok                         n=4295  ort  -0.35  medyan  +3.50  kârlı % 61  çöken % 21
+  FİLTRE: 424B yok + 24s 8-K var           n= 305  ort  -1.11  medyan  +3.29  kârlı % 57  çöken % 26
+  30 günde Form 4 VAR                      n=1276  ort  -0.89  medyan  +3.22  kârlı % 56  çöken % 23
+  30 günde 13D/13G VAR                     n=1208  ort  -0.40  medyan  +3.50  kârlı % 59  çöken % 20
+
+== EĞİTİM ==
+  HEPSİ (CIK bulunan)                      n=2914  ort  -0.38  medyan  +3.50  kârlı % 61  çöken % 21
+  son 24 saatte 8-K VAR                    n= 235  ort  -0.34  medyan  +3.50  kârlı % 63  çöken % 22
+  son 24 saatte 8-K YOK                    n=2679  ort  -0.39  medyan  +3.50  kârlı % 61  çöken % 21
+  30 günde 424B (ihraç) VAR                n= 520  ort  -0.75  medyan  +3.50  kârlı % 59  çöken % 24
+  30 günde 424B YOK                        n=2394  ort  -0.30  medyan  +3.50  kârlı % 62  çöken % 20
+  30 günde S-1/S-3 kayıt VAR               n= 370  ort  -0.41  medyan  +3.50  kârlı % 61  çöken % 22
+  30 günde kayıt+ihraç YOK (temiz)         n=2203  ort  -0.29  medyan  +3.50  kârlı % 62  çöken % 20
+  FİLTRE: 424B yok                         n=2394  ort  -0.30  medyan  +3.50  kârlı % 62  çöken % 20
+  FİLTRE: 424B yok + 24s 8-K var           n= 177  ort  -0.56  medyan  +3.50  kârlı % 62  çöken % 23
+  30 günde Form 4 VAR                      n= 751  ort  -0.92  medyan  +3.46  kârlı % 57  çöken % 24
+  30 günde 13D/13G VAR                     n= 750  ort  -0.52  medyan  +3.50  kârlı % 59  çöken % 21
+
+== SINAV ==
+  HEPSİ (CIK bulunan)                      n=2299  ort  -0.37  medyan  +3.50  kârlı % 62  çöken % 21
+  son 24 saatte 8-K VAR                    n= 159  ort  -1.96  medyan  +0.13  kârlı % 50  çöken % 31
+  son 24 saatte 8-K YOK                    n=2140  ort  -0.25  medyan  +3.50  kârlı % 63  çöken % 21
+  30 günde 424B (ihraç) VAR                n= 398  ort  -0.15  medyan  +3.50  kârlı % 65  çöken % 22
+  30 günde 424B YOK                        n=1901  ort  -0.42  medyan  +3.50  kârlı % 61  çöken % 21
+  30 günde S-1/S-3 kayıt VAR               n= 338  ort  -0.13  medyan  +3.50  kârlı % 65  çöken % 20
+  30 günde kayıt+ihraç YOK (temiz)         n=1700  ort  -0.42  medyan  +3.50  kârlı % 61  çöken % 21
+  FİLTRE: 424B yok                         n=1901  ort  -0.42  medyan  +3.50  kârlı % 61  çöken % 21
+  FİLTRE: 424B yok + 24s 8-K var           n= 128  ort  -1.88  medyan  +0.39  kârlı % 51  çöken % 29
+  30 günde Form 4 VAR                      n= 525  ort  -0.85  medyan  +3.00  kârlı % 56  çöken % 22
+  30 günde 13D/13G VAR                     n= 458  ort  -0.21  medyan  +3.50  kârlı % 61  çöken % 19
+
+== Saat dilimine göre (TÜM YIL) — 8-K etkisi saatten bağımsız mı? ==
+  premarket · hepsi                        n=1642  ort  -1.27  medyan  +3.50  kârlı % 62  çöken % 30
+  premarket · 8-K var                      n= 167  ort  -0.96  medyan  +3.50  kârlı % 63  çöken % 28
+  premarket · 424B var                     n= 341  ort  -1.63  medyan  +3.50  kârlı % 61  çöken % 33
+  09:30–11:30 · hepsi                      n=2080  ort  -0.43  medyan  +4.30  kârlı % 60  çöken % 23
+  09:30–11:30 · 8-K var                    n= 168  ort  -1.10  medyan  +2.88  kârlı % 55  çöken % 26
+  09:30–11:30 · 424B var                   n= 367  ort  +0.01  medyan  +4.30  kârlı % 62  çöken % 21
+  11:30–16:00 · hepsi                      n=1491  ort  +0.67  medyan  +4.30  kârlı % 63  çöken %  9
+  11:30–16:00 · 8-K var                    n=  59  ort  -0.80  medyan  +0.13  kârlı % 51  çöken % 17
+  11:30–16:00 · 424B var                   n= 210  ort  +0.48  medyan  +3.22  kârlı % 62  çöken % 11
+  seans sonrası · hepsi                    n=   0
+  seans sonrası · 8-K var                  n=   0
+  seans sonrası · 424B var                 n=   0

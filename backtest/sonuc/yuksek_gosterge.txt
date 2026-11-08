@@ -1,0 +1,103 @@
+GÖSTERGE TESTİ · 2025-11-03 – 2026-11-03 · NET % · eğitim < 2026-06-11 ≤ sınav · ✓ iki dönemde artı, ✗ iki dönemde eksi
+
+== yüksek'in TÜM dolan işlemleri (n=6888) ==
+    HEPSİ                              n=6888  eğitim  -0.68  sınav  -0.68  kârlı % 61  artı ay 0/13 ✗
+  -- SİNYAL anı --
+    gator_acilan EVET                  n=1765  eğitim  -0.48  sınav  -0.65  kârlı % 62  artı ay 2/13 ✗
+    gator_acilan hayır                 n=4289  eğitim  -0.65  sınav  -0.72  kârlı % 61  artı ay 0/13 ✗
+    alligator_dizilim EVET             n=4042  eğitim  -0.33  sınav  -0.70  kârlı % 62  artı ay 0/13 ✗
+    alligator_dizilim hayır            n=2012  eğitim  -1.10  sınav  -0.69  kârlı % 60  artı ay 1/13 ✗
+    mt_mavi EVET                       n=6053  eğitim  -0.61  sınav  -0.70  kârlı % 61  artı ay 0/13 ✗
+    mt_mavi hayır                      n=   1  (az)
+    mt_ustu EVET                       n=6053  eğitim  -0.61  sınav  -0.70  kârlı % 61  artı ay 0/13 ✗
+    mt_ustu hayır                      n=   1  (az)
+    kijun_ustu EVET                    n=6017  eğitim  -0.62  sınav  -0.70  kârlı % 61  artı ay 0/13 ✗
+    kijun_ustu hayır                   n=  37  eğitim  +1.33  sınav  -0.18  kârlı % 81  artı ay 6/10
+    obv_ema_ustu EVET                  n=5836  eğitim  -0.56  sınav  -0.71  kârlı % 61  artı ay 0/13 ✗
+    obv_ema_ustu hayır                 n= 218  eğitim  -1.60  sınav  -0.36  kârlı % 57  artı ay 5/13 ✗
+    zz_yukselen EVET                   n=1130  eğitim  -0.05  sınav  -0.68  kârlı % 64  artı ay 4/13 ✗
+    zz_yukselen hayır                  n=4745  eğitim  -0.72  sınav  -0.68  kârlı % 61  artı ay 0/13 ✗
+    gator_genis düşük (<0.909)         n=2017  eğitim  -0.83  sınav  -0.86  kârlı % 59  artı ay 2/13 ✗
+    gator_genis orta                   n=2019  eğitim  -0.52  sınav  -0.48  kârlı % 62  artı ay 2/13 ✗
+    gator_genis yüksek (≥2.04)         n=2018  eğitim  -0.45  sınav  -0.76  kârlı % 62  artı ay 1/13 ✗
+    obv_egim düşük (<0.428)            n=2018  eğitim  -0.37  sınav  -0.83  kârlı % 62  artı ay 3/13 ✗
+    obv_egim orta                      n=2018  eğitim  -0.34  sınav  -0.40  kârlı % 62  artı ay 2/13 ✗
+    obv_egim yüksek (≥0.873)           n=2018  eğitim  -1.06  sınav  -0.88  kârlı % 59  artı ay 1/13 ✗
+    atr_y düşük (<1.31)                n=2018  eğitim  -0.28  sınav  -0.63  kârlı % 58  artı ay 3/13 ✗
+    atr_y orta                         n=2018  eğitim  -0.34  sınav  -0.66  kârlı % 62  artı ay 1/13 ✗
+    atr_y yüksek (≥1.94)               n=2018  eğitim  -1.26  sınav  -0.79  kârlı % 64  artı ay 0/13 ✗
+  -- KARAR anı (dolumdan önce) --
+    gator_acilan EVET                  n=1616  eğitim  -0.84  sınav  -0.91  kârlı % 62  artı ay 3/13 ✗
+    gator_acilan hayır                 n=4438  eğitim  -0.53  sınav  -0.61  kârlı % 61  artı ay 0/13 ✗
+    alligator_dizilim EVET             n=4225  eğitim  -0.47  sınav  -0.66  kârlı % 62  artı ay 0/13 ✗
+    alligator_dizilim hayır            n=1829  eğitim  -0.87  sınav  -0.81  kârlı % 59  artı ay 1/13 ✗
+    mt_mavi EVET                       n=3839  eğitim  -0.57  sınav  -0.52  kârlı % 64  artı ay 0/13 ✗
+    mt_mavi hayır                      n=2215  eğitim  -0.66  sınav  -1.05  kârlı % 56  artı ay 1/13 ✗
+    mt_ustu EVET                       n=3491  eğitim  -0.73  sınav  -0.60  kârlı % 64  artı ay 0/13 ✗
+    mt_ustu hayır                      n=2563  eğitim  -0.46  sınav  -0.86  kârlı % 58  artı ay 2/13 ✗
+    kijun_ustu EVET                    n=3519  eğitim  -0.53  sınav  -0.42  kârlı % 64  artı ay 0/13 ✗
+    kijun_ustu hayır                   n=2535  eğitim  -0.71  sınav  -1.12  kârlı % 57  artı ay 1/13 ✗
+    obv_ema_ustu EVET                  n=3786  eğitim  -0.42  sınav  -0.31  kârlı % 64  artı ay 3/13 ✗
+    obv_ema_ustu hayır                 n=2268  eğitim  -0.91  sınav  -1.35  kârlı % 57  artı ay 1/13 ✗
+    zz_yukselen EVET                   n=1504  eğitim  -0.18  sınav  -0.79  kârlı % 61  artı ay 4/13 ✗
+    zz_yukselen hayır                  n=4423  eğitim  -0.73  sınav  -0.66  kârlı % 61  artı ay 0/13 ✗
+    gator_genis düşük (<1.32)          n=2018  eğitim  -0.55  sınav  -0.50  kârlı % 61  artı ay 4/13 ✗
+    gator_genis orta                   n=2018  eğitim  -0.63  sınav  -0.78  kârlı % 60  artı ay 0/13 ✗
+    gator_genis yüksek (≥3.14)         n=2018  eğitim  -0.65  sınav  -0.78  kârlı % 63  artı ay 1/13 ✗
+    obv_egim düşük (<0.0361)           n=2018  eğitim  -0.83  sınav  -1.33  kârlı % 58  artı ay 1/13 ✗
+    obv_egim orta                      n=2018  eğitim  -0.24  sınav  -0.38  kârlı % 63  artı ay 4/13 ✗
+    obv_egim yüksek (≥0.395)           n=2018  eğitim  -0.72  sınav  -0.39  kârlı % 63  artı ay 1/13 ✗
+    atr_y düşük (<1.52)                n=2018  eğitim  -0.07  sınav  -0.54  kârlı % 59  artı ay 5/13 ✗
+    atr_y orta                         n=2018  eğitim  -0.52  sınav  -0.30  kârlı % 62  artı ay 1/13 ✗
+    atr_y yüksek (≥2.28)               n=2018  eğitim  -1.37  sınav  -1.16  kârlı % 63  artı ay 0/13 ✗
+
+== MEVCUT GİR seçimi (gün ≤20 · 11:30+ · sakin geri çekilme) — gösterge EK fayda sağlıyor mu? (n=723) ==
+    HEPSİ                              n= 723  eğitim  +1.06  sınav  +0.99  kârlı % 66  artı ay 13/13 ✓
+  -- SİNYAL anı --
+    gator_acilan EVET                  n= 189  eğitim  +0.77  sınav  +0.31  kârlı % 63  artı ay 9/13 ✓
+    gator_acilan hayır                 n= 470  eğitim  +1.05  sınav  +1.18  kârlı % 65  artı ay 11/13 ✓
+    alligator_dizilim EVET             n= 472  eğitim  +1.00  sınav  +0.97  kârlı % 66  artı ay 12/13 ✓
+    alligator_dizilim hayır            n= 187  eğitim  +0.90  sınav  +0.80  kârlı % 61  artı ay 11/13 ✓
+    mt_mavi EVET                       n= 659  eğitim  +0.97  sınav  +0.92  kârlı % 65  artı ay 13/13 ✓
+    mt_mavi hayır                      n=   0  (az)
+    mt_ustu EVET                       n= 658  eğitim  +0.97  sınav  +0.95  kârlı % 65  artı ay 13/13 ✓
+    mt_ustu hayır                      n=   1  (az)
+    kijun_ustu EVET                    n= 658  eğitim  +0.97  sınav  +0.91  kârlı % 65  artı ay 13/13 ✓
+    kijun_ustu hayır                   n=   1  (az)
+    obv_ema_ustu EVET                  n= 641  eğitim  +0.95  sınav  +0.98  kârlı % 65  artı ay 13/13 ✓
+    obv_ema_ustu hayır                 n=  18  (az)
+    zz_yukselen EVET                   n= 162  eğitim  +0.99  sınav  +0.86  kârlı % 69  artı ay 11/12 ✓
+    zz_yukselen hayır                  n= 478  eğitim  +0.96  sınav  +0.98  kârlı % 63  artı ay 13/13 ✓
+    gator_genis düşük (<0.946)         n= 220  eğitim  +0.75  sınav  +0.99  kârlı % 61  artı ay 11/13 ✓
+    gator_genis orta                   n= 219  eğitim  +1.28  sınav  +1.42  kârlı % 70  artı ay 12/13 ✓
+    gator_genis yüksek (≥1.94)         n= 220  eğitim  +0.90  sınav  +0.33  kârlı % 64  artı ay 9/13 ✓
+    obv_egim düşük (<0.424)            n= 220  eğitim  +1.19  sınav  +1.01  kârlı % 65  artı ay 12/13 ✓
+    obv_egim orta                      n= 219  eğitim  +1.42  sınav  +1.03  kârlı % 68  artı ay 12/13 ✓
+    obv_egim yüksek (≥0.817)           n= 220  eğitim  +0.37  sınav  +0.70  kârlı % 62  artı ay 9/12 ✓
+    atr_y düşük (<1.13)                n= 220  eğitim  +0.78  sınav  +0.75  kârlı % 60  artı ay 11/13 ✓
+    atr_y orta                         n= 219  eğitim  +1.02  sınav  +1.09  kârlı % 67  artı ay 12/13 ✓
+    atr_y yüksek (≥1.6)                n= 220  eğitim  +1.14  sınav  +0.92  kârlı % 67  artı ay 11/13 ✓
+  -- KARAR anı (dolumdan önce) --
+    gator_acilan EVET                  n= 144  eğitim  +1.19  sınav  +0.89  kârlı % 65  artı ay 10/13 ✓
+    gator_acilan hayır                 n= 515  eğitim  +0.90  sınav  +0.93  kârlı % 65  artı ay 12/13 ✓
+    alligator_dizilim EVET             n= 525  eğitim  +1.06  sınav  +1.02  kârlı % 67  artı ay 13/13 ✓
+    alligator_dizilim hayır            n= 134  eğitim  +0.63  sınav  +0.53  kârlı % 57  artı ay 7/12 ✓
+    mt_mavi EVET                       n= 424  eğitim  +1.27  sınav  +1.06  kârlı % 68  artı ay 13/13 ✓
+    mt_mavi hayır                      n= 235  eğitim  +0.47  sınav  +0.65  kârlı % 60  artı ay 10/13 ✓
+    mt_ustu EVET                       n= 333  eğitim  +1.17  sınav  +1.16  kârlı % 68  artı ay 12/13 ✓
+    mt_ustu hayır                      n= 326  eğitim  +0.79  sınav  +0.64  kârlı % 61  artı ay 10/13 ✓
+    kijun_ustu EVET                    n= 405  eğitim  +1.40  sınav  +1.16  kârlı % 69  artı ay 12/13 ✓
+    kijun_ustu hayır                   n= 254  eğitim  +0.36  sınav  +0.50  kârlı % 58  artı ay 10/13 ✓
+    obv_ema_ustu EVET                  n= 473  eğitim  +1.19  sınav  +1.24  kârlı % 67  artı ay 13/13 ✓
+    obv_ema_ustu hayır                 n= 186  eğitim  +0.45  sınav  +0.02  kârlı % 59  artı ay 8/13 ✓
+    zz_yukselen EVET                   n= 212  eğitim  +0.83  sınav  +0.62  kârlı % 64  artı ay 8/13 ✓
+    zz_yukselen hayır                  n= 436  eğitim  +0.96  sınav  +1.15  kârlı % 65  artı ay 12/13 ✓
+    gator_genis düşük (<1.57)          n= 220  eğitim  +0.91  sınav  +0.92  kârlı % 62  artı ay 12/13 ✓
+    gator_genis orta                   n= 219  eğitim  +0.82  sınav  +0.97  kârlı % 63  artı ay 9/13 ✓
+    gator_genis yüksek (≥3.11)         n= 220  eğitim  +1.21  sınav  +0.89  kârlı % 69  artı ay 11/13 ✓
+    obv_egim düşük (<0.121)            n= 220  eğitim  +0.97  sınav  +0.84  kârlı % 64  artı ay 12/13 ✓
+    obv_egim orta                      n= 219  eğitim  +1.38  sınav  +0.61  kârlı % 66  artı ay 11/13 ✓
+    obv_egim yüksek (≥0.44)            n= 220  eğitim  +0.59  sınav  +1.35  kârlı % 65  artı ay 11/12 ✓
+    atr_y düşük (<1.29)                n= 220  eğitim  +0.97  sınav  +0.71  kârlı % 61  artı ay 12/13 ✓
+    atr_y orta                         n= 219  eğitim  +1.09  sınav  +1.25  kârlı % 67  artı ay 11/13 ✓
+    atr_y yüksek (≥1.84)               n= 220  eğitim  +0.81  sınav  +0.82  kârlı % 67  artı ay 10/13 ✓

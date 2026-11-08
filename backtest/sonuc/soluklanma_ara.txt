@@ -1,0 +1,90 @@
+SOLUKLANMA KIRILIMI · 2025-11-03 – 2026-11-03 (252 gün) · 54915 ham kırılım
+eğitim < 2026-06-11 ≤ sınav · NET % · aynı hissede tek pozisyon, günde en çok 3
+
+denenen 1432 · eğitimde aylık istikrarlı 1
+== EĞİTİMDE EN İYİ 12 (istikrarlı) → SINAV ==
+kutu 20 mum ≤ %3 · direk ≥ %10 · hacim ≥ 3× · saat ≥ 11.5 · gün sınırsız · çıkış kutu_2r
+  eğitim   n=  241  ort  -0.15  medyan  -0.50  kârlı % 44  artı ay 6/8  toplam      -37  en iyi    +21
+  SINAV    n=  113  ort  -1.32  medyan  -2.17  kârlı % 32  artı ay 1/6  toplam     -149  en iyi    +14
+
+== GOGO'yu yakalayan temel ayar (kutu 10 mum ≤ %5 · direk ≥ %10 · hacim ≥ 2×), çıkışlara göre ==
+ çıkış 5_8
+  eğitim   n= 6658  ort  -0.78  medyan  +1.45  kârlı % 54  artı ay 0/8  toplam    -5164  en iyi     +4
+  sınav    n= 3749  ort  -0.91  medyan  +1.04  kârlı % 54  artı ay 0/6  toplam    -3411  en iyi     +4
+ çıkış kutu_10
+  eğitim   n= 6453  ort  -0.82  medyan  -2.89  kârlı % 38  artı ay 0/8  toplam    -5259  en iyi     +9
+  sınav    n= 3634  ort  -1.15  medyan  -3.37  kârlı % 37  artı ay 0/6  toplam    -4178  en iyi     +9
+ çıkış kutu_2r
+  eğitim   n= 6485  ort  -0.84  medyan  -2.46  kârlı % 40  artı ay 0/8  toplam    -5465  en iyi    +37
+  sınav    n= 3662  ort  -1.18  medyan  -3.17  kârlı % 38  artı ay 0/6  toplam    -4306  en iyi    +32
+ çıkış kutu_iz
+  eğitim   n= 6272  ort  -0.97  medyan  -3.19  kârlı % 32  artı ay 0/8  toplam    -6089  en iyi   +240
+  sınav    n= 3585  ort  -1.53  medyan  -3.58  kârlı % 31  artı ay 0/6  toplam    -5502  en iyi    +86
+
+== Saate göre (temel ayar, kutu_iz) ==
+ premarket
+  eğitim   n=  673  ort  -2.34  medyan  -5.10  kârlı % 22  artı ay 0/8  toplam    -1575  en iyi    +87
+  sınav    n=  316  ort  -2.27  medyan  -5.94  kârlı % 28  artı ay 0/6  toplam     -717  en iyi    +86
+ 09:30–10:30
+  eğitim   n= 1841  ort  -0.44  medyan  -3.26  kârlı % 35  artı ay 0/8  toplam     -813  en iyi   +153
+  sınav    n= 1049  ort  -1.44  medyan  -3.74  kârlı % 30  artı ay 0/6  toplam    -1514  en iyi    +54
+ 10:30–11:30
+  eğitim   n= 1179  ort  -0.97  medyan  -3.74  kârlı % 32  artı ay 1/8  toplam    -1138  en iyi   +240
+  sınav    n=  699  ort  -1.75  medyan  -4.00  kârlı % 28  artı ay 0/6  toplam    -1222  en iyi    +82
+ 11:30–16:00
+  eğitim   n= 2579  ort  -0.99  medyan  -2.17  kârlı % 34  artı ay 0/8  toplam    -2563  en iyi    +87
+  sınav    n= 1521  ort  -1.35  medyan  -2.70  kârlı % 34  artı ay 1/6  toplam    -2048  en iyi    +64
+
+== 'yüksek' sinyali verdi, geri çekilme olmadı (gri) → sonra soluklanma kırılımı (temel ayar) ==
+ çıkış 5_8
+  eğitim   n= 2204  ort  -0.80  medyan  +2.15  kârlı % 55  artı ay 0/8  toplam    -1752  en iyi     +4
+  sınav    n= 1171  ort  -0.83  medyan  +1.52  kârlı % 54  artı ay 1/6  toplam     -969  en iyi     +4
+ çıkış kutu_10
+  eğitim   n= 2078  ort  -0.91  medyan  -3.49  kârlı % 38  artı ay 0/8  toplam    -1895  en iyi     +9
+  sınav    n= 1101  ort  -0.91  medyan  -3.58  kârlı % 37  artı ay 1/6  toplam    -1002  en iyi     +9
+ çıkış kutu_2r
+  eğitim   n= 2090  ort  -0.94  medyan  -3.16  kârlı % 39  artı ay 0/8  toplam    -1968  en iyi    +23
+  sınav    n= 1109  ort  -0.94  medyan  -3.43  kârlı % 39  artı ay 0/6  toplam    -1039  en iyi    +32
+ çıkış kutu_iz
+  eğitim   n= 1942  ort  -0.98  medyan  -3.57  kârlı % 32  artı ay 0/8  toplam    -1894  en iyi    +87
+  sınav    n= 1062  ort  -1.21  medyan  -3.71  kârlı % 31  artı ay 1/6  toplam    -1282  en iyi    +82
+
+== Fotoğraftaki hisseler (temel ayar, kutu_iz, tüm yıl) ==
+  2025-12-03 SERV  08:30 gün % 12.0 kutu %3.5 direk %  11 →   -6.2
+  2025-12-22 CHOW  10:26 gün %  5.1 kutu %1.2 direk %  10 →   -2.5
+  2026-01-02 CHOW  08:37 gün % 61.2 kutu %2.9 direk %  35 →   +1.6
+  2026-02-17 CHOW  08:22 gün % 36.7 kutu %4.0 direk %  13 →   -6.4
+  2026-04-02 STAK  09:30 gün %  9.0 kutu %0.8 direk %  10 →   -3.3
+  2026-04-21 CHOW  10:55 gün %  8.5 kutu %2.3 direk %  10 →  +11.0
+  2026-05-01 STAK  14:38 gün % 43.3 kutu %4.7 direk %  10 →   -8.4
+  2026-05-01 STAK  15:41 gün % 48.7 kutu %5.0 direk %  11 →   -8.1
+  2026-05-12 STAK  14:13 gün % 49.9 kutu %5.0 direk %  12 →   +1.7
+  2026-05-12 STAK  15:15 gün % 77.5 kutu %3.2 direk %  15 →   +1.8
+  2026-05-18 CHSN  10:29 gün %  5.7 kutu %3.0 direk %  12 →   -6.9
+  2026-06-02 STAK  09:28 gün % 35.4 kutu %3.9 direk %  18 →  -15.0
+  2026-06-02 STAK  15:02 gün % 92.8 kutu %4.4 direk %  10 →   +2.0
+  2026-06-03 CHOW  15:27 gün % 13.9 kutu %1.6 direk %  11 →   -4.4
+  2026-06-03 STAK  15:49 gün % 89.5 kutu %3.2 direk %  11 →   -0.7
+  2026-06-05 STAK  10:14 gün % 17.7 kutu %4.4 direk %  19 →  +50.6
+  2026-06-08 CHSN  12:54 gün % 14.7 kutu %2.3 direk %  13 →   +1.3
+  2026-06-09 CHOW  08:34 gün % 23.4 kutu %4.9 direk %  12 →   +1.1
+  2026-06-09 CHSN  11:07 gün %  7.7 kutu %4.3 direk %  12 →   -7.8
+  2026-06-09 STAK  10:12 gün % 46.4 kutu %5.0 direk %  13 →  -14.0
+  2026-06-10 STAK  08:09 gün % 20.5 kutu %3.4 direk %  14 →   -8.3
+  2026-06-12 STAK  09:28 gün % 10.6 kutu %4.6 direk %  20 →   -6.6
+  2026-06-12 STAK  11:28 gün %  5.4 kutu %4.0 direk %  10 →   -4.6
+  2026-06-15 CHOW  10:05 gün %  9.7 kutu %4.1 direk %  17 →   -8.5
+  2026-06-16 CHSN  09:35 gün %  9.4 kutu %2.0 direk %  12 →   -5.3
+  2026-07-06 CHSN  14:06 gün % 12.6 kutu %4.3 direk %  11 →   -7.6
+  2026-07-21 CHOW  13:31 gün %  6.8 kutu %3.7 direk %  11 →   -5.7
+  2026-07-30 STAK  12:25 gün % 18.5 kutu %2.9 direk %  11 →   -5.6
+  2026-08-03 SERV  09:57 gün % 10.3 kutu %3.7 direk %  10 →   +6.2
+  2026-08-14 CHSN  13:50 gün % 12.9 kutu %4.5 direk %  11 →   -8.3
+  2026-08-24 STAK  10:22 gün % 12.3 kutu %3.7 direk %  14 →   -7.0
+  2026-09-03 CHOW  11:24 gün % 15.6 kutu %4.0 direk %  13 →  -10.0
+  2026-10-22 STAK  04:54 gün % 49.0 kutu %4.8 direk %  18 →   +0.5
+  2026-10-22 STAK  11:46 gün % 66.0 kutu %2.4 direk %  11 →   +0.8
+  2026-10-28 CHSN  15:55 gün % 33.8 kutu %2.8 direk %  12 →   -0.7
+  2026-10-30 CHSN  10:18 gün % 12.0 kutu %2.1 direk %  10 →   -6.7
+  2026-11-03 CHSN  11:08 gün % 25.2 kutu %3.3 direk %  14 →   -2.2
+  2026-11-03 CHSN  12:56 gün % 33.2 kutu %3.9 direk %  15 →   +3.1

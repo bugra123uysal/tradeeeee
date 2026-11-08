@@ -1,0 +1,91 @@
+yüksek_2 ARAMASI · 2025-11-03 – 2026-11-03 (252 gün) · havuz 72800 aday
+eğitim < 2026-06-11 ≤ sınav · NET % (maliyet RTH %0.7 / uzatılmış %1.5)
+koşu≥30 = sinyalden sonra fiyat 16:00'a kadar en az +%30 gördü
+
+ŞU ANKİ 'yüksek' (gün 5–20, −%5 geri çekilme, +5/−8, 16:00)
+  eğitim   n= 2919  ort  -0.38  medyan  +3.50  kârlı % 61  artı ay 2/8  toplam    -1108  en iyi    +12  koşu≥30 % 5.7
+  sınav    n= 2303  ort  -0.37  medyan  +3.50  kârlı % 62  artı ay 1/6  toplam     -853  en iyi    +10  koşu≥30 % 7.9
+
+denenen 33966 kural×giriş×çıkış · eğitimde aylık istikrarlı 39
+== EĞİTİMDE EN İYİ 15 (istikrarlı) → SINAV ==
+gün 5–20 · saat ≥ 10 · rvol ≥ 0.5 · hacim ≥ 3× · 30dk $ ≥ 1000K · gün tepesine ≥ -3% · giriş kir · çıkış 15_25_s20
+  eğitim   n=  792  ort  +0.80  medyan  -0.42  kârlı % 47  artı ay 6/8  toplam     +634  en iyi   +109  koşu≥30 % 1.1
+  SINAV    n=  428  ort  -0.65  medyan  -1.09  kârlı % 38  artı ay 1/6  toplam     -276  en iyi    +99  koşu≥30 % 1.4
+gün 5–20 · saat ≥ 10 · rvol ≥ 0.5 · hacim ≥ 2× · 30dk $ ≥ 1000K · gün tepesine ≥ -3% · giriş kir · çıkış 15_25_s20
+  eğitim   n= 1038  ort  +0.74  medyan  -0.42  kârlı % 47  artı ay 6/8  toplam     +763  en iyi   +109  koşu≥30 % 1.6
+  SINAV    n=  543  ort  -0.46  medyan  -1.05  kârlı % 39  artı ay 1/6  toplam     -247  en iyi    +99  koşu≥30 % 1.3
+gün 5–40 · saat ≥ 4 · rvol ≥ 2 · hacim ≥ 2× · 30dk $ ≥ 1000K · gün tepesine ≥ -3% · giriş kir · çıkış 15_25_s20
+  eğitim   n=  525  ort  +0.70  medyan  -1.53  kârlı % 41  artı ay 6/8  toplam     +367  en iyi   +211  koşu≥30 % 8.2
+  SINAV    n=  408  ort  -2.77  medyan  -4.34  kârlı % 30  artı ay 0/6  toplam    -1132  en iyi   +131  koşu≥30 %11.0
+gün 5–20 · saat ≥ 9.5 · rvol ≥ 0.5 · hacim ≥ 2× · 30dk $ ≥ 1000K · gün tepesine ≥ -3% · giriş kir · çıkış 15_25_s20
+  eğitim   n= 1214  ort  +0.70  medyan  -0.26  kârlı % 48  artı ay 6/8  toplam     +844  en iyi   +109  koşu≥30 % 1.7
+  SINAV    n=  590  ort  -0.53  medyan  -1.10  kârlı % 39  artı ay 1/6  toplam     -315  en iyi    +99  koşu≥30 % 1.4
+gün 5–20 · saat ≥ 4 · rvol ≥ 0.5 · hacim ≥ 2× · 30dk $ ≥ 1000K · gün tepesine ≥ -3% · giriş kir · çıkış 15_25_s20
+  eğitim   n= 1223  ort  +0.60  medyan  -0.31  kârlı % 48  artı ay 6/8  toplam     +729  en iyi   +109  koşu≥30 % 1.8
+  SINAV    n=  602  ort  -0.45  medyan  -1.11  kârlı % 39  artı ay 2/6  toplam     -268  en iyi   +101  koşu≥30 % 2.2
+gün 5–20 · saat ≥ 10 · rvol ≥ 0.5 · hacim ≥ 2× · 30dk $ ≥ 1000K · gün tepesine ≥ -3% · giriş kir · çıkış 12_15_s20
+  eğitim   n= 1038  ort  +0.52  medyan  -0.45  kârlı % 46  artı ay 6/8  toplam     +540  en iyi    +81  koşu≥30 % 1.6
+  SINAV    n=  543  ort  -0.45  medyan  -1.09  kârlı % 38  artı ay 1/6  toplam     -244  en iyi    +82  koşu≥30 % 1.3
+gün 5–20 · saat ≥ 10 · rvol ≥ 0.5 · hacim ≥ 2× · 30dk $ ≥ 1000K · gün tepesine ≥ -3% · giriş kir · çıkış 10_15_s20
+  eğitim   n= 1038  ort  +0.52  medyan  -0.45  kârlı % 46  artı ay 6/8  toplam     +540  en iyi    +81  koşu≥30 % 1.6
+  SINAV    n=  543  ort  -0.50  medyan  -1.10  kârlı % 38  artı ay 1/6  toplam     -271  en iyi    +82  koşu≥30 % 1.3
+gün 5–20 · saat ≥ 10 · rvol ≥ 0.5 · hacim ≥ 2× · 30dk $ ≥ 1000K · gün tepesine ≥ -3% · giriş kir · çıkış 8_10_s20
+  eğitim   n= 1038  ort  +0.48  medyan  -0.63  kârlı % 45  artı ay 6/8  toplam     +496  en iyi    +92  koşu≥30 % 1.6
+  SINAV    n=  543  ort  -0.54  medyan  -1.09  kârlı % 38  artı ay 0/6  toplam     -292  en iyi    +37  koşu≥30 % 1.3
+gün 5–20 · saat ≥ 10 · rvol ≥ 0.5 · hacim ≥ 3× · 30dk $ ≥ 1000K · gün tepesine ≥ -3% · giriş kir · çıkış 8_10_s20
+  eğitim   n=  792  ort  +0.47  medyan  -0.60  kârlı % 45  artı ay 6/8  toplam     +370  en iyi    +92  koşu≥30 % 1.1
+  SINAV    n=  428  ort  -0.65  medyan  -1.09  kârlı % 38  artı ay 1/6  toplam     -279  en iyi    +37  koşu≥30 % 1.4
+gün 5–20 · saat ≥ 9.5 · rvol ≥ 0.5 · hacim ≥ 2× · 30dk $ ≥ 1000K · gün tepesine ≥ -3% · giriş kir · çıkış 8_10_s20
+  eğitim   n= 1214  ort  +0.43  medyan  -0.60  kârlı % 46  artı ay 6/8  toplam     +526  en iyi    +92  koşu≥30 % 1.7
+  SINAV    n=  590  ort  -0.55  medyan  -1.12  kârlı % 38  artı ay 0/6  toplam     -327  en iyi    +37  koşu≥30 % 1.4
+gün 5–40 · saat ≥ 10 · rvol ≥ 0.5 · hacim ≥ 3× · 30dk $ ≥ 1000K · gün tepesine ≥ -3% · giriş kir · çıkış 15_25_s20
+  eğitim   n= 1150  ort  +0.42  medyan  -0.70  kârlı % 44  artı ay 6/8  toplam     +483  en iyi   +109  koşu≥30 % 3.7
+  SINAV    n=  696  ort  -1.60  medyan  -1.83  kârlı % 35  artı ay 1/6  toplam    -1113  en iyi   +101  koşu≥30 % 4.7
+gün 5–20 · saat ≥ 10 · rvol ≥ 0.5 · hacim ≥ 3× · 30dk $ ≥ 1000K · gün tepesine ≥ -100% · giriş kir · çıkış 15_25_s20
+  eğitim   n=  957  ort  +0.41  medyan  -0.54  kârlı % 46  artı ay 6/8  toplam     +388  en iyi   +109  koşu≥30 % 1.3
+  SINAV    n=  510  ort  -0.42  medyan  -1.12  kârlı % 39  artı ay 2/6  toplam     -212  en iyi    +99  koşu≥30 % 1.8
+gün 5–20 · saat ≥ 4 · rvol ≥ 0.5 · hacim ≥ 2× · 30dk $ ≥ 1000K · gün tepesine ≥ -3% · giriş kir · çıkış 8_10_s20
+  eğitim   n= 1223  ort  +0.40  medyan  -0.63  kârlı % 45  artı ay 6/8  toplam     +491  en iyi    +92  koşu≥30 % 1.8
+  SINAV    n=  602  ort  -0.59  medyan  -1.13  kârlı % 38  artı ay 0/6  toplam     -353  en iyi    +37  koşu≥30 % 2.2
+gün 5–20 · saat ≥ 4 · rvol ≥ 1 · hacim ≥ 2× · 30dk $ ≥ 1000K · gün tepesine ≥ -100% · giriş kir · çıkış 15_20_s20
+  eğitim   n=  744  ort  +0.38  medyan  -0.85  kârlı % 42  artı ay 6/8  toplam     +286  en iyi   +139  koşu≥30 % 3.4
+  SINAV    n=  441  ort  -0.89  medyan  -1.58  kârlı % 35  artı ay 2/6  toplam     -391  en iyi    +76  koşu≥30 % 4.5
+gün 5–20 · saat ≥ 10 · rvol ≥ 0.5 · hacim ≥ 2× · 30dk $ ≥ 1000K · gün tepesine ≥ -100% · giriş kir · çıkış 15_25_s20
+  eğitim   n= 1248  ort  +0.35  medyan  -0.60  kârlı % 45  artı ay 6/8  toplam     +438  en iyi   +109  koşu≥30 % 1.8
+  SINAV    n=  658  ort  -0.40  medyan  -1.11  kârlı % 38  artı ay 2/6  toplam     -263  en iyi    +99  koşu≥30 % 2.3
+
+== Fotoğraftaki hisseler (TÜM YIL) — en iyi kuralda ==
+    (yok)
+
+== KOŞAN HİSSELERİN PROFİLİ — tüm hisseler, günün ilk sinyali (n=30891, koşu≥30 oranı %5.8) ==
+  her özellik 5 eşit dilim · koşu oranı % (eğitim / sınav) · medyan koşan vs koşmayan
+  gün değişimi %           koşan       15.2 · koşmayan       8.74
+      5–6.25:  2.1/ 2.9 | 6.25–7.88:  2.3/ 3.1 | 7.88–10.3:  3.4/ 5.4 | 10.3–15.6:  5.0/ 7.0 | 15.6–80: 13.2/16.0
+  saat (NY)                koşan       9.47 · koşmayan       10.9
+      4.57–9.53: 14.0/18.2 | 9.53–10.2:  4.8/ 6.8 | 10.2–11.6:  3.2/ 4.4 | 11.6–13.8:  2.5/ 3.7 | 13.8–16:  1.0/ 1.4
+  gün hacmi / 20g ort.     koşan      0.367 · koşmayan      0.355
+      -0.000286–0.0869:  6.9/ 8.7 | 0.0869–0.236:  3.7/ 5.9 | 0.236–0.518:  3.7/ 4.9 | 0.518–1.16:  3.4/ 4.0 | 1.16–7.95e+03:  8.5/10.2
+  mum hacmi / 30 mum       koşan       5.57 · koşmayan       5.41
+      2–2.97:  5.2/ 6.9 | 2.97–4.4:  5.4/ 6.1 | 4.4–6.85:  5.1/ 6.0 | 6.85–13:  4.5/ 7.5 | 13–1.96e+03:  5.7/ 8.0
+  son 30 dk $ hacim        koşan   2.59e+05 · koşmayan   2.38e+05
+      1e+03–7.32e+04:  4.8/ 6.1 | 7.32e+04–1.61e+05:  4.8/ 6.9 | 1.61e+05–3.74e+05:  5.5/ 6.2 | 3.74e+05–1.36e+06:  5.7/ 7.8 | 1.36e+06–5.87e+08:  5.0/ 7.7
+  5 mum ivme %             koşan        6.3 · koşmayan        3.6
+      2–2.56:  1.3/ 1.8 | 2.56–3.26:  2.1/ 3.1 | 3.26–4.23:  3.4/ 4.5 | 4.23–6.24:  5.7/ 8.0 | 6.24–91.8: 14.1/15.8
+  30 mum ivme %            koşan       9.43 · koşmayan       5.38
+      -11.8–3.16:  2.8/ 3.9 | 3.16–4.69:  2.4/ 2.5 | 4.69–6.47:  3.0/ 4.6 | 6.47–9.64:  5.1/ 6.7 | 9.64–122: 13.5/15.4
+  VWAP uzaklık %           koşan       5.84 · koşmayan       4.35
+      0.00125–2.65:  4.6/ 6.7 | 2.65–3.8:  3.0/ 3.2 | 3.8–5.1:  3.2/ 4.5 | 5.1–7.22:  4.9/ 8.4 | 7.22–80.4: 10.5/11.3
+  gün tepesine uzaklık %   koşan      -2.02 · koşmayan     -0.379
+      -67.8–-2.91: 12.2/13.9 | -2.91–-0.792:  4.9/ 7.2 | -0.792–-0.167:  2.9/ 3.9 | -0.167–0:  3.2/ 4.3
+  ADX                      koşan         24 · koşmayan       23.4
+      4.1–15.1:  5.0/ 6.0 | 15.1–20.3:  4.9/ 7.1 | 20.3–25.8:  4.9/ 6.5 | 25.8–31.6:  5.1/ 7.0 | 31.6–98.7:  5.9/ 8.1
+  BB genişlik %            koşan       9.86 · koşmayan       5.76
+      3–4.04:  1.3/ 1.8 | 4.04–5.18:  2.1/ 3.2 | 5.18–6.78:  3.3/ 4.2 | 6.78–9.66:  5.9/ 7.7 | 9.66–132: 14.3/16.1
+  EMA50 uzaklık %          koşan       7.31 · koşmayan       4.49
+      -2.68–3.18:  1.5/ 2.4 | 3.18–4.07:  2.6/ 2.9 | 4.07–5.2:  2.8/ 4.4 | 5.2–7.31:  5.5/ 6.3 | 7.31–102: 13.1/14.8
+  ATR %                    koşan       1.76 · koşmayan       1.01
+      0.184–0.692:  0.9/ 0.6 | 0.692–0.914:  1.8/ 2.9 | 0.914–1.18:  2.8/ 4.5 | 1.18–1.65:  5.7/ 8.0 | 1.65–14.4: 16.2/16.2
+  son 5 mumda kırmızı      koşan          1 · koşmayan          1
+      -0.001–1:  4.5/ 6.0 | 1–2:  6.2/ 8.3 | 2–5:  9.5/10.7
+  fiyat $                  koşan        3.6 · koşmayan       4.13
+      0.211–1.39:  5.7/ 8.0 | 1.39–2.9:  5.0/ 6.6 | 2.9–5.68:  5.4/ 7.5 | 5.68–12:  4.9/ 6.6 | 12–60:  5.0/ 4.7

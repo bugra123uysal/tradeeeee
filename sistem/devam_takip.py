@@ -1,7 +1,11 @@
-"""Devam eden yükseliş takipçisi — AL sinyalinden 2–4 mum sonra yükseliş sürüyorsa bildirir.
+"""Takipçi — TradingView 'yüksek' alarmları + Yükselme Adayları → site (http://127.0.0.1:8765) ve Telegram.
 
-Kullanıcı fikri (2 Kas 2026, CHOW 30 Eki örneği): Swing 5dk AL verdikten sonra 2–4 mum içinde
-yükselmeye devam eden hisse iyi giriştir.
+  * 'yüksek' sinyali SADECE TradingView alarmından gelir (sistem/tv_alarm.py); geri çekilme alışı / yarı-yarı çıkış
+    sistem/yuksek.py'de izlenir. GİR sadece sinyal sonrası seçimden geçenlere (yuksek.alma_nedeni: gün ≤ %20 ·
+    sinyal ≥ 11:30 · sakin geri çekilme), diğerleri gri "ALMA".
+  * Yükselme Adayları: sistem/yukselme.py.
+  * 8 Kas 2026: sitede görünmeyen eski iki takipçi kaldırıldı — "AL + 2–4 mum onayı" (Sinyal / onay_durumu) ve
+    "Pine AL geri çekilme" (/geri). Yedek: yedek/2026-11-08_temizlik_oncesi/.
 
 Veri (2 Kas 2026'da denendi):
   * TradingView tarayıcısının "|1" gösterge alanları premarket'te DONUK (önceki seansın son mumu) —
@@ -21,7 +25,7 @@ import logging
 import os
 import threading
 import time as _time
-from dataclasses import asdict, dataclass
+from dataclasses import asdict
 from datetime import datetime, time, timedelta, timezone
 
 import numpy as np
@@ -32,9 +36,9 @@ from . import geri_al as G
 from . import kagit as K
 from . import yuksek as Y
 from . import yukselme as YU
+from . import sinyal as S
 from . import bildirim as B
 from .telegram import Telegram
-from . import sinyal as S
 from . import tv_alarm as A
 from . import tv_cdp
 from .liste_yenile import FILTER_DIR, NY, PIYASA, PREMARKET, load_filter, session_for, todays_close
@@ -50,54 +54,12 @@ ALPACA_PARCA = 100            # tek istekte sembol
 ALPACA_TAZELE_SN = 60
 REG_OPEN = time(9, 30)
 REG_CLOSE = time(16, 0)
-HEDEF_YUZDE = 10.0            # çıkış önerisi: onay fiyatının +%10'u (backtest/cikis.py)
-IZ_YUZDE = 5.0                # veya tepe kapanıştan %5 geri çekilme
-ZARAR_SIL_YUZDE = 5.0         # 1 dk kapanış onay fiyatının bu kadar altına inerse siteden silinir.
-                              # 2 Kas'ta 45 onayın HEPSİ 1–2 dk içinde onayın altına sarktı (CHOW dahil, sonra +%42);
-                              # %5 eşiği CHOW/VCIG/INO'yu tuttu, 31'ini sildi.
-# Geri çekilme alışı (backtest: scratchpad geri.py, 43 gün, iki yarıda da artıda, ort +%0,37, %68 kârlı — kanıt değil):
-GERI_YUZDE = 8.0              # onaydan sonra onay×(1−%8)'e limit alış
-GERI_SURE_DK = 30             # limit bu kadar dakika geçerli
-GERI_HEDEF = 5.0              # dolumdan +%5 hedef (yüksek dokununca)
-GERI_STOP = 8.0               # dolumdan %8 aşağıda kapanış → stop
-# SAT/SÜRE izleme (backtest/sure.py): büyük koşularda işlemlerin %50'si SÜRE ile biter (diğerlerinde %31);
-# başarısız AL'larda SAT/STOP'un %43'ü ilk 3, %57'si ilk 5 mumda gelir. Bilgi amaçlı, eleme yapmaz.
-SURE_MUM = 20
-KISA_SAT_MUM = 5
-
-
-@dataclass
-class Sinyal:
-    sym: str
-    ad: str
-    tur: str                     # BB / ADX
-    al_dk: int                   # epoch dakika
-    al_fiyat: float
-    gun_degisim: float | None
-    durum: str = "bekliyor"      # bekliyor / onay / iptal / zarar (onaydan sonra giriş altında kapandı → siteden silinir)
-    onay_dk: int | None = None
-    onay_fiyat: float | None = None
-    son_fiyat: float | None = None
-    tepe: float | None = None
-    neden: str = ""
-    macd_ok: bool | None = None
-    vwap_ustu: bool | None = None
-    float_m: float | None = None
-    rvol: float | None = None
-    eklendi: float | None = None  # siteye eklendiği an (epoch sn)
-    cikis: str | None = None      # çıkış önerisi metni (iz süren stop tetiklenince)
-    cikis_fiyat: float | None = None
-    cikis_dk: int | None = None
-    sira: int = 0                 # günün kaçıncı AL'ı (1 = ilk)
-    gecmis: bool = False          # geriye dönük taramada bulundu (takipçi o an izlemiyordu)
-    geri_seviye: float | None = None   # limit alış seviyesi (onay −%8)
-    geri_durum: str | None = None      # bekliyor / doldu / hedef / stop / yok (süre doldu)
-    geri_dk: int | None = None         # dolum dakikası
-    geri_fiyat: float | None = None    # dolum fiyatı
-    geri_sonuc_dk: int | None = None   # hedef/stop dakikası
-    sat_durum: str | None = None       # devam / sat / sure — Swing 5dk'ya göre AL'dan sonra SAT geldi mi
-    sat_mum: int | None = None         # AL'dan beri kaç mum (SAT/STOP geldiyse o ana kadar)
-    kisa_sat: int | None = None        # bugün bu hissede AL'dan sonra ≤KISA_SAT_MUM mumda SAT/STOP sayısı (sık AL-SAT)
+# Tüm piyasa Python 'yüksek' taraması (8 Kas 2026): TV alarmları sadece izleme listelerinde tetikleniyor (2–6 Kas
+# haftasında 18 alarm, 0 GİR); aynı hafta tüm hareketlilerde 22 GİR vardı (backtest/hafta_tara.py). Geniş tarama:
+# hacim şartı YOK, gün değişimi > GENIS_DEGISIM, fiyat GENIS_FIYAT aralığında (backtestle aynı evren).
+GENIS_DEGISIM = 5.0
+GENIS_FIYAT = (0.2, 40.0)
+GENIS_MAX = 500                # en çok yükselenden başlayarak (Alpaca: açılışta ~75, sonra dakikada ~10 istek)
 
 
 def _f(x) -> float | None:
@@ -128,6 +90,20 @@ def tara(port: int) -> list[dict]:
         for row in res.get("data", []):
             satirlar.setdefault(row["s"], {"s": row["s"], **dict(zip(KOLONLAR, row["d"]))})
     return list(satirlar.values())
+
+
+def genis_tara(port: int, premarket: bool) -> list[dict]:
+    """Python yüksek taraması evreni: NASDAQ/NYSE/AMEX hisseleri, gün değişimi > %GENIS_DEGISIM, fiyat 0,2–40 $."""
+    alan, fiyat = ("premarket_change", "premarket_close") if premarket else ("change", "close")
+    q = {"columns": KOLONLAR, "range": [0, GENIS_MAX], "markets": ["america"],
+         "sort": {"sortBy": alan, "sortOrder": "desc"},
+         "filter": [{"left": "type", "operation": "equal", "right": "stock"},
+                    {"left": "is_primary", "operation": "equal", "right": True},
+                    {"left": "exchange", "operation": "in_range", "right": ["NASDAQ", "NYSE", "AMEX"]},
+                    {"left": fiyat, "operation": "in_range", "right": list(GENIS_FIYAT)},
+                    {"left": alan, "operation": "greater", "right": GENIS_DEGISIM}]}
+    res = tv_cdp.request(SCAN_URL, "POST", q, text_plain=True, port=port)
+    return [{"s": row["s"], **dict(zip(KOLONLAR, row["d"]))} for row in res.get("data", [])]
 
 
 class Mumlar:
@@ -186,16 +162,6 @@ def alpaca_mumlar(semboller: list[str], bas: datetime, zaman: str = "1Min") -> d
     return out
 
 
-def gunun_al_lari(dks, o, h, l, c, v, gun_bas_dk: int) -> list[tuple[str, int, float, int]]:
-    """Günün (04:00 NY'den beri) TÜM AL sinyalleri → [(tur, dk, fiyat, günün kaçıncı AL'ı)].
-    Takipçi geç başlasa ya da hisse listeye geç girse de günün ilk AL'ından itibaren incelenir."""
-    if len(c) < S.EMA_LEN:
-        return []
-    g = S.gostergeler(o, h, l, c, v)
-    bugun = [(i, tur) for i, tur in S.al_sinyalleri(c, g) if dks[i] >= gun_bas_dk]
-    return [(tur, int(dks[i]), float(c[i]), n + 1) for n, (i, tur) in enumerate(bugun)]
-
-
 def onceki_kapanis(dks, c, gun_bas_dk: int) -> float | None:
     """Önceki seansın 16:00 NY kapanışı (son 16:00 öncesi mumun kapanışı, gece seansı hariç)."""
     for i in range(len(dks) - 1, -1, -1):
@@ -216,145 +182,18 @@ def onceki_tarayicidan(row: dict, premarket: bool) -> float | None:
     return c / (1 + ch / 100) if ch is not None and ch > -100 else None
 
 
-def onay_durumu(sig: Sinyal, dks, o, h, l, c, v, min_artis: float) -> tuple[str, str]:
-    """sinyal.onay_mumu kuralı, mum sayısı DAKİKA farkıyla (seyrek mumlarda da 2–4 dk)."""
-    g = S.gostergeler(o, h, l, c, v)
-    svwap = np.cumsum(c * v) / np.maximum(np.cumsum(v), 1)
-    for j in np.where(dks > sig.al_dk)[0]:
-        k = int(dks[j] - sig.al_dk)
-        if k > S.ONAY_MAX:
-            return "iptal", f"{S.ONAY_MAX} mumda onay gelmedi"
-        if c[j] < sig.al_fiyat:
-            return "iptal", "AL kapanışının altına indi"
-        if c[j] < g.vw[j] and c[j] < g.e50[j]:
-            return "iptal", "VWMA20 ve EMA50 altına indi (SAT)"
-        artis = (c[j] / sig.al_fiyat - 1) * 100
-        if k >= S.ONAY_MIN and artis >= min_artis and c[j] >= o[j]:
-            sig.onay_dk, sig.onay_fiyat = int(dks[j]), float(c[j])
-            sig.macd_ok = bool(g.macd[j] > g.macd_sig[j]) if not np.isnan(g.macd_sig[j]) else None
-            sig.vwap_ustu = bool(c[j] > svwap[j])
-            return "onay", f"{k}. mumda +%{artis:.1f}"
-    return "bekliyor", ""
-
-
-def geri_cekilme(sig: Sinyal, dks, o, h, l, c) -> None:
-    """Onaydan sonra GERI_SURE_DK içinde düşük onay×(1−GERI_YUZDE) seviyesine inerse "doldu";
-    sonra +GERI_HEDEF (yüksek) → "hedef", dolumdan GERI_STOP aşağıda kapanış → "stop". Backtest ile aynı sıra."""
-    sig.geri_seviye = round(sig.onay_fiyat * (1 - GERI_YUZDE / 100), 6)
-    if sig.geri_durum in ("hedef", "stop"):
-        return
-    m = dks > sig.onay_dk
-    d, o2, h2, l2, c2 = dks[m], o[m], h[m], l[m], c[m]
-    if sig.geri_durum in (None, "bekliyor"):
-        icinde = np.where((d - sig.onay_dk <= GERI_SURE_DK) & (l2 <= sig.geri_seviye))[0]
-        if not len(icinde):
-            gecti = len(d) and int(d[-1]) - sig.onay_dk >= GERI_SURE_DK
-            sig.geri_durum = "yok" if gecti else "bekliyor"
-            return
-        k = int(icinde[0])
-        sig.geri_durum, sig.geri_dk = "doldu", int(d[k])
-        sig.geri_fiyat = float(min(sig.geri_seviye, o2[k]))
-        log.info("↩ GERİ ÇEKİLME %s: %.4g seviyesine indi (onay %.4g)", sig.sym, sig.geri_fiyat, sig.onay_fiyat)
-    if sig.geri_durum != "doldu":
-        return
-    k0 = int(np.where(d == sig.geri_dk)[0][0]) if sig.geri_dk in d else None
-    if k0 is None:
-        return
-    hedef, stop = sig.geri_fiyat * (1 + GERI_HEDEF / 100), sig.geri_fiyat * (1 - GERI_STOP / 100)
-    for k in range(k0, len(d)):
-        if k > k0 and h2[k] >= hedef:
-            sig.geri_durum, sig.geri_sonuc_dk = "hedef", int(d[k])
-        elif c2[k] < stop:
-            sig.geri_durum, sig.geri_sonuc_dk = "stop", int(d[k])
-        else:
-            continue
-        log.info("↩ %s geri çekilme alışı: %s", sig.sym, sig.geri_durum)
-        return
-
-
-def sat_bul(al_i: int, c, g: S.Gostergeler, dks) -> tuple[str, int]:
-    """Swing 5dk çıkışı: AL'dan sonra ilk SAT (VWMA20 & EMA50 altı) / STOP (AL − 1,5 ATR) → ("sat", mum);
-    SURE_MUM boyunca yoksa ("sure", SURE_MUM); veri bitti → ("devam", mum). Mum = dakika farkı."""
-    stop = c[al_i] - 1.5 * g.atr[al_i]
-    for k in range(al_i + 1, len(c)):
-        mum = int(dks[k] - dks[al_i])
-        if mum > SURE_MUM:
-            return "sure", SURE_MUM
-        if (c[k] < g.vw[k] and c[k] < g.e50[k]) or c[k] < stop:
-            return "sat", mum
-    return "devam", int(dks[-1] - dks[al_i])
-
-
-def sat_izle(sinyaller: list[Sinyal], dks, o, h, l, c, v, gun_bas_dk: int) -> None:
-    """Onaylı sinyallere SAT/SÜRE durumu ve hissenin bugünkü 'sık AL-SAT' sayısını yazar."""
-    if not sinyaller or len(c) < S.EMA_LEN:
-        return
-    g = S.gostergeler(o, h, l, c, v)
-    idx = {int(d): i for i, d in enumerate(dks)}
-    kisa = 0
-    for i, _ in S.al_sinyalleri(c, g):
-        if dks[i] >= gun_bas_dk:
-            durum, mum = sat_bul(i, c, g, dks)
-            kisa += durum == "sat" and mum <= KISA_SAT_MUM
-    for sig in sinyaller:
-        i = idx.get(sig.al_dk)
-        if i is not None:
-            sig.sat_durum, sig.sat_mum = sat_bul(i, c, g, dks)
-        sig.kisa_sat = kisa
-
-
-def onay_sonrasi(sig: Sinyal, dks, o, h, l, c) -> None:
-    """Onaydan sonraki kapanmış mumlar.
-    * geri çekilme alışı izlenir (geri_cekilme). Geri çekilme penceresi açıkken ya da alış dolmuşken
-      kart silinmez; alış stop olursa silinir.
-    * diğerlerinde kapanış onay fiyatının ZARAR_SIL_YUZDE altında → "zarar", siteden silinir.
-    * çıkış önerisi (bir kez, geri çekilme alışı yoksa): +HEDEF_YUZDE veya tepeden IZ_YUZDE."""
-    m = dks > sig.onay_dk
-    sonra_c, sonra_h, sonra_dk = c[m], h[m], dks[m]
-    if not len(sonra_c):
-        return
-    geri_cekilme(sig, dks, o, h, l, c)
-    if sig.geri_durum == "stop":
-        sig.durum, sig.neden = "zarar", f"geri çekilme alışı %{GERI_STOP:g} stop oldu"
-        log.info("zarar — siteden çıktı %s (geri çekilme stop)", sig.sym)
-        return
-    if sig.geri_durum in ("bekliyor", "doldu", "hedef"):
-        return
-    pencere_sonrasi = sonra_c[sonra_dk - sig.onay_dk > GERI_SURE_DK]
-    if len(pencere_sonrasi) and pencere_sonrasi.min() < sig.onay_fiyat * (1 - ZARAR_SIL_YUZDE / 100):
-        sig.durum, sig.neden = "zarar", f"onay fiyatının %{ZARAR_SIL_YUZDE:g} altında kapandı"
-        log.info("zarar — siteden çıktı %s", sig.sym)
-        return
-    if sig.cikis is not None:
-        return
-    hedef = sig.onay_fiyat * (1 + HEDEF_YUZDE / 100)
-    tepe = np.maximum.accumulate(sonra_c)
-    for k in range(len(sonra_c)):
-        if sonra_h[k] >= hedef:
-            px, metin = hedef, f"ÇIK: +%{HEDEF_YUZDE:g} hedefe ulaştı"
-        elif sonra_c[k] < tepe[k] * (1 - IZ_YUZDE / 100):
-            px, metin = float(sonra_c[k]), f"ÇIK: tepeden %{IZ_YUZDE:g} geri çekildi"
-        else:
-            continue
-        kar = (px / sig.onay_fiyat - 1) * 100
-        sig.cikis, sig.cikis_fiyat, sig.cikis_dk = f"{metin} ({kar:+.1f}%)", float(px), int(sonra_dk[k])
-        log.info("%s %s", sig.sym, sig.cikis)
-        return
-
-
 class Takipci:
-    def __init__(self, port: int, min_artis: float):
-        self.port, self.min_artis = port, min_artis
+    def __init__(self, port: int):
+        self.port = port
         self.mumlar: dict[str, Mumlar] = {}
         self.bilgi: dict[str, dict] = {}
-        self.sinyaller: list[Sinyal] = []
-        self.geri: list[G.GeriSinyal] = []          # geri çekilme AL'ı (sistem/geri_al.py)
         self.yuksek: list[G.GeriSinyal] = []        # 'yüksek' sinyalleri — TradingView alarmlarından (tv_alarm)
         self.onceki: dict[str, float] = {}          # önceki seans kapanışı (tarayıcıdan)
         self.gun = datetime.now(NY).date()
         self.son_kapanan_dk = int(_time.time() // 60) - 1
         self.son_alpaca = 0.0
         self.gun_bas_dk = int(datetime.now(NY).replace(hour=4, minute=0, second=0, microsecond=0).timestamp() // 60)
+        self.py_bitti: set[str] = set()             # Python taramasında bugün kararı verilmiş hisseler (tekrar bakılmaz)
         self._yukle()
         self.kagit = K.KagitHesap(FILTER_DIR / "kagit.json")   # Alpaca KAĞIT hesap (sahte para), sistem/kagit.py
         self.yukselme = YU.Adaylar(port)            # TradingView "yükselme-adayları" tarayıcısı + giriş şartları
@@ -368,32 +207,17 @@ class Takipci:
         except (OSError, ValueError):
             return
         if d.get("gun") == str(self.gun):
-            self.sinyaller = [Sinyal(**x) for x in d.get("sinyaller", [])]
             self.onceki = {k: float(v) for k, v in (d.get("onceki") or {}).items()}
-            self.geri = [G.GeriSinyal(**{k: v for k, v in x.items() if k not in ("hedef", "stop")})
-                         for x in d.get("geri", [])]
             self.yuksek = [G.GeriSinyal(**{k: v for k, v in x.items() if k not in ("hedef", "stop", "hedef2")})
-                           for x in d.get("yuksek", []) if x.get("tur") == "TV"]  # eski Python sinyalleri atılır
-            sayac: dict[str, int] = {}
-            for x in sorted(self.sinyaller, key=lambda x: x.al_dk):
-                sayac[x.sym] = x.sira = sayac.get(x.sym, 0) + 1
-            for s in self.sinyaller:          # geri çekilme kuralı gelmeden silinenler yeniden değerlendirilsin
-                if s.durum == "zarar" and s.geri_durum is None:
-                    s.durum, s.neden, s.cikis, s.cikis_fiyat, s.cikis_dk = "onay", "", None, None, None
-            for s in self.sinyaller:          # alan yokken onaylananlar: onay mumu kapanınca eklenmişti
-                if s.durum == "onay" and s.eklendi is None and s.onay_dk:
-                    s.eklendi = (s.onay_dk + 1) * 60.0
+                           for x in d.get("yuksek", []) if x.get("tur") in ("TV", "PY")]
 
     def kaydet(self) -> None:
         d = {"gun": str(self.gun), "guncel": datetime.now(NY).isoformat(timespec="seconds"),
-             "min_artis": self.min_artis, "izlenen": len(self.mumlar),
-             "sinyaller": [asdict(s) for s in self.sinyaller],
-             "geri_kural": {"geri": G.GERI, "pencere_dk": G.PENCERE_DK, "hedef": G.HEDEF, "stop": G.STOP,
-                            "min_gun": G.MIN_GUN},
-             "geri": [{**asdict(x), "hedef": x.hedef, "stop": x.stop} for x in self.geri],
+             "izlenen": len(self.mumlar),
              "yuksek_kural": {"gun_min": Y.GUN_MIN, "gun_max": Y.GUN_MAX, "mom": Y.MOM_MIN, "hacim": Y.HACIM_KAT,
-                              "bbw": Y.BBW_MIN, "gunluk_max": Y.GUNLUK_MAX,
-                              "filtre_gun_max": Y.FILTRE_GUN_MAX, "hedef1": Y.HEDEF1, "hedef2": Y.HEDEF2},
+                              "bbw": Y.BBW_MIN, "gunluk_max": Y.GUNLUK_MAX, "pencere_dk": G.PENCERE_DK,
+                              "filtre_gun_max": Y.FILTRE_GUN_MAX, "hedef1": Y.HEDEF1, "hedef2": Y.HEDEF2,
+                              "filtre_saat": _saat_yazi(Y.FILTRE_SAAT), "filtre_kirmizi_max": Y.FILTRE_KIRMIZI_MAX},
              "yuksek_kaynak": "tradingview_alarm",
              "yuksek": [{**asdict(x), "hedef": x.hedef, "stop": x.stop,
                          "hedef2": x.dolum_fiyat * (1 + Y.HEDEF2 / 100) if x.dolum_fiyat else None}
@@ -409,7 +233,7 @@ class Takipci:
         dk = int(simdi // 60)
         premarket = datetime.now(NY).time() < REG_OPEN
         yeni = []
-        for row in tara(self.port) + self.yukselme.tara_guncelle():
+        for row in tara(self.port) + self._genis(premarket) + self.yukselme.tara_guncelle():
             p = _f(row.get("premarket_close" if premarket else "close"))
             if p is None:
                 continue
@@ -423,18 +247,20 @@ class Takipci:
                 self.onceki[sym] = pc
             self.mumlar[sym].fiyat_ekle(dk, p, _f(row.get("premarket_volume" if premarket else "volume")))
         self._alarmlari_al()
-        izle = {s.sym for s in self.sinyaller if s.durum == "onay"} |                {x.sym for x in self.geri + self.yuksek if x.durum in ("bekliyor", "al", "yarim")}
+        izle = {x.sym for x in self.yuksek if x.durum in ("bekliyor", "al", "yarim")}
         for sym in izle - set(self.mumlar):  # yeniden başlatmada tarayıcıda olmayanlar da izlensin
             self.mumlar[sym] = Mumlar()
             yeni.append(sym)
         self._alpaca_doldur(yeni, simdi)
         if dk - 1 > self.son_kapanan_dk:
             for sym in list(self.mumlar):
-                self._dakika_kapandi(sym, dk - 1)
+                self._python_sinyal(sym, dk - 1)
+            for sym in {x.sym for x in self.yuksek} & set(self.mumlar):
+                self._yuksek_isle(sym, dk - 1)
             self.son_kapanan_dk = dk - 1
             self._yukselme_degerlendir(dk)
-        self._telegram()
         self._guncelle_fiyatlar()
+        self._telegram()
         self._kagit_adim(dk)
         self.kaydet()
 
@@ -494,35 +320,6 @@ class Takipci:
                 t = datetime.fromisoformat(b["t"].replace("Z", "+00:00"))
                 m.alpaca_ekle(int(t.timestamp() // 60), b["o"], b["h"], b["l"], b["c"], b["v"])
 
-    def _dakika_kapandi(self, sym: str, dk: int) -> None:
-        m = self.mumlar[sym]
-        if not m.bar:
-            return
-        dks, o, h, l, c, v = m.diziler(dk)
-        if dk not in m.bar:              # tarayıcıdan düştü: sadece onaylıları (gecikmeli Alpaca mumlarıyla) izle
-            onaylilar = [s for s in self.sinyaller if s.sym == sym and s.durum == "onay"]
-            for s in onaylilar:
-                onay_sonrasi(s, dks, o, h, l, c)
-            sat_izle([s for s in onaylilar if s.durum == "onay"], dks, o, h, l, c, v, self.gun_bas_dk)
-            self._geri_isle(sym, dks, o, h, l, c, v)
-            self._yuksek_isle(sym, dks, o, h, l, c, v)
-            return
-        self._yeni_al_ekle(sym, dks, o, h, l, c, v)
-        for s in [x for x in self.sinyaller if x.sym == sym and x.durum == "bekliyor"]:
-            s.durum, s.neden = onay_durumu(s, dks, o, h, l, c, v, self.min_artis)
-            if s.durum == "onay":
-                s.eklendi = _time.time()
-                log.info("✅ ONAY %s AL(%s) %.4g → %.4g (%s)%s", sym, s.tur, s.al_fiyat, s.onay_fiyat, s.neden,
-                         " [geriye dönük]" if s.gecmis else "")
-            elif s.durum == "iptal":
-                log.debug("iptal %s: %s", sym, s.neden)
-        onaylilar = [s for s in self.sinyaller if s.sym == sym and s.durum == "onay"]
-        for s in onaylilar:
-            onay_sonrasi(s, dks, o, h, l, c)
-        sat_izle([s for s in onaylilar if s.durum == "onay"], dks, o, h, l, c, v, self.gun_bas_dk)
-        self._geri_isle(sym, dks, o, h, l, c, v)
-        self._yuksek_isle(sym, dks, o, h, l, c, v)
-
     def _alarmlari_al(self) -> None:
         """TradingView'de tetiklenen 'yüksek: SİNYAL' alarmlarını siteye ekler (sinyal sadece buradan gelir)."""
         try:
@@ -534,33 +331,39 @@ class Takipci:
         for a in gelenler:
             if (a.sym, a.al_dk) in kayitli:
                 continue
+            if any(x.sym == a.sym for x in self.yuksek):    # günde hisse başına 1 sinyal (Python önce bulduysa)
+                kayitli.add((a.sym, a.al_dk))
+                continue
             pc = self.onceki.get(a.sym)
             row = self.bilgi.get(a.sym, {})
             x = G.GeriSinyal(a.sym, str(row.get("description") or ""), "TV", a.al_dk, a.fiyat,
                              (a.fiyat / pc - 1) * 100 if pc else None, seviye=a.seviye, eklendi=_time.time(),
                              gecmis=_time.time() - a.tetik > 120)
+            x.alma = Y.alma_nedeni(x, None, dolum_var=False)
             self.yuksek.append(x)
             kayitli.add((a.sym, a.al_dk))      # tarayıcıda yoksa adim() 'izle' ile mum + Alpaca geçmişi ekler
-            log.info("🟣 YÜKSEK (TV alarmı) %s @ %.4g · geri çekilme %.4g", a.sym, a.fiyat, a.seviye)
+            log.info("🟣 YÜKSEK (TV alarmı) %s @ %.4g · geri çekilme %.4g%s", a.sym, a.fiyat, a.seviye,
+                     f" · ALMA: {x.alma}" if x.alma else "")
 
-    def _yuksek_isle(self, sym: str, dks, o, h, l, c, v) -> None:
-        """TV alarmından gelen 'yüksek' sinyali → geri çekilme alışı → hedef / stop."""
+    def _yuksek_isle(self, sym: str, dk: int) -> None:
+        """TV alarmından gelen 'yüksek' sinyali → geri çekilme alışı → seçim (ALMA / GİR) → hedef / stop."""
+        m = self.mumlar[sym]
+        if not m.bar:
+            return
+        dks, o, h, l, c, v = m.diziler(dk)
         simdi = _time.time()
-        for x in self.yuksek:
-            if x.sym == sym and x.gun_degisim is None:
-                pc = self._onceki(sym, dks, c)
-                x.gun_degisim = (x.al_fiyat / pc - 1) * 100 if pc else None
         for x in self.yuksek:
             if x.sym != sym:
                 continue
+            if x.gun_degisim is None:
+                pc = self._onceki(sym, dks, c)
+                x.gun_degisim = (x.al_fiyat / pc - 1) * 100 if pc else None
             sonra = h[dks > x.al_dk]
             if len(sonra):
                 x.tepe = max(x.tepe or 0.0, float(sonra.max()))
             yeni = Y.degerlendir(x, dks, o, h, l, c,       # yarı-yarı çıkış; 16:00 NY'de kapanır (Pine / kağıt gibi)
                                  seans_son_dk=Y.seans_sonu_dk(x.al_dk), simdi_dk=int(simdi // 60))
-            if x.dolum_dk is not None and x.al_bildirim is None:
-                x.al_bildirim = simdi
-                log.info("🟢 TAMAM — ŞARTLAR SAĞLANIYOR, GİR %s @ %.4g", sym, x.dolum_fiyat)
+            self._secim(x, dk)
             if x.yari_dk is not None and x.yari_bildirim is None:
                 x.yari_bildirim = simdi
                 log.info("🟣 %s yarısı +%%%g'de satıldı, kalan içeride", sym, Y.HEDEF1)
@@ -569,79 +372,81 @@ class Takipci:
             elif yeni == "seans":
                 log.info("🟣 %s: seans sonu (16:00) — kalan %.4g'den kapandı", sym, x.cikis_fiyat)
 
+    def _secim(self, x: G.GeriSinyal, dk: int) -> None:
+        """Sinyal sonrası seçim (yuksek.alma_nedeni). Dolumdan önce: gün/saat + şu ana kadarki kırmızı oranı (bilgi);
+        dolumda kesinleşir (x.karar) ve sonra değişmez — GİR / ALMA o an verilir."""
+        if x.karar:
+            return
+        m = self.mumlar.get(x.sym)
+        bitis = x.dolum_dk if x.dolum_dk is not None else dk + 1
+        if m is not None and m.bar:
+            dks, o, _, _, c, _ = m.diziler(bitis - 1)
+            x.kirmizi = Y.kirmizi_orani(dks, o, c, x.al_dk, bitis)
+        x.alma = Y.alma_nedeni(x, x.kirmizi, dolum_var=x.dolum_dk is not None)
+        if x.dolum_dk is None:
+            return
+        x.karar, x.al_bildirim = True, x.al_bildirim or _time.time()
+        if m is not None and m.bar:
+            _, _, hk, lk, ck, vk = m.diziler(bitis - 1)
+            x.obv_ustu, x.kijun_ustu = Y.kalite(hk, lk, ck, vk)
+        if x.alma:
+            log.info("⚪ %s geri çekilme doldu @ %.4g ama ALMA: %s", x.sym, x.dolum_fiyat, x.alma)
+        else:
+            log.info("🟢 TAMAM — ŞARTLAR SAĞLANIYOR, GİR %s @ %.4g (kırmızı %%%.0f)", x.sym, x.dolum_fiyat,
+                     (x.kirmizi or 0) * 100)
+
+    def _genis(self, premarket: bool) -> list[dict]:
+        try:
+            return genis_tara(self.port, premarket)
+        except tv_cdp.TVError as e:
+            log.warning("geniş tarama: %s", e)
+            return []
+
+    def _python_sinyal(self, sym: str, dk: int) -> None:
+        """Tüm piyasa: Python 'yüksek' kuralı (sistem/yuksek.py = pine/yuksek.pine). Hisse başına günde 1 sinyal.
+        Siteye SADECE GİR olabilecekler eklenir: taze (≤ PENCERE_DK − 1 dk) ve sinyalde gün/saat şartı uygun."""
+        if sym in self.py_bitti or any(x.sym == sym for x in self.yuksek):
+            return
+        m = self.mumlar.get(sym)
+        if m is None or not m.bar:
+            return
+        dks, o, h, l, c, v = m.diziler(dk)
+        pc = self._onceki(sym, dks, c)
+        if not pc or not len(c) or (c[-1] / pc - 1) * 100 < Y.GUN_MIN:
+            return
+        idx = Y.yuksek_sinyalleri(dks, o, h, l, c, v, S.gostergeler(o, h, l, c, v), pc, self.gun_bas_dk)
+        if not idx:
+            return
+        i = idx[0]
+        self.py_bitti.add(sym)                        # günün ilk sinyali bulundu — karar bir kez verilir
+        row = self.bilgi.get(sym, {})
+        x = G.GeriSinyal(sym, str(row.get("description") or ""), "PY", int(dks[i]), float(c[i]),
+                         (c[i] / pc - 1) * 100, seviye=round(float(c[i]) * (1 - G.GERI / 100), 6),
+                         eklendi=_time.time())
+        if dk - x.al_dk > G.PENCERE_DK - 1:
+            return                                    # geç görüldü: geri çekilme penceresi geçmiş
+        if Y.alma_nedeni(x, None, dolum_var=False):
+            return                                    # sabah / gün > %20 → GİR olamaz, siteye eklenmez
+        self.yuksek.append(x)
+        log.info("🔵 YÜKSEK (Python taraması) %s @ %.4g · gün %+.1f%% · geri çekilme %.4g", sym, x.al_fiyat,
+                 x.gun_degisim, x.seviye)
+
     def _onceki(self, sym: str, dks, c) -> float | None:
         return self.onceki.get(sym) or onceki_kapanis(dks, c, self.gun_bas_dk)
 
-    def _geri_isle(self, sym: str, dks, o, h, l, c, v) -> None:
-        """Pine AL'ı (gün ≥ %10) → geri çekilme bekle → 'GERİ ÇEKİLME TAMAM — AL' → hedef / stop."""
-        if len(c) < S.EMA_LEN:
-            return
-        g = S.gostergeler(o, h, l, c, v)
-        kayitli = {x.al_dk for x in self.geri if x.sym == sym}
-        pc = self._onceki(sym, dks, c)
-        son_dk, simdi = int(dks[-1]), _time.time()
-        for i, tur in G.pine_al_lari(dks, c, g, self.gun_bas_dk):
-            al_dk = int(dks[i])
-            gun = (c[i] / pc - 1) * 100 if pc else None
-            if al_dk in kayitli or gun is None or gun < G.MIN_GUN:
-                continue
-            row = self.bilgi.get(sym, {})
-            self.geri.append(G.GeriSinyal(sym, str(row.get("description") or ""), tur, al_dk, float(c[i]), gun,
-                                          seviye=round(float(c[i]) * (1 - G.GERI / 100), 6), eklendi=simdi,
-                                          gecmis=son_dk - al_dk > 1))
-        for x in self.geri:
-            if x.sym != sym:
-                continue
-            yeni = G.degerlendir(x, dks, o, h, l, c)
-            if yeni == "al":
-                x.al_bildirim = x.al_bildirim or simdi
-                log.info("🟢 GERİ ÇEKİLME TAMAM — AL %s @ %.4g (AL %.4g)%s", sym, x.dolum_fiyat, x.al_fiyat,
-                         " [geriye dönük]" if x.gecmis else "")
-            elif yeni in ("hedef", "stop"):
-                log.info("geri çekilme AL'ı %s: %s", sym, yeni)
-
-    def _yeni_al_ekle(self, sym: str, dks, o, h, l, c, v) -> None:
-        kayitli = {s.al_dk for s in self.sinyaller if s.sym == sym}
-        yeniler = [x for x in gunun_al_lari(dks, o, h, l, c, v, self.gun_bas_dk) if x[1] not in kayitli]
-        if not yeniler:
-            return
-        row = self.bilgi.get(sym, {})
-        fl = _f(row.get("float_shares_outstanding"))
-        pc = self._onceki(sym, dks, c)
-        son_dk = int(dks[-1])
-        for tur, al_dk, fiyat, sira in yeniler:
-            gecmis = son_dk - al_dk > 1
-            self.sinyaller.append(Sinyal(sym, str(row.get("description") or ""), tur, al_dk, fiyat,
-                                         (fiyat / pc - 1) * 100 if pc else None,
-                                         float_m=fl / 1e6 if fl else None,
-                                         rvol=_f(row.get("relative_volume_10d_calc")), sira=sira, gecmis=gecmis))
-            if not gecmis:
-                log.info("AL(%s) %s @ %.4g (günün %d. AL'ı) — onay bekleniyor", tur, sym, fiyat, sira)
-        # sıra: bu hissenin bugünkü tüm AL kayıtları zamana göre (eski kayıtlarda alan yoktu)
-        for n, x in enumerate(sorted((s for s in self.sinyaller if s.sym == sym), key=lambda s: s.al_dk), 1):
-            x.sira = n
-        if any(x[1] < son_dk - 1 for x in yeniler):
-            log.info("%s: geriye dönük %d AL eklendi (günün ilk AL'ı %s)", sym, len(yeniler),
-                     datetime.fromtimestamp(yeniler[0][1] * 60).strftime("%H:%M"))
-
     def _guncelle_fiyatlar(self) -> None:
-        for s in self.sinyaller:
-            m = self.mumlar.get(s.sym)
-            if m is None or not m.bar:
-                continue
-            son = m.bar[max(m.bar)][3]
-            s.son_fiyat = son
-            if s.durum == "onay":
-                s.tepe = max(s.tepe or son, son)
         dk = int(_time.time() // 60)
-        for x in self.geri + self.yuksek:
+        for x in self.yuksek:
             m = self.mumlar.get(x.sym)
             if m is None or not m.bar:
                 continue
             x.son_fiyat = m.bar[max(m.bar)][3]
             if max(m.bar) in m.canli_dk and G.canli_dolum(x, x.son_fiyat, dk):
-                x.al_bildirim = _time.time()
-                log.info("🟢 GERİ ÇEKİLME TAMAM — AL %s @ %.4g (canlı)", x.sym, x.dolum_fiyat)
+                self._secim(x, dk)
+
+
+def _saat_yazi(s: tuple[int, int] | None) -> str | None:
+    return f"{s[0]}:{s[1]:02d}" if s else None
 
 
 def main() -> None:
@@ -649,7 +454,6 @@ def main() -> None:
     ap.add_argument("--aralik", type=int, default=10, help="tarama aralığı (sn)")
     ap.add_argument("--port", type=int, default=9222)
     ap.add_argument("--web-port", type=int, default=8765)
-    ap.add_argument("--min-artis", type=float, default=float(os.getenv("DEVAM_MIN_ARTIS", "2.0")))
     a = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s",
                         handlers=[logging.StreamHandler(),
@@ -657,12 +461,15 @@ def main() -> None:
     load_dotenv(FILTER_DIR.parent / ".env")
     from .devam_web import baslat
     threading.Thread(target=baslat, args=(a.web_port,), daemon=True).start()
-    log.info("web: http://127.0.0.1:%d  ·  onay: AL'dan %d–%d mum sonra +%%%.1f", a.web_port, S.ONAY_MIN,
-             S.ONAY_MAX, a.min_artis)
-    t = Takipci(a.port, a.min_artis)
+    log.info("web: http://127.0.0.1:%d · yüksek alarmları + sinyal sonrası seçim (gün ≤ %s · sinyal ≥ %s · kırmızı ≤ %s)",
+             a.web_port, Y.FILTRE_GUN_MAX, _saat_yazi(Y.FILTRE_SAAT), Y.FILTRE_KIRMIZI_MAX)
+    t = Takipci(a.port)
     close = todays_close(datetime.now(NY).date())
+    from .video_ekran import EkranAlici
+    ekran = EkranAlici(a.web_port)                 # günün videosu için site ekran görüntüleri
     while True:
         now = datetime.now(NY)
+        ekran.kontrol(now)
         s = session_for(now, close)
         if s is None and (close is None or now.time() >= close):
             log.info("seans bitti / işlem günü değil — çıkılıyor")

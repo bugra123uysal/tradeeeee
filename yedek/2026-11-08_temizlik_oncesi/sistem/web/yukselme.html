@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yükselme Adayları</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1016; --panel: #151a23; --panel-2: #1b212c; --line: #262e3b;
+    --text: #e6e9ef; --muted: #8a93a3; --up: #2fd47a; --down: #ff5d5d; --wait: #f5b942; --accent: #5aa2ff; --mor: #9b6bff;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    --sans: "Space Grotesk", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh;
+         background-image: radial-gradient(circle at 30% -15%, #13304a 0, transparent 45%); }
+  header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; padding: 20px 16px 12px;
+           max-width: 1500px; margin: 0 auto; border-bottom: 1px solid var(--line); }
+  h1 { margin: 0; font-size: 26px; letter-spacing: -0.02em; }
+  h1 span { color: var(--accent); }
+  .meta { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 6px; animation: nabiz 1.6s infinite; }
+  .dot.eski { background: var(--down); animation: none; }
+  @keyframes nabiz { 50% { opacity: .25; } }
+  .sekme { display: flex; flex-wrap: wrap; gap: 4px; }
+  .sekme a { font-size: 13px; color: var(--muted); text-decoration: none; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line); }
+  .sekme a:hover { color: var(--text); }
+  .sekme a[aria-current] { color: #fff; background: var(--accent); border-color: var(--accent); font-weight: 700; }
+  .sekme a:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+  main { max-width: 1500px; margin: 0 auto; padding: 16px; }
+  .kural { font-size: 14px; color: var(--muted); margin: 0 0 14px; line-height: 1.6; max-width: 120ch; }
+  .kural b { color: var(--text); font-weight: 500; }
+  .ozet { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .ozet span { font-family: var(--mono); font-size: 13px; padding: 6px 10px; border-radius: 6px; background: var(--panel); border: 1px solid var(--line); }
+  .hata { color: var(--down); font-family: var(--mono); font-size: 13px; margin: 0 0 12px; }
+  .bos { padding: 36px 16px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 10px; }
+  .izgara { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); gap: 16px; }
+  .kart { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; box-shadow: 0 10px 28px rgba(0,0,0,.35); display: flex; flex-direction: column; min-width: 0; }
+  .kart.k-devam { border-color: var(--up); box-shadow: 0 0 0 1px rgba(47,212,122,.4), 0 10px 28px rgba(0,0,0,.35); }
+  .kart.k-gec { opacity: .55; }
+  .bant { padding: 8px 16px; font-size: 13px; font-weight: 700; display: flex; justify-content: space-between; gap: 10px; }
+  .bant small { font-weight: 400; font-family: var(--mono); }
+  .b-devam { background: var(--up); color: #062014; }
+  .b-izle { background: rgba(90,162,255,.18); color: var(--accent); }
+  .b-bekle { background: rgba(245,185,66,.18); color: var(--wait); }
+  .b-zayif { background: rgba(255,93,93,.16); color: var(--down); }
+  .b-gec { background: #3a3f4b; color: #e6e9ef; }
+  .bas { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 12px 16px 8px; }
+  .sym { font-size: 22px; font-weight: 700; letter-spacing: -.01em; }
+  .sym a { color: inherit; text-decoration: none; } .sym a:hover { color: var(--accent); }
+  .ad { font-size: 12px; color: var(--muted); max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .degisim { font-family: var(--mono); font-size: 20px; font-weight: 600; text-align: right; }
+  .degisim small { display: block; font-size: 11px; color: var(--muted); font-weight: 400; }
+  .up { color: var(--up); } .down { color: var(--down); }
+  .satir { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); background: var(--panel-2); }
+  .satir div { padding: 8px 12px; font-family: var(--mono); font-size: 13px; font-variant-numeric: tabular-nums; min-width: 0; }
+  .satir div + div { border-left: 1px solid var(--line); }
+  .satir span { display: block; font-family: var(--sans); font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+  ol.sartlar { list-style: none; margin: 0; padding: 6px 16px 10px; display: flex; flex-direction: column; gap: 2px; border-top: 1px solid var(--line); }
+  ol.sartlar li { display: grid; grid-template-columns: 22px 120px minmax(0, 1fr); gap: 8px; align-items: baseline; padding: 5px 0; font-size: 14px; }
+  ol.sartlar li + li { border-top: 1px dashed var(--line); }
+  .isaret { font-family: var(--mono); font-weight: 700; text-align: center; }
+  .i-ok { color: var(--up); } .i-yok { color: var(--down); } .i-bek { color: var(--wait); }
+  .sart-ad { color: var(--muted); font-size: 13px; }
+  .sart-deger { min-width: 0; overflow-wrap: anywhere; }
+  .haberler { border-top: 1px solid var(--line); padding: 8px 16px 12px; display: flex; flex-direction: column; gap: 4px; }
+  .haberler div { font-size: 13px; line-height: 1.45; }
+  .haberler time { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-right: 6px; }
+  .haberler em { font-style: normal; color: var(--muted); font-size: 12px; }
+  @media (max-width: 520px) { .satir { grid-template-columns: repeat(2, 1fr); } .satir div:nth-child(3) { border-left: 0; }
+    ol.sartlar li { grid-template-columns: 22px minmax(0, 1fr); } .sart-deger { grid-column: 2; } }
+  @media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
+</style>
+</head>
+<body>
+<header>
+  <h1><span>Yükselme</span> Adayları</h1>
+  <nav class="sekme" aria-label="Sayfalar"><a href="/">yüksek</a><a href="/yukselme" aria-current="page">Yükselme Adayları</a><a href="/gece">Gece Yükselişi</a></nav>
+  <span class="meta" id="meta"><span class="dot eski"></span>bağlanıyor…</span>
+</header>
+<main>
+  <p class="kural" id="kural">TradingView <b>Hisse Takipçisi → yükselme-adayları</b> tarayıcısı: premarket değişimi &gt; %10 · premarket hacmi &gt; 100 bin · float ≤ 20 M · fiyat 1–1500 $.
+    Giriş şartları: <b>1)</b> haber var mı (yoksa geç) · <b>2)</b> 17:30–17:35 TR ilk 5 dakika işlem yok · <b>3)</b> premarket tepesini kırıp üstünde tutunuyor mu (kıramayıp düşen → gap dolma riski) ·
+    <b>4)</b> kırılım mumunun hacmi önceki 5 mumun ortalamasının ≥ 2 katı mı. Altında Pine sinyalleri: ana sinyal <b>yüksek</b> (sinyal → 30 dk içinde −%5 geri çekilmede alış; gün &gt; %20 ise gri ALMA), sonra <b>Swing 5dk AL</b>'ları (BB üst bant kesişi veya ADX başlangıcı; yüksek bunların filtrelenmiş alt kümesi). Bilgi amaçlıdır, al-sat tavsiyesi değildir.</p>
+  <p class="hata" id="hata" hidden></p>
+  <div class="ozet" id="ozet"></div>
+  <div class="izgara" id="izgara"><div class="bos">Veri bekleniyor — takipçi çalışıyorsa birkaç saniye içinde adaylar görünür.</div></div>
+</main>
+<script>
+const TR = new Intl.DateTimeFormat("tr-TR", { timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit" });
+const saat = (dk) => dk == null ? "—" : TR.format(new Date(dk * 60000));
+const anSaat = (sn) => sn == null ? "—" : TR.format(new Date(sn * 1000));
+const fmt = (x) => x == null ? "—" : (x >= 10 ? x.toFixed(2) : x >= 1 ? x.toFixed(3) : x.toFixed(4));
+const yuzde = (p, n = 1) => p == null ? "—" : (p >= 0 ? "+" : "") + p.toFixed(n) + "%";
+const sayi = (x) => x == null ? "—" : x >= 1e6 ? (x / 1e6).toFixed(1) + " M" : x >= 1e3 ? (x / 1e3).toFixed(0) + " B" : String(Math.round(x));
+const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+const BANT = { "DEVAM ADAYI": "b-devam", "İZLE": "b-izle", "BEKLE": "b-bekle", "ZAYIF": "b-zayif", "GEÇ": "b-gec" };
+
+function sart(isaret, ad, deger) {
+  const li = el("li");
+  const sinif = isaret === "✓" ? "i-ok" : isaret === "✗" ? "i-yok" : "i-bek";
+  li.append(el("span", "isaret " + sinif, isaret), el("span", "sart-ad", ad), el("span", "sart-deger", deger));
+  return li;
+}
+
+function kart(a, hacimKat) {
+  const k = el("article", "kart" + (a.karar === "DEVAM ADAYI" ? " k-devam" : a.karar === "GEÇ" ? " k-gec" : ""));
+  const bant = el("div", "bant " + (BANT[a.karar] || "b-izle"));
+  bant.append(el("span", null, a.karar + " — " + a.neden), el("small", null, "listeye girdi " + anSaat(a.ilk_gorulme)));
+  const bas = el("div", "bas");
+  const sol = el("div");
+  const s = el("div", "sym"); const link = el("a", null, a.sym.split(":")[1]);
+  link.href = "https://tr.tradingview.com/chart/?symbol=" + encodeURIComponent(a.sym); link.target = "_blank"; link.rel = "noopener";
+  s.append(link); sol.append(s, el("div", "ad", a.ad));
+  const deg = el("div", "degisim");
+  deg.append(el("span", (a.pm_degisim ?? 0) >= 0 ? "up" : "down", yuzde(a.pm_degisim)), el("small", null, "premarket"));
+  bas.append(sol, deg);
+
+  const satir = el("div", "satir");
+  const hucre = (b, d) => { const x = el("div"); x.append(el("span", null, b), document.createTextNode(d)); return x; };
+  satir.append(hucre("fiyat", fmt(a.fiyat)), hucre("gün %", yuzde(a.gun_degisim)), hucre("PM hacim", sayi(a.pm_hacim)), hucre("float", a.float_m == null ? "—" : a.float_m.toFixed(1) + " M"));
+
+  const ol = el("ol", "sartlar");
+  // 1. haber
+  ol.append(a.haber_sayisi > 0
+    ? sart("✓", "1 · Haber", a.haber_sayisi + " haber (önceki kapanıştan beri)")
+    : sart("✗", "1 · Haber", "Haber yok — hareketin sebebi bilinmiyor, GEÇ"));
+  // 2. ilk 5 dk
+  ol.append(a.asama === "premarket" ? sart("…", "2 · İlk 5 dk", "Açılış 17:30 TR — 17:35'e kadar işlem yok")
+    : a.asama === "ilk5" ? sart("…", "2 · İlk 5 dk", "Şu an ilk 5 dakika — 17:35'i bekle")
+    : sart("✓", "2 · İlk 5 dk", "Geçti"));
+  // 3. premarket tepesi
+  const pmT = "PM tepe " + fmt(a.pm_tepe);
+  ol.append(a.asama === "premarket" ? sart("…", "3 · PM tepesi", pmT + " — açılıştan sonra bakılır")
+    : a.kirilim === "tutunuyor" ? sart("✓", "3 · PM tepesi", pmT + " · " + saat(a.kirilim_dk) + "'de kırıldı, üstünde tutunuyor")
+    : a.kirilim === "geri_dondu" ? sart("✗", "3 · PM tepesi", pmT + " · " + saat(a.kirilim_dk) + "'de kırdı, altına geri düştü — gap dolma riski")
+    : a.kirilim === "kiramadi" ? sart("✗", "3 · PM tepesi", pmT + " · kıramadı, altında — gap dolma riski")
+    : sart("…", "3 · PM tepesi", pmT + " · henüz kırılmadı"));
+  // 4. hacim
+  ol.append(a.kirilim_hacim_kat == null ? sart("…", "4 · Hacim", "Kırılım mumu bekleniyor (≥ " + hacimKat + "× önceki 5 mum)")
+    : a.kirilim_hacim_kat >= hacimKat ? sart("✓", "4 · Hacim", "Kırılım mumu ×" + a.kirilim_hacim_kat.toFixed(1) + " (önceki 5 mum ort.)")
+    : sart("✗", "4 · Hacim", "Kırılım mumu sadece ×" + a.kirilim_hacim_kat.toFixed(1) + " — belirgin değil"));
+  // Pine — ana sinyal: yüksek (sitedeki kural), altında Swing 5dk AL'ları
+  if (!a.yuksek_dk) ol.append(sart("…", "yüksek (Pine)", "Bugün sinyal yok"));
+  else {
+    const bas = (a.yuksek_kaynak === "TV" ? "TV alarmı " : "Hesap (alarm yok) ") + saat(a.yuksek_dk) + " @ " + fmt(a.yuksek_fiyat) + " (gün " + yuzde(a.yuksek_gun, 0) + ")";
+    if (a.yuksek_alma) ol.append(sart("✗", "yüksek (Pine)", bas + " · gün > %20 → gri ALMA"));
+    else if (a.yuksek_durum === "doldu") ol.append(sart("✓", "yüksek (Pine)", bas + " · −%5 seviye " + fmt(a.yuksek_seviye) + " " + saat(a.yuksek_dolum_dk) + "'de doldu"));
+    else if (a.yuksek_durum === "bekliyor") ol.append(sart("…", "yüksek (Pine)", bas + " · −%5 seviye " + fmt(a.yuksek_seviye) + " bekleniyor (30 dk)"));
+    else ol.append(sart("✗", "yüksek (Pine)", bas + " · 30 dk içinde −%5'e inmedi"));
+  }
+  const al = a.swing_al || [];
+  ol.append(sart(al.length ? "✓" : "…", "Swing 5dk AL", al.length ? al.length + (al.length >= 5 ? "+" : "") + " AL · son " + saat(al[al.length - 1][1]) + " (" + al[al.length - 1][0] + ") @ " + fmt(al[al.length - 1][2]) : "Bugün AL yok"));
+
+  k.append(bant, bas, satir, ol);
+  if ((a.haberler || []).length) {
+    const h = el("div", "haberler");
+    for (const n of a.haberler.slice(0, 3)) {
+      const d = el("div"); const t = el("time", null, anSaat(n.zaman));
+      d.append(t, document.createTextNode(n.baslik + " "), el("em", null, n.kaynak));
+      h.append(d);
+    }
+    k.append(h);
+  }
+  return k;
+}
+
+async function yenile() {
+  try {
+    const r = await fetch("/api", { cache: "no-store" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    const y = d.yukselme;
+    const guncel = d.guncel ? new Date(d.guncel) : null;
+    const eski = !guncel || Date.now() - guncel.getTime() > 60000;
+    const meta = document.getElementById("meta");
+    meta.replaceChildren(el("span", "dot" + (eski ? " eski" : "")), document.createTextNode(eski ? "takipçi güncellemiyor" : "canlı · " + TR.format(guncel)));
+    const hata = document.getElementById("hata");
+    hata.hidden = !(y && y.hata); hata.textContent = y && y.hata ? y.hata : "";
+    const izgara = document.getElementById("izgara");
+    if (!y) { izgara.replaceChildren(el("div", "bos", "Takipçi bu özelliği henüz çalıştırmıyor — yeniden başlatılması gerekiyor.")); return; }
+    const liste = y.adaylar || [];
+    const say = (k) => liste.filter(a => a.karar === k).length;
+    document.getElementById("ozet").replaceChildren(...[["aday", liste.length], ["DEVAM ADAYI", say("DEVAM ADAYI")], ["izle", say("İZLE")], ["bekle", say("BEKLE")], ["zayıf", say("ZAYIF")], ["geç (haber yok)", say("GEÇ")], ["son tarama", y.son_tarama ? TR.format(new Date(y.son_tarama)) : "—"]]
+      .map(([a, b]) => el("span", null, a + ": " + b)));
+    izgara.replaceChildren(...(liste.length ? liste.map(a => kart(a, (y.kural || {}).hacim_kat || 2)) : [el("div", "bos", "Şu an tarayıcıda aday yok (premarket +%10, hacim > 100 bin, float ≤ 20 M, 1–1500 $).")]));
+  } catch (e) {
+    const meta = document.getElementById("meta");
+    meta.replaceChildren(el("span", "dot eski"), document.createTextNode("veri alınamadı: " + e.message));
+  }
+}
+yenile();
+setInterval(yenile, 5000);
+</script>
+</body>
+</html>

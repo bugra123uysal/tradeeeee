@@ -81,7 +81,7 @@
   <span class="meta" id="meta"><span class="dot eski"></span>bağlanıyor…</span>
 </header>
 <main>
-  <p class="kural" id="kural">TradingView <b>Hisse Takipçisi → yükselme-adayları</b> tarayıcısı: premarket değişimi &gt; %10 · premarket hacmi &gt; 100 bin · float ≤ 20 M · fiyat 1–20 $.
+  <p class="kural" id="kural">TradingView <b>Hisse Takipçisi → yükselme-adayları</b> tarayıcısı: premarket değişimi &gt; %10 · premarket hacmi &gt; 100 bin · float ≤ 20 M · fiyat 1–1500 $.
     Giriş şartları: <b>1)</b> haber var mı (yoksa geç) · <b>2)</b> 17:30–17:35 TR ilk 5 dakika işlem yok · <b>3)</b> premarket tepesini kırıp üstünde tutunuyor mu (kıramayıp düşen → gap dolma riski) ·
     <b>4)</b> kırılım mumunun hacmi önceki 5 mumun ortalamasının ≥ 2 katı mı. Altında Pine sinyalleri: ana sinyal <b>yüksek</b> (sinyal → 30 dk içinde −%5 geri çekilmede alış; gün &gt; %20 ise gri ALMA), sonra <b>Swing 5dk AL</b>'ları (BB üst bant kesişi veya ADX başlangıcı; yüksek bunların filtrelenmiş alt kümesi). Bilgi amaçlıdır, al-sat tavsiyesi değildir.</p>
   <p class="hata" id="hata" hidden></p>
@@ -185,7 +185,7 @@ async function yenile() {
     const say = (k) => liste.filter(a => a.karar === k).length;
     document.getElementById("ozet").replaceChildren(...[["aday", liste.length], ["DEVAM ADAYI", say("DEVAM ADAYI")], ["izle", say("İZLE")], ["bekle", say("BEKLE")], ["zayıf", say("ZAYIF")], ["geç (haber yok)", say("GEÇ")], ["son tarama", y.son_tarama ? TR.format(new Date(y.son_tarama)) : "—"]]
       .map(([a, b]) => el("span", null, a + ": " + b)));
-    izgara.replaceChildren(...(liste.length ? liste.map(a => kart(a, (y.kural || {}).hacim_kat || 2)) : [el("div", "bos", "Şu an tarayıcıda aday yok (premarket +%10, hacim > 100 bin, float ≤ 20 M, 1–20 $).")]));
+    izgara.replaceChildren(...(liste.length ? liste.map(a => kart(a, (y.kural || {}).hacim_kat || 2)) : [el("div", "bos", "Şu an tarayıcıda aday yok (premarket +%10, hacim > 100 bin, float ≤ 20 M, 1–1500 $).")]));
   } catch (e) {
     const meta = document.getElementById("meta");
     meta.replaceChildren(el("span", "dot eski"), document.createTextNode("veri alınamadı: " + e.message));

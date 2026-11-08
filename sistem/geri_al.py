@@ -47,6 +47,11 @@ class GeriSinyal:
     yari_dk: int | None = None      # 'yüksek' yarı-yarı çıkış: ilk hedefte yarısının satıldığı dakika
     yari_bildirim: float | None = None
     cikis_fiyat: float | None = None  # 'yüksek' seans sonu (16:00) kapanışında çıkış fiyatı
+    kirmizi: float | None = None      # 'yüksek' sinyal ile dolum arası kırmızı mum oranı (dolumdan önce: şu ana kadar)
+    alma: str | None = None           # 'yüksek' sinyal sonrası seçim: ALMA nedeni (None = alınabilir)
+    karar: bool = False               # dolumda seçim kesinleşti (sonra değişmez)
+    obv_ustu: bool | None = None      # kalite etiketi (karar anı): OBV > EMA20(OBV)
+    kijun_ustu: bool | None = None    # kalite etiketi (karar anı): kapanış > Kijun-sen(26)
 
     @property
     def hedef(self) -> float | None:

@@ -2,7 +2,8 @@
 
 Amaç: backtest'in iyimser varsayımlarını (limit dolumu, kayma) gerçek emir akışıyla ölçmek.
 Kural sitedekiyle aynı:
-  TV 'yüksek' alarmı (gün ≤ FILTRE_GUN_MAX, sinyal en çok PENCERE_DK eski) → sinyal×(1−%5) limit alış (30 dk geçerli)
+  TV 'yüksek' alarmı (gün ≤ FILTRE_GUN_MAX, sinyal ≥ FILTRE_SAAT, en çok PENCERE_DK eski) → sinyal×(1−%5) limit alış
+  (30 dk geçerli). Sitedeki 3. şart (sakin geri çekilme / kırmızı oranı) dolumda belli olur — limit emre uygulanmaz.
   → dolunca YARI-YARI çıkış: yarısına dolum×(1+HEDEF) limit satış, kalan yarısına dolum×(1+HEDEF2) limit satış
   → 1 dk kapanış < dolum×(1−STOP) ise açık hedefler iptal + kalan satılır → 15:55 NY'de açık kalan kapatılır.
 Güvenlik: sadece paper-api adresi; hesap numarası 'PA' ile başlamıyorsa çalışmaz. Sabit dolar tutarı,
@@ -195,10 +196,10 @@ class KagitHesap:
         kayitli = {(x.sym, x.al_dk) for x in self.islemler}
         zarar = sum(x.kar_usd or 0 for x in self.islemler if x.durum == "kapandi")
         for s in sinyaller:
-            if (s.sym, s.al_dk) in kayitli or s.durum != "bekliyor" or s.tur != "TV":
+            if (s.sym, s.al_dk) in kayitli or s.durum != "bekliyor" or s.tur not in ("TV", "PY"):
                 continue
-            if Y.FILTRE_GUN_MAX is not None and s.gun_degisim is not None and s.gun_degisim > Y.FILTRE_GUN_MAX:
-                continue
+            if Y.alma_nedeni(s, None, dolum_var=False):   # gün > %20 veya sinyal 11:30'dan önce
+                continue                                  # (kırmızı oranı limit emir verilirken henüz bilinmiyor)
             if _time.time() / 60 - s.al_dk > G.PENCERE_DK - 1:
                 continue                                  # geç gelmiş / takipçi geç başlamış
             acik = sum(x.durum in ("emir", "doldu") for x in self.islemler)

@@ -1,0 +1,98 @@
+EDGAR geçmiş testi — 2025-11-03 … 2026-11-03 · aday 1888 · EDGAR'da bulunan 1888
+(eğitim < 2026-06-11 ≤ sınav; getiriler brüt %, maliyet düşülmedi)
+
+== 09:30 açılıştan al → 16:00 sat · TÜM YIL ==
+  HEPSİ (CIK bulunan)                          n=1888  ort  -2.57  medyan  -6.96  kârlı %  33
+  30 günde kayıt (S-1/S-3/F-1/F-3) VAR         n= 283  ort  -0.97  medyan  -6.82  kârlı %  33
+  30 günde kayıt YOK                           n=1605  ort  -2.85  medyan  -7.02  kârlı %  33
+  30 günde ihraç (424B) VAR                    n= 311  ort  -5.01  medyan  -7.51  kârlı %  31
+  30 günde ihraç YOK                           n=1577  ort  -2.09  medyan  -6.91  kârlı %  33
+  180 günde kayıt veya ihraç VAR               n=1313  ort  -3.31  medyan  -7.35  kârlı %  32
+  180 günde kayıt ve ihraç YOK (temiz)         n= 575  ort  -0.89  medyan  -6.01  kârlı %  35
+  son 24 saatte 424B (ihraç)                   n=  37  ort  -6.35  medyan  -5.83  kârlı %  32
+  son 24 saatte 8-K                            n= 277  ort  +2.38  medyan  -6.21  kârlı %  37
+  son 24 saatte hiç dosya yok                  n=1584  ort  -3.32  medyan  -7.18  kârlı %  32
+  30 günde 13D/13G VAR                         n= 413  ort  -3.44  medyan  -6.02  kârlı %  36
+  30 günde 13D/13G YOK                         n=1475  ort  -2.33  medyan  -7.40  kârlı %  32
+  30 günde Form 4 VAR                          n= 365  ort  -2.52  medyan  -6.36  kârlı %  34
+  30 günde Form 4 YOK                          n=1523  ort  -2.58  medyan  -7.16  kârlı %  33
+
+== 09:30 açılıştan al → 16:00 sat · EĞİTİM ==
+  HEPSİ (CIK bulunan)                          n=1055  ort  -1.25  medyan  -6.73  kârlı %  34
+  30 günde kayıt (S-1/S-3/F-1/F-3) VAR         n= 132  ort  -2.29  medyan  -6.78  kârlı %  33
+  30 günde kayıt YOK                           n= 923  ort  -1.10  medyan  -6.70  kârlı %  34
+  30 günde ihraç (424B) VAR                    n= 171  ort  -4.27  medyan  -7.15  kârlı %  32
+  30 günde ihraç YOK                           n= 884  ort  -0.66  medyan  -6.56  kârlı %  34
+  180 günde kayıt veya ihraç VAR               n= 739  ort  -2.96  medyan  -6.87  kârlı %  33
+  180 günde kayıt ve ihraç YOK (temiz)         n= 316  ort  +2.76  medyan  -5.89  kârlı %  36
+  son 24 saatte 424B (ihraç)                   n=  24  ort  -6.97  medyan  -7.80  kârlı %  33
+  son 24 saatte 8-K                            n= 166  ort  +1.56  medyan  -6.96  kârlı %  34
+  son 24 saatte hiç dosya yok                  n= 874  ort  -1.69  medyan  -6.44  kârlı %  34
+  30 günde 13D/13G VAR                         n= 227  ort  -4.10  medyan  -6.40  kârlı %  37
+  30 günde 13D/13G YOK                         n= 828  ort  -0.47  medyan  -6.87  kârlı %  33
+  30 günde Form 4 VAR                          n= 202  ort  +0.03  medyan  -4.29  kârlı %  39
+  30 günde Form 4 YOK                          n= 853  ort  -1.55  medyan  -7.10  kârlı %  33
+
+== 09:30 açılıştan al → 16:00 sat · SINAV ==
+  HEPSİ (CIK bulunan)                          n= 833  ort  -4.24  medyan  -7.42  kârlı %  31
+  30 günde kayıt (S-1/S-3/F-1/F-3) VAR         n= 151  ort  +0.17  medyan  -7.33  kârlı %  32
+  30 günde kayıt YOK                           n= 682  ort  -5.22  medyan  -7.45  kârlı %  31
+  30 günde ihraç (424B) VAR                    n= 140  ort  -5.92  medyan  -8.45  kârlı %  29
+  30 günde ihraç YOK                           n= 693  ort  -3.90  medyan  -7.40  kârlı %  32
+  180 günde kayıt veya ihraç VAR               n= 574  ort  -3.75  medyan  -7.72  kârlı %  30
+  180 günde kayıt ve ihraç YOK (temiz)         n= 259  ort  -5.34  medyan  -6.36  kârlı %  35
+  son 24 saatte 424B (ihraç)                   n=  13  ort  -5.20  medyan  -4.55  kârlı %  31
+  son 24 saatte 8-K                            n= 111  ort  +3.60  medyan  -5.11  kârlı %  42
+  son 24 saatte hiç dosya yok                  n= 710  ort  -5.34  medyan  -7.72  kârlı %  30
+  30 günde 13D/13G VAR                         n= 186  ort  -2.63  medyan  -5.83  kârlı %  35
+  30 günde 13D/13G YOK                         n= 647  ort  -4.71  medyan  -7.77  kârlı %  30
+  30 günde Form 4 VAR                          n= 163  ort  -5.68  medyan  -7.76  kârlı %  28
+  30 günde Form 4 YOK                          n= 670  ort  -3.89  medyan  -7.29  kârlı %  32
+
+== premarket tepesi kırılımı + hacim ≥2× → +10/−8 · TÜM YIL ==
+  HEPSİ (CIK bulunan)                          n= 569  ort  +0.13  medyan  -1.23  kârlı %  49
+  30 günde kayıt (S-1/S-3/F-1/F-3) VAR         n=  88  ort  +1.09  medyan +10.00  kârlı %  53
+  30 günde kayıt YOK                           n= 481  ort  -0.05  medyan  -1.86  kârlı %  48
+  30 günde ihraç (424B) VAR                    n=  94  ort  -1.30  medyan  -8.03  kârlı %  41
+  30 günde ihraç YOK                           n= 475  ort  +0.41  medyan  +1.66  kârlı %  51
+  180 günde kayıt veya ihraç VAR               n= 406  ort  -0.24  medyan  -4.55  kârlı %  47
+  180 günde kayıt ve ihraç YOK (temiz)         n= 163  ort  +1.04  medyan  +3.09  kârlı %  55
+  son 24 saatte 424B (ihraç)                   n=  12  ort  -2.50  medyan  -8.11  kârlı %  33
+  son 24 saatte 8-K                            n= 100  ort  +1.75  medyan  +8.32  kârlı %  59
+  son 24 saatte hiç dosya yok                  n= 464  ort  -0.25  medyan  -3.71  kârlı %  47
+  30 günde 13D/13G VAR                         n= 132  ort  +0.27  medyan  -1.25  kârlı %  48
+  30 günde 13D/13G YOK                         n= 437  ort  +0.09  medyan  -0.79  kârlı %  50
+  30 günde Form 4 VAR                          n= 118  ort  -2.20  medyan  -8.18  kârlı %  34
+  30 günde Form 4 YOK                          n= 451  ort  +0.74  medyan +10.00  kârlı %  53
+
+== premarket tepesi kırılımı + hacim ≥2× → +10/−8 · EĞİTİM ==
+  HEPSİ (CIK bulunan)                          n= 322  ort  +0.67  medyan  +2.43  kârlı %  52
+  30 günde kayıt (S-1/S-3/F-1/F-3) VAR         n=  42  ort  -0.00  medyan  -8.00  kârlı %  48
+  30 günde kayıt YOK                           n= 280  ort  +0.78  medyan  +2.84  kârlı %  52
+  30 günde ihraç (424B) VAR                    n=  52  ort  -0.54  medyan  -5.85  kârlı %  44
+  30 günde ihraç YOK                           n= 270  ort  +0.91  medyan  +3.50  kârlı %  53
+  180 günde kayıt veya ihraç VAR               n= 229  ort  +0.20  medyan  -1.86  kârlı %  49
+  180 günde kayıt ve ihraç YOK (temiz)         n=  93  ort  +1.84  medyan  +6.35  kârlı %  58
+  son 24 saatte 424B (ihraç)                   n=   7  ort  +2.11  medyan +10.00  kârlı %  57
+  son 24 saatte 8-K                            n=  54  ort  +1.84  medyan  +7.62  kârlı %  59
+  son 24 saatte hiç dosya yok                  n= 264  ort  +0.37  medyan  -0.38  kârlı %  50
+  30 günde 13D/13G VAR                         n=  68  ort  +0.03  medyan  -1.25  kârlı %  46
+  30 günde 13D/13G YOK                         n= 254  ort  +0.85  medyan  +4.61  kârlı %  53
+  30 günde Form 4 VAR                          n=  75  ort  -2.41  medyan  -8.05  kârlı %  32
+  30 günde Form 4 YOK                          n= 247  ort  +1.61  medyan +10.00  kârlı %  57
+
+== premarket tepesi kırılımı + hacim ≥2× → +10/−8 · SINAV ==
+  HEPSİ (CIK bulunan)                          n= 247  ort  -0.58  medyan  -8.01  kârlı %  46
+  30 günde kayıt (S-1/S-3/F-1/F-3) VAR         n=  46  ort  +2.09  medyan +10.00  kârlı %  59
+  30 günde kayıt YOK                           n= 201  ort  -1.20  medyan  -8.11  kârlı %  43
+  30 günde ihraç (424B) VAR                    n=  42  ort  -2.23  medyan  -8.15  kârlı %  38
+  30 günde ihraç YOK                           n= 205  ort  -0.25  medyan  -3.74  kârlı %  48
+  180 günde kayıt veya ihraç VAR               n= 177  ort  -0.80  medyan  -8.06  kârlı %  45
+  180 günde kayıt ve ihraç YOK (temiz)         n=  70  ort  -0.03  medyan  +1.35  kârlı %  50
+  son 24 saatte 424B (ihraç)                   n=   5  ort  -8.96  medyan  -8.59  kârlı %   0
+  son 24 saatte 8-K                            n=  46  ort  +1.64  medyan  +8.32  kârlı %  59
+  son 24 saatte hiç dosya yok                  n= 200  ort  -1.06  medyan  -8.12  kârlı %  44
+  30 günde 13D/13G VAR                         n=  64  ort  +0.53  medyan  +0.19  kârlı %  50
+  30 günde 13D/13G YOK                         n= 183  ort  -0.97  medyan  -8.11  kârlı %  45
+  30 günde Form 4 VAR                          n=  43  ort  -1.83  medyan  -8.27  kârlı %  37
+  30 günde Form 4 YOK                          n= 204  ort  -0.32  medyan  -3.49  kârlı %  48

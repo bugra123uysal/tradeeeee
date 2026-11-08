@@ -35,10 +35,11 @@ def _isaretli(x: float | None) -> str:
 
 
 def girilecek(x: G.GeriSinyal) -> bool:
-    """Sitedeki 'girilecek' ile aynı: geri çekilmede doldu, gün değişimi ALMA sınırını aşmıyor."""
+    """Sitedeki 'girilecek' ile aynı: geri çekilmede doldu, dolumda seçim kesinleşti ve ALMA nedeni yok
+    (gün ≤ %20 · sinyal ≥ 11:30 · sakin geri çekilme — sistem/yuksek.py alma_nedeni)."""
     if x.dolum_fiyat is None or x.durum != "al":
         return False
-    return not (Y.FILTRE_GUN_MAX is not None and x.gun_degisim is not None and x.gun_degisim > Y.FILTRE_GUN_MAX)
+    return x.karar and not x.alma
 
 
 def gir_mesaji(x: G.GeriSinyal) -> str:
@@ -47,7 +48,18 @@ def gir_mesaji(x: G.GeriSinyal) -> str:
             f"Alış: <b>{_f(p)}</b> (sinyal {_f(x.al_fiyat)}, gün {_isaretli(x.gun_degisim)})\n"
             f"Yarısını sat: {_f(p * (1 + Y.HEDEF1 / 100))} (+%{Y.HEDEF1:g})\n"
             f"Kalanı sat: {_f(p * (1 + Y.HEDEF2 / 100))} (+%{Y.HEDEF2:g})\n"
-            f"Stop: {_f(p * (1 - G.STOP / 100))} (−%{G.STOP:g})")
+            f"Stop: {_f(p * (1 - G.STOP / 100))} (−%{G.STOP:g})\n"
+            f"Seçim ✓ 11:30 sonrası · sakin geri çekilme"
+            + (f" (mumların %{x.kirmizi * 100:.0f}'i kırmızı)" if x.kirmizi is not None else "")
+            + f"\n{kalite_yazi(x)} · kaynak: {'TradingView alarmı' if x.tur == 'TV' else 'Python tüm piyasa taraması'}")
+
+
+def kalite_yazi(x: G.GeriSinyal) -> str:
+    """OBV > EMA20 ve Kijun üstü: ikisi de ✓ → A, biri → B, hiçbiri → C (testte A/B daha iyi; eleme yapmaz)."""
+    if x.obv_ustu is None or x.kijun_ustu is None:
+        return "Kalite: —"
+    puan = int(x.obv_ustu) + int(x.kijun_ustu)
+    return (f"Kalite {'CBA'[puan]}: OBV {'✓' if x.obv_ustu else '✗'} · Kijun {'✓' if x.kijun_ustu else '✗'}")
 
 
 def aday_mesaji(a, baslik: str) -> str:

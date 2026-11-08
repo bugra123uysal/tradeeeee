@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>yüksek Sinyalleri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1016; --panel: #151a23; --panel-2: #1b212c; --line: #262e3b;
+    --text: #e6e9ef; --muted: #8a93a3; --up: #2fd47a; --down: #ff5d5d; --wait: #f5b942; --accent: #5aa2ff; --mor: #9b6bff;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    --sans: "Space Grotesk", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh;
+         background-image: radial-gradient(circle at 30% -15%, #2a1a4a 0, transparent 45%); }
+  header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; padding: 20px 16px 12px;
+           max-width: 1500px; margin: 0 auto; border-bottom: 1px solid var(--line); }
+  h1 { margin: 0; font-size: 26px; letter-spacing: -0.02em; }
+  h1 span { color: var(--mor); }
+  .meta { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--mor); margin-right: 6px; animation: nabiz 1.6s infinite; }
+  .dot.eski { background: var(--down); animation: none; }
+  @keyframes nabiz { 50% { opacity: .25; } }
+  .sekme { display: flex; flex-wrap: wrap; gap: 4px; }
+  .sekme a { font-size: 13px; color: var(--muted); text-decoration: none; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line); }
+  .sekme a:hover { color: var(--text); }
+  .sekme a[aria-current] { color: #fff; background: var(--mor); border-color: var(--mor); font-weight: 700; }
+  .sekme a:focus-visible, button:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+  button { font: 600 13px var(--sans); color: var(--bg); background: var(--accent); border: 0; border-radius: 6px; padding: 7px 12px; cursor: pointer; }
+  button:hover { filter: brightness(1.15); }
+  main { max-width: 1500px; margin: 0 auto; padding: 16px; }
+  .kural { font-size: 14px; color: var(--muted); margin: 0 0 12px; line-height: 1.55; }
+  .kural b { color: var(--text); font-weight: 500; }
+  .ozet { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
+  .ozet span { font-family: var(--mono); font-size: 13px; padding: 6px 10px; border-radius: 6px; background: var(--panel); border: 1px solid var(--line); }
+  .ozet b { font-size: 15px; }
+  .bos { padding: 36px 16px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 10px; }
+  .gir-bolum { margin: 0 0 28px; padding: 14px; border: 2px solid var(--up); border-radius: 12px;
+    background: rgba(47,212,122,.06); }
+  .gir-bolum h2, .alt-baslik { margin: 0 0 12px; font-family: var(--sans); font-size: 15px; letter-spacing: .04em; }
+  .gir-bolum h2 { color: var(--up); }
+  .alt-baslik { color: var(--muted); font-weight: 500; }
+  #gir { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); gap: 16px; }
+  #kartlar { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); gap: 16px; }
+  .kart { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; box-shadow: 0 10px 28px rgba(0,0,0,.35); }
+  .kart.bekliyor { border-color: var(--mor); }
+  .kart.al { border-color: var(--up); box-shadow: 0 0 0 1px rgba(47,212,122,.4), 0 10px 28px rgba(0,0,0,.35); }
+  .kart.yeni { animation: parla 3s ease-out; }
+  @keyframes parla { from { box-shadow: 0 0 0 4px var(--mor), 0 10px 28px rgba(0,0,0,.35); } }
+  .bant { padding: 8px 16px; font-size: 14px; font-weight: 700; display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+  .bant small { font-family: var(--mono); font-weight: 600; }
+  .bant.bekliyor { background: var(--mor); color: #fff; }
+  .bant.al { background: var(--up); color: #062014; }
+  .bant.yarim { background: rgba(47,212,122,.32); color: #eafff3; }
+  .bant.hedef { background: rgba(47,212,122,.18); color: var(--up); }
+  .bant.stop { background: rgba(240,80,80,.16); color: var(--down); font-weight: 500; }
+  .bant.elendi { background: #3a3f4b; color: #e6e9ef; }
+  .kart.elendi { opacity: .6; }
+  .bant.seans { background: rgba(90,162,255,.16); color: var(--accent); font-weight: 500; }
+  .bant.yok { background: #222a37; color: var(--muted); font-weight: 500; }
+  .ust { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 12px 16px 10px; }
+  .sym { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+  .sym a { color: inherit; text-decoration: none; }
+  .sym a:hover { color: var(--accent); }
+  .ad { font-size: 12px; color: var(--muted); max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .degisim { font-family: var(--mono); font-size: 24px; font-weight: 600; text-align: right; }
+  .degisim small { display: block; font-size: 11px; color: var(--muted); font-weight: 400; }
+  .up { color: var(--up); } .down { color: var(--down); }
+  .satir { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); background: var(--panel-2); }
+  .satir div { padding: 8px 12px; font-family: var(--mono); font-size: 13px; }
+  .satir div + div { border-left: 1px solid var(--line); }
+  .satir span { display: block; font-family: var(--sans); font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+  .etiketler { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 16px; border-top: 1px solid var(--line); }
+  .etiket { font-size: 11px; font-family: var(--mono); padding: 2px 7px; border-radius: 4px; background: #222a37; color: var(--muted); }
+  .grafik { height: 300px; border-top: 1px solid var(--line); }
+  @media (max-width: 520px) { .satir { grid-template-columns: repeat(2, 1fr); } .satir div:nth-child(3) { border-left: 0; } }
+</style>
+</head>
+<body>
+<header>
+  <h1><span>yüksek</span> sinyalleri</h1>
+  <nav class="sekme" aria-label="Sayfalar"><a href="/" aria-current="page">yüksek</a><a href="/yukselme">Yükselme Adayları</a><a href="/gece">Gece Yükselişi</a></nav>
+  <div class="meta"><span class="dot" id="dot"></span><span id="durum">bağlanıyor…</span></div>
+  <button id="bildirim" type="button">Bildirimleri aç</button>
+</header>
+<main>
+  <p class="kural" id="kural"></p>
+  <div class="ozet" id="ozet"></div>
+  <div class="bos" id="bos" hidden>Bugün TradingView'den henüz "yüksek" alarmı gelmedi. Gelince burada belirir, ses çalar.</div>
+  <section id="girBolum" class="gir-bolum" aria-labelledby="girBaslik" hidden>
+    <h2 id="girBaslik">GİRİLECEK HİSSELER — TAMAM, ŞARTLAR SAĞLANIYOR, GİR</h2>
+    <div id="gir"></div>
+  </section>
+  <h2 class="alt-baslik">Tüm sinyaller</h2>
+  <section id="kartlar" aria-label="yüksek sinyalleri"></section>
+</main>
+<script src="https://s3.tradingview.com/tv.js"></script>
+<script>
+"use strict";
+const kartlar = new Map();
+let ilkYukleme = true;
+let filtreGunMax = null;
+let hedef1 = 5, hedef2 = 20;
+let kagitMap = new Map();
+const elendi = (s) => filtreGunMax != null && s.gun_degisim != null && s.gun_degisim > filtreGunMax;
+const SIRA = { al: 0, yarim: 1, bekliyor: 2, hedef: 3, seans: 3, yok: 4, stop: 5 };
+const girilecek = (s) => s.durum === "al" && !elendi(s);
+const fmt = (x) => x == null ? "—" : (x >= 10 ? x.toFixed(2) : x >= 1 ? x.toFixed(3) : x.toFixed(4));
+const yuzde = (a, b) => (a == null || b == null) ? null : (a / b - 1) * 100;
+const isaretli = (p, n = 1) => p == null ? "—" : (p >= 0 ? "+" : "") + p.toFixed(n) + "%";
+const saat = (dk) => dk == null ? "—" : new Date(dk * 60000).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" });
+const anSaat = (sn) => sn == null ? "—" : new Date(sn * 1000).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+const kisa = (sym) => sym.split(":")[1] || sym;
+const kimlik = (s) => (s.sym + "_" + s.al_dk).replace(/[^A-Za-z0-9_]/g, "_");
+
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+
+function bip(yuksekSes) {
+  try {
+    const ctx = new AudioContext();
+    (yuksekSes ? [660, 880, 1100] : [784, 1046, 1318]).forEach((f, i) => {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.frequency.value = f; o.connect(g); g.connect(ctx.destination);
+      g.gain.setValueAtTime(0.16, ctx.currentTime + i * 0.16);
+      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.16 + 0.15);
+      o.start(ctx.currentTime + i * 0.16); o.stop(ctx.currentTime + i * 0.16 + 0.16);
+    });
+  } catch (e) { /* ses yoksa sessiz geç */ }
+}
+
+function bildir(baslik, govde) {
+  if (window.Notification && Notification.permission === "granted") new Notification(baslik, { body: govde });
+}
+
+function kartOlustur(s, id) {
+  const k = el("article", "kart");
+  const bant = el("div", "bant");
+  const ust = el("div", "ust"), sol = el("div"), sym = el("div", "sym");
+  const a = el("a", null, kisa(s.sym));
+  a.href = "https://www.tradingview.com/chart/?symbol=" + encodeURIComponent(s.sym);
+  a.target = "_blank"; a.rel = "noopener";
+  sym.append(a);
+  sol.append(sym, el("div", "ad", s.ad || s.sym));
+  const deg = el("div", "degisim");
+  ust.append(sol, deg);
+  const satir = el("div", "satir"), etiket = el("div", "etiketler"), grafik = el("div", "grafik");
+  grafik.id = "g_" + id;
+  k.append(bant, ust, satir, etiket, grafik);
+  kartlar.set(id, { k, bant, deg, satir, etiket, durum: null });
+  document.getElementById("kartlar").append(k);        // widget kapsayıcıyı DOM'da arar
+  if (window.TradingView) {
+    new TradingView.widget({ container_id: grafik.id, symbol: s.sym, interval: "1", theme: "dark", style: "1",
+      locale: "tr", autosize: true, hide_top_toolbar: true, allow_symbol_change: false,
+      timezone: "Europe/Istanbul", studies: ["BB@tv-basicstudies", "VWAP@tv-basicstudies", "MACD@tv-basicstudies"] });
+  }
+  return kartlar.get(id);
+}
+
+function bantYaz(c, s, pencere) {
+  c.k.className = "kart " + s.durum + (elendi(s) ? " elendi" : "") + (c.k.classList.contains("yeni") ? " yeni" : "");
+  c.bant.className = "bant " + (elendi(s) ? "elendi" : s.durum);
+  if (elendi(s)) {
+    c.bant.replaceChildren(el("span", null, "FİLTRE — ALMA: sinyalde gün " + isaretli(s.gun_degisim, 0) + " > %" + filtreGunMax + " (testte bu grup ortalama zararda)"),
+      el("small", null, "durum: " + s.durum));
+  } else if (s.durum === "al") {
+    c.bant.replaceChildren(el("span", null, "TAMAM — ŞARTLAR SAĞLANIYOR, GİR @ " + fmt(s.dolum_fiyat) + " · yarısı +%" + hedef1 + ": " + fmt(s.hedef) +
+      " · kalanı +%" + hedef2 + ": " + fmt(s.hedef2) + " · stop " + fmt(s.stop)),
+      el("small", null, "bölüme alındı " + anSaat(s.al_bildirim)));
+  } else if (s.durum === "yarim") {
+    c.bant.replaceChildren(el("span", null, "YARISI SATILDI (+%" + hedef1 + " @ " + fmt(s.hedef) + ") — kalan yarı içeride: hedef " + fmt(s.hedef2) +
+      " (+%" + hedef2 + ") · stop " + fmt(s.stop)), el("small", null, saat(s.yari_dk)));
+  } else if (s.durum === "hedef") {
+    c.bant.replaceChildren(el("span", null, "✓ Alış " + fmt(s.dolum_fiyat) + " → yarısı +%" + hedef1 + ", kalanı +%" + hedef2 + " — ikisi de geldi"),
+      el("small", null, saat(s.sonuc_dk)));
+  } else if (s.durum === "stop") {
+    c.bant.replaceChildren(el("span", null, s.yari_dk != null
+      ? "Yarısı +%" + hedef1 + "'te satılmıştı, kalan yarı −%8 stop oldu (toplam ≈ " + isaretli((hedef1 - 8) / 2) + ")"
+      : "YÜKSEK SİNYAL — alış " + fmt(s.dolum_fiyat) + " → −%8 stop oldu"), el("small", null, saat(s.sonuc_dk)));
+  } else if (s.durum === "seans") {
+    const k = yuzde(s.cikis_fiyat, s.dolum_fiyat);
+    const toplam = k == null ? null : (s.yari_dk != null ? (hedef1 + k) / 2 : k);
+    c.bant.replaceChildren(el("span", null, "SEANS SONU (16:00) — " + (s.yari_dk != null ? "yarısı +%" + hedef1 + "'te satılmıştı, kalan " : "") +
+      fmt(s.cikis_fiyat) + "'den kapandı (alış " + fmt(s.dolum_fiyat) + ", toplam ≈ " + isaretli(toplam) + ")"), el("small", null, saat(s.sonuc_dk)));
+  } else if (s.durum === "yok") {
+    c.bant.replaceChildren(el("span", null, "YÜKSEK SİNYAL — geri çekilme olmadı — sinyalden sonra tepe " + isaretli(yuzde(s.tepe, s.al_fiyat), 0)));
+  } else {
+    const kalan = Math.max(0, Math.round(pencere - (Date.now() / 60000 - s.al_dk)));
+    c.bant.replaceChildren(el("span", null, "YÜKSEK SİNYAL — geri çekilme bekleniyor: " + fmt(s.seviye) + " (−%5)"), el("small", null, kalan + " dk kaldı"));
+  }
+}
+
+function kartGuncelle(c, s, pencere) {
+  bantYaz(c, s, pencere);
+  const ref = s.dolum_fiyat || s.al_fiyat;
+  const p = yuzde(s.son_fiyat, ref);
+  c.deg.replaceChildren(el("span", p == null ? "" : p >= 0 ? "up" : "down", isaretli(p)), el("small", null, s.dolum_fiyat ? "alıştan beri" : "sinyalden beri"));
+  const hucre = (baslik, deger) => { const d = el("div"); d.append(el("span", null, baslik), document.createTextNode(deger)); return d; };
+  c.satir.replaceChildren(
+    hucre("Sinyal " + saat(s.al_dk), fmt(s.al_fiyat)),
+    hucre("Sinyalde gün", isaretli(s.gun_degisim, 0)),
+    hucre("Şimdi", fmt(s.son_fiyat)),
+    hucre("Sonra tepe", fmt(s.tepe) + " (" + isaretli(yuzde(s.tepe, s.al_fiyat), 0) + ")"));
+  const et = [];
+  if (s.mom5 != null) et.push("5 mum " + isaretli(s.mom5));
+  if (s.hacim_kat != null) et.push("hacim " + s.hacim_kat.toFixed(1) + "x");
+  const kg = kagitMap.get(s.sym + "_" + s.al_dk);
+  if (kg) et.push(kagitYazi(kg));
+  et.push("siteye geldi " + anSaat(s.eklendi));
+  if (s.gecmis) et.push("site açılmadan önce gelmiş alarm");
+  c.etiket.replaceChildren(...et.map(t => el("span", "etiket", t)));
+}
+
+function kagitYazi(x) {
+  const usd = (v) => v == null ? "" : " (" + (v >= 0 ? "+" : "") + v.toFixed(0) + " $)";
+  if (x.durum === "emir") return "kağıt: " + x.qty + " adet @ " + fmt(x.seviye) + " alış emri bekliyor";
+  if (x.durum === "doldu") return "kağıt: doldu " + fmt(x.dolum_fiyat) + " · " + x.qty + " adet" +
+    (x.cikis_neden ? " · " + x.cikis_neden + " satışı gönderildi" : x.satilan ? " · yarısı satıldı, " + (x.qty - x.satilan) + " adet içeride" : " · iki hedef emri açık");
+  if (x.durum === "kapandi") return "kağıt: " + x.cikis_neden + " " + isaretli(x.kar_yuzde) + usd(x.kar_usd);
+  if (x.durum === "iptal") return "kağıt: 30 dk'da dolmadı";
+  return "kağıt: hata — " + (x.hata || "");
+}
+
+function kuralYaz(k) {
+  k = k || { gun_min: 5, gun_max: 40, mom: 2, hacim: 2, bbw: 3, gunluk_max: 1 };
+  document.getElementById("kural").replaceChildren(
+    document.createTextNode("Sinyaller sadece TradingView'deki "), el("b", null, "hisse bulucu alarmlarından"),
+    document.createTextNode(" gelir (Pine script yüksek: Swing 5dk AL'ı + gün değişimi %" + k.gun_min + "–" + k.gun_max + " + son 5 mumda ≥ +%" + k.mom +
+      " + MACD histogramı artıyor + VWAP üstü + hacim ≥ " + k.hacim + "× + Bollinger genişliği ≥ %" + k.bbw + " · hisse başına "),
+    el("b", null, "günde en çok " + k.gunluk_max + " sinyal"),
+    document.createTextNode("). Sonra 30 dk içinde sinyal fiyatının %5 altına inerse "), el("b", null, "GERİ ÇEKİLME TAMAM — AL"),
+    document.createTextNode(" — şartlar sağlanınca kart en üstteki GİRİLECEK HİSSELER bölümüne alınır. Çıkış yarı-yarı: yarısı +%" + (k.hedef1 ?? 5) +
+      "'te, kalanı +%" + (k.hedef2 ?? 20) + "'de satılır, kapanış stopu −%8. Alarm gelen hiçbir kart silinmez." +
+      (k.filtre_gun_max != null ? " Ek filtre: sinyal anında gün > %" + k.filtre_gun_max + " ise kart gri ve “ALMA” (ses/bildirim yok)." : "") + " Bilgi amaçlıdır, al-sat tavsiyesi değildir."));
+}
+
+async function yenile() {
+  let d;
+  try {
+    const r = await fetch("/api", { cache: "no-store" });
+    d = await r.json();
+  } catch (e) {
+    document.getElementById("durum").textContent = "takipçiye ulaşılamıyor — çalışıyor mu?";
+    document.getElementById("dot").classList.add("eski");
+    return;
+  }
+  const guncel = d.guncel ? new Date(d.guncel) : null;
+  const eski = !guncel || (Date.now() - guncel) > 60000;
+  document.getElementById("dot").classList.toggle("eski", eski);
+  document.getElementById("durum").textContent = guncel
+    ? "son tarama " + guncel.toLocaleTimeString("tr-TR") + (eski ? " (eski — takipçi durmuş olabilir)" : "") : "henüz veri yok";
+  filtreGunMax = d.yuksek_kural?.filtre_gun_max ?? null;
+  hedef1 = d.yuksek_kural?.hedef1 ?? 5;
+  hedef2 = d.yuksek_kural?.hedef2 ?? 20;
+  const kagit = d.kagit || { acik: false, islemler: [] };
+  kagitMap = new Map((kagit.islemler || []).map(x => [x.sym + "_" + x.al_dk, x]));
+  kuralYaz(d.yuksek_kural);
+  const pencere = d.geri_kural?.pencere_dk ?? 30;
+
+  const y = d.yuksek || [];
+  const say = (dr) => y.filter(x => x.durum === dr).length;
+  document.getElementById("ozet").replaceChildren(...[
+    ["Bugün yüksek sinyali", y.length], ["geri çekilme → AL", y.filter(x => x.dolum_dk != null).length], ["hedef", say("hedef")],
+    ["stop", say("stop")], ["seans sonu", say("seans")], ["GİR", y.filter(girilecek).length], ["yarısı satıldı", say("yarim")], ["bekleyen", say("bekliyor")], ["geri çekilme olmadı", say("yok")], ["filtre: ALMA", y.filter(elendi).length],
+    ["kağıt hesap", kagit.acik ? (kagit.islemler || []).length + " emir · " + (kagit.kar_usd >= 0 ? "+" : "") + (kagit.kar_usd ?? 0).toFixed(0) + " $" : "kapalı" + (kagit.durdu ? " (" + kagit.durdu + ")" : "")],
+  ].map(([t, n]) => { const s = el("span"); s.append(document.createTextNode(t + ": "), el("b", null, String(n))); return s; }));
+
+  const goster = y.slice()
+    .sort((a, b) => (elendi(a) - elendi(b)) || (SIRA[a.durum] - SIRA[b.durum]) || (b.al_dk - a.al_dk));
+  let ses = null;
+  const kap = document.getElementById("kartlar");
+  for (const s of goster) {
+    const id = kimlik(s);
+    let c = kartlar.get(id);
+    if (!c) {
+      c = kartOlustur(s, id);
+      if (!ilkYukleme && !elendi(s)) {
+        c.k.classList.add("yeni"); ses = ses || "sinyal";
+        bildir("YÜKSEK " + kisa(s.sym), "Sinyal " + fmt(s.al_fiyat) + " · gün " + isaretli(s.gun_degisim, 0) + " · geri çekilme seviyesi " + fmt(s.seviye));
+      }
+    } else if (!ilkYukleme && !elendi(s) && c.durum !== "al" && s.durum === "al") {
+      c.k.classList.remove("yeni"); void c.k.offsetWidth; c.k.classList.add("yeni"); ses = "al";
+      bildir("TAMAM — ŞARTLAR SAĞLANIYOR, GİR: " + kisa(s.sym), "Alış " + fmt(s.dolum_fiyat) + " · yarısı " + fmt(s.hedef) + " · kalanı " + fmt(s.hedef2) + " · stop " + fmt(s.stop));
+    } else if (!ilkYukleme && !elendi(s) && c.durum === "al" && s.durum === "yarim") {
+      bildir("YARISINI SAT: " + kisa(s.sym), "+%" + hedef1 + " geldi (" + fmt(s.hedef) + ") · kalan yarı için hedef " + fmt(s.hedef2));
+    }
+    c.durum = s.durum;
+    kartGuncelle(c, s, pencere);
+  }
+  // GİR olanlar üstteki ayrı bölüme, diğerleri sıraya göre aşağıya — sadece sıra değişince taşı (iframe yeniden yüklenmesin)
+  const girKap = document.getElementById("gir");
+  for (const [kutu, liste] of [[girKap, goster.filter(girilecek)], [kap, goster.filter(s => !girilecek(s))]]) {
+    const istenen = liste.map(s => kartlar.get(kimlik(s)).k);
+    if (istenen.length !== kutu.children.length || istenen.some((k, i) => kutu.children[i] !== k)) istenen.forEach(k => kutu.append(k));
+  }
+  document.getElementById("girBolum").hidden = !goster.some(girilecek);
+  const aktif = new Set(goster.map(kimlik));
+  for (const [id, c] of kartlar) if (!aktif.has(id)) { c.k.remove(); kartlar.delete(id); }
+  if (ses) bip(ses === "sinyal");
+  document.getElementById("bos").hidden = goster.length > 0;
+  ilkYukleme = false;
+}
+
+document.getElementById("bildirim").addEventListener("click", async () => {
+  if (!window.Notification) return;
+  const p = await Notification.requestPermission();
+  document.getElementById("bildirim").textContent = p === "granted" ? "Bildirimler açık ✓" : "Bildirim izni yok";
+  bip(true);
+});
+if (window.Notification && Notification.permission === "granted") document.getElementById("bildirim").textContent = "Bildirimler açık ✓";
+yenile();
+setInterval(yenile, 5000);
+</script>
+</body>
+</html>

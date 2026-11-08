@@ -31,8 +31,12 @@ def page_ws_url(port: int = 9222) -> str:
 
 
 def evaluate(js: str, port: int = 9222, timeout: int = 60):
-    """js bir Promise döndürebilir; sonuç JSON string olarak dönmeli."""
-    ws = websocket.create_connection(page_ws_url(port), timeout=timeout, suppress_origin=True)
+    """js bir Promise döndürebilir; sonuç JSON string olarak dönmeli.
+    Bağlantı/zaman aşımı hataları TVError olur (6 Kas: yakalanmayan WebSocketTimeout liste_yenile'yi düşürdü)."""
+    try:
+        ws = websocket.create_connection(page_ws_url(port), timeout=timeout, suppress_origin=True)
+    except (websocket.WebSocketException, OSError) as e:
+        raise TVError(f"TradingView bağlantısı kurulamadı: {e}") from e
     try:
         ws.send(json.dumps({"id": 1, "method": "Runtime.evaluate",
                             "params": {"expression": js, "returnByValue": True, "awaitPromise": True}}))
@@ -44,6 +48,8 @@ def evaluate(js: str, port: int = 9222, timeout: int = 60):
             if "exceptionDetails" in res:
                 raise TVError(f"sayfa hatası: {res['exceptionDetails'].get('text')}")
             return json.loads(res["result"]["value"])
+    except (websocket.WebSocketException, OSError) as e:
+        raise TVError(f"TradingView yanıt vermedi: {e}") from e
     finally:
         ws.close()
 

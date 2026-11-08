@@ -1,0 +1,101 @@
+{
+ "guncelleme": 1794009755.6714346,
+ "hisseler": [
+  {
+   "sym": "NASDAQ:OMH",
+   "ad": "Ohmyhome Limited Class A",
+   "kapanis": 7.36,
+   "fiyat": 14.7,
+   "degisim": 99.7282608695652,
+   "tepe": 16.98,
+   "hacim": 3944572,
+   "float_m": 2.111893,
+   "ilk_gorulme": 1793999509.956891,
+   "haberler": []
+  },
+  {
+   "sym": "NASDAQ:CHSN",
+   "ad": "Chanson International Holding Class A",
+   "kapanis": 3.04,
+   "fiyat": 3.6988,
+   "degisim": 21.67105263157894,
+   "tepe": 3.6988,
+   "hacim": 181431,
+   "float_m": 2.096288468076,
+   "ilk_gorulme": 1794002301.925938,
+   "haberler": []
+  },
+  {
+   "sym": "NASDAQ:XXII",
+   "ad": "22nd Century Group, Inc.",
+   "kapanis": 1.55,
+   "fiyat": 1.78,
+   "degisim": 14.838709677419354,
+   "tepe": 2.07,
+   "hacim": 166393,
+   "float_m": 0.27797932384,
+   "ilk_gorulme": 1794008354.151107,
+   "haberler": []
+  },
+  {
+   "sym": "NASDAQ:ELPW",
+   "ad": "Elong Power Holding Limited Class A",
+   "kapanis": 1.04,
+   "fiyat": 1.1738,
+   "degisim": 12.865384615384606,
+   "tepe": 1.38,
+   "hacim": 933314,
+   "float_m": 0.854287219722,
+   "ilk_gorulme": 1794006067.670351,
+   "haberler": []
+  },
+  {
+   "sym": "NASDAQ:AEHL",
+   "ad": "Antelope Enterprise Holdings Limited Class A",
+   "kapanis": 12.5,
+   "fiyat": 13.89,
+   "degisim": 11.120000000000005,
+   "tepe": 13.9,
+   "hacim": 52327,
+   "float_m": 16.457836357,
+   "ilk_gorulme": 1794000298.438913,
+   "haberler": []
+  },
+  {
+   "sym": "NASDAQ:SMX",
+   "ad": "SMX (Security Matters) Public Limited Company",
+   "kapanis": 1.76,
+   "fiyat": 1.95,
+   "degisim": 10.795454545454543,
+   "tepe": 2.24,
+   "hacim": 1627783,
+   "float_m": 0.880552150432,
+   "ilk_gorulme": 1794000146.273612,
+   "haberler": []
+  },
+  {
+   "sym": "NASDAQ:CLRO",
+   "ad": "ClearOne, Inc.",
+   "kapanis": 5.01,
+   "fiyat": 5.55,
+   "degisim": 10.778443113772457,
+   "tepe": 6.16,
+   "hacim": 792023,
+   "float_m": 0.71382881751,
+   "ilk_gorulme": 1793999327.686948,
+   "haberler": []
+  },
+  {
+   "sym": "NASDAQ:RDGT",
+   "ad": "Ridgetech, Inc.",
+   "kapanis": 1,
+   "fiyat": 1.1,
+   "degisim": 10.000000000000009,
+   "tepe": 1.25,
+   "hacim": 727194,
+   "float_m": 3.61469881094,
+   "ilk_gorulme": 1794005367.832351,
+   "haberler": []
+  }
+ ]
+}

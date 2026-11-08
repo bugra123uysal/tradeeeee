@@ -1,0 +1,35 @@
+yüksek → İZLE → YUKARI DEVAM EDERSE GİR · 2025-11-03 – 2026-11-03 · 34588 yüksek sinyali
+eğitim < 2026-06-11 ≤ sınav · NET % · ilk gelen olay (geri −%5 / yukarı +X%) 30 dk içinde
+
+== YUKARI eşiği +%1: ilk olay yukarı 17956 · geri 4564 · hiçbiri 12068 ==
+  YUKARI +%1 gir · çıkış 5_8                   n=17956  eğitim  -0.73  sınav  -1.03  kârlı % 52  artı ay 0/13  toplam  -15232
+  YUKARI +%1 gir · çıkış yari                  n=17956  eğitim  -0.73  sınav  -1.07  kârlı % 42  artı ay 1/13  toplam  -15369
+  YUKARI +%1 gir · çıkış iz10                  n=17956  eğitim  -0.93  sınav  -1.24  kârlı % 35  artı ay 1/13  toplam  -18769
+  YUKARI +%1 gir · çıkış x8                    n=17956  eğitim  -1.08  sınav  -1.84  kârlı % 33  artı ay 0/13  toplam  -24677
+    └ sinyal ≥ 11:30 · çıkış yari              n= 6761  eğitim  -0.71  sınav  -1.08  kârlı % 40  artı ay 1/13  toplam   -5789
+    └ sinyal < 11:30 · çıkış yari              n=11195  eğitim  -0.73  sınav  -1.06  kârlı % 43  artı ay 0/13  toplam   -9580
+    └ 11:30+ ve gün ≤ 20 · çıkış yari          n= 6120  eğitim  -0.65  sınav  -1.04  kârlı % 40  artı ay 1/13  toplam   -4942
+  karşılaştırma: GERİ −%5 (ilk olay geri) · 5_8 n= 4564  eğitim  -0.41  sınav  -0.24  kârlı % 62  artı ay 2/13  toplam   -1558
+  İKİSİ BİRDEN (hangisi önce) · yari           n=22520  eğitim  -0.67  sınav  -0.89  kârlı % 43  artı ay 0/13  toplam  -17008
+
+== YUKARI eşiği +%3: ilk olay yukarı 9544 · geri 6021 · hiçbiri 19023 ==
+  YUKARI +%3 gir · çıkış 5_8                   n= 9544  eğitim  -0.91  sınav  -1.07  kârlı % 55  artı ay 0/13  toplam   -9255
+  YUKARI +%3 gir · çıkış yari                  n= 9544  eğitim  -0.90  sınav  -1.14  kârlı % 41  artı ay 1/13  toplam   -9518
+  YUKARI +%3 gir · çıkış iz10                  n= 9544  eğitim  -1.17  sınav  -1.35  kârlı % 33  artı ay 1/13  toplam  -11841
+  YUKARI +%3 gir · çıkış x8                    n= 9544  eğitim  -1.45  sınav  -2.38  kârlı % 31  artı ay 0/13  toplam  -17285
+    └ sinyal ≥ 11:30 · çıkış yari              n= 3176  eğitim  -0.83  sınav  -1.19  kârlı % 39  artı ay 1/13  toplam   -3101
+    └ sinyal < 11:30 · çıkış yari              n= 6368  eğitim  -0.94  sınav  -1.12  kârlı % 41  artı ay 2/13  toplam   -6417
+    └ 11:30+ ve gün ≤ 20 · çıkış yari          n= 2762  eğitim  -0.70  sınav  -1.12  kârlı % 40  artı ay 2/13  toplam   -2414
+  karşılaştırma: GERİ −%5 (ilk olay geri) · 5_8 n= 6021  eğitim  -0.31  sınav  -0.22  kârlı % 62  artı ay 2/13  toplam   -1645
+  İKİSİ BİRDEN (hangisi önce) · yari           n=15565  eğitim  -0.68  sınav  -0.80  kârlı % 44  artı ay 1/13  toplam  -11359
+
+== YUKARI eşiği +%5: ilk olay yukarı 5675 · geri 6646 · hiçbiri 22267 ==
+  YUKARI +%5 gir · çıkış 5_8                   n= 5675  eğitim  -1.17  sınav  -1.26  kârlı % 56  artı ay 0/13  toplam   -6870
+  YUKARI +%5 gir · çıkış yari                  n= 5675  eğitim  -1.30  sınav  -1.40  kârlı % 38  artı ay 0/13  toplam   -7610
+  YUKARI +%5 gir · çıkış iz10                  n= 5675  eğitim  -1.55  sınav  -1.50  kârlı % 31  artı ay 2/13  toplam   -8691
+  YUKARI +%5 gir · çıkış x8                    n= 5675  eğitim  -2.01  sınav  -2.86  kârlı % 27  artı ay 0/13  toplam  -13348
+    └ sinyal ≥ 11:30 · çıkış yari              n= 1715  eğitim  -1.01  sınav  -1.28  kârlı % 40  artı ay 0/13  toplam   -1921
+    └ sinyal < 11:30 · çıkış yari              n= 3960  eğitim  -1.43  sınav  -1.45  kârlı % 38  artı ay 0/13  toplam   -5689
+    └ 11:30+ ve gün ≤ 20 · çıkış yari          n= 1445  eğitim  -0.84  sınav  -1.14  kârlı % 41  artı ay 1/13  toplam   -1395
+  karşılaştırma: GERİ −%5 (ilk olay geri) · 5_8 n= 6646  eğitim  -0.29  sınav  -0.16  kârlı % 63  artı ay 3/13  toplam   -1572
+  İKİSİ BİRDEN (hangisi önce) · yari           n=12321  eğitim  -0.77  sınav  -0.77  kârlı % 44  artı ay 1/13  toplam   -9465

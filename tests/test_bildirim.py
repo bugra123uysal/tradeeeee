@@ -8,7 +8,7 @@ SIMDI = 1_000_000 * 60.0
 
 def _gir(dolum_dk=1_000_000 - 2, gun=12.0, durum="al"):
     return G.GeriSinyal("NASDAQ:ABC", "", "TV", 1_000_000 - 10, 2.0, gun, seviye=1.9, durum=durum,
-                        dolum_dk=dolum_dk, dolum_fiyat=1.9)
+                        dolum_dk=dolum_dk, dolum_fiyat=1.9, karar=True)
 
 
 def _bild(tmp_path, gun="2026-11-04"):
@@ -32,7 +32,8 @@ def test_eski_dolum_ve_alma_filtresi_gitmez(tmp_path):
     b, giden = _bild(tmp_path)
     b.yuksek([_gir(dolum_dk=1_000_000 - 60)], SIMDI)          # 1 saat önce dolmuş
     b.yuksek([G.GeriSinyal("NASDAQ:XYZ", "", "TV", 5, 2.0, 35.0, seviye=1.9, durum="al",
-                           dolum_dk=1_000_000 - 1, dolum_fiyat=1.9)], SIMDI)   # gün > 20 → ALMA
+                           dolum_dk=1_000_000 - 1, dolum_fiyat=1.9, karar=True,
+                           alma="sinyalde gün +35% > %20")], SIMDI)   # ALMA
     assert giden == []
 
 

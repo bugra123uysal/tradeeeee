@@ -26,6 +26,12 @@ GUNLUK_MAX = 1
 # (9 haftanın 3'ü +); ≤ %20 olanlar ort +%1,06 (9/9 hafta +), gün ≥ %10 alt kümesinde +%0,93.
 # Sitede bu sinyaller "ALMA" diye işaretlenir (silinmez, ses/bildirim yok). Kapatmak için: None
 FILTRE_GUN_MAX: float | None = 20.0
+# Sinyal SONRASI seçim (8 Kas 2026, kullanıcı fikri; backtest/yuksek_sonfiltre.py, 1 yıl, 6888 dolan işlem, NET %):
+# Pine değişmez — GİR sadece: gün ≤ FILTRE_GUN_MAX · sinyal ≥ FILTRE_SAAT (NY) · SAKİN geri çekilme = sinyal ile
+# dolum arasındaki mumların en çok FILTRE_KIRMIZI_MAX'i kırmızı. Eğitim +1,06 (8/8 ay) · sınav +0,99 (6/6 ay);
+# yüksek'in hepsi −0,68 / −0,68. Arada mum yoksa (tek mumda sert düşüş) ALMA: o grup −1,03. Kapatmak için: None
+FILTRE_SAAT: tuple[int, int] | None = (11, 30)
+FILTRE_KIRMIZI_MAX: float | None = 0.43
 # Yarı-yarı çıkış (3–4 Kas 2026, backtest/kosu.py + yuksek_bt.py): koşan hissede pozisyonun yarısı içeride kalsın.
 # Alış → yüksek ≥ +HEDEF1 → YARISI satılır ("yarim") → yüksek ≥ +HEDEF2 → kalan da satılır ("hedef").
 # Kapanış < alış −%STOP (G.STOP) → kalan satılır ("stop"). Gerçekçi 43 günde (gün ≤ 20): +5 → +0,22%, yarı/yarı → +0,48%.
@@ -41,6 +47,46 @@ def seans_sonu_dk(al_dk: int) -> int:
     """Sinyalin NY gününün 16:00'ı (epoch dakika). Sinyal 16:00'dan sonraysa o günün 16:00'ı → işlem yok."""
     t = datetime.fromtimestamp(al_dk * 60, NY).replace(hour=SEANS_SON[0], minute=SEANS_SON[1], second=0, microsecond=0)
     return int(t.timestamp() // 60)
+
+
+# GİR kalite etiketi (8 Kas 2026, backtest/yuksek_gosterge.py): karar anında (dolumdan önceki mum) OBV > EMA20(OBV)
+# ve kapanış > Kijun-sen(26) olan GİR'ler daha iyi (OBV: +1,19/+1,24 vs +0,45/+0,02; Kijun: +1,40/+1,16 vs +0,36/+0,50)
+# ama şart yapılınca işlem ~%30 azalıp toplam düşüyor → sadece ETİKET, eleme yapmaz.
+KALITE_OBV_EMA, KALITE_KIJUN = 20, 26
+
+
+def kalite(h, l, c, v) -> tuple[bool | None, bool | None]:
+    """Son mumda (OBV > EMA20(OBV), kapanış > Kijun-sen). Yeterli mum yoksa (None, None)."""
+    if len(c) < max(KALITE_OBV_EMA, KALITE_KIJUN) + 1:
+        return None, None
+    obv = np.cumsum(np.sign(np.diff(c, prepend=c[0])) * v)
+    obv_ema = S.ema(obv, KALITE_OBV_EMA)
+    kijun = (h[-KALITE_KIJUN:].max() + l[-KALITE_KIJUN:].min()) / 2
+    return bool(obv[-1] > obv_ema[-1]), bool(c[-1] > kijun)
+
+
+def kirmizi_orani(dks, o, c, al_dk: int, bitis_dk: int) -> float | None:
+    """al_dk < dakika < bitis_dk arasındaki (sinyal ve dolum mumları hariç) mumlarda kırmızı (kapanış < açılış) oranı."""
+    m = (dks > al_dk) & (dks < bitis_dk)
+    if not m.any():
+        return None
+    return float((c[m] < o[m]).mean())
+
+
+def alma_nedeni(gs, kirmizi: float | None, dolum_var: bool) -> str | None:
+    """Sinyal sonrası seçim. None = alınabilir. Kırmızı oranı sadece dolum olduysa karar verir."""
+    if FILTRE_GUN_MAX is not None and gs.gun_degisim is not None and gs.gun_degisim > FILTRE_GUN_MAX:
+        return f"sinyalde gün {gs.gun_degisim:+.0f}% > %{FILTRE_GUN_MAX:g}"
+    if FILTRE_SAAT is not None:
+        t = datetime.fromtimestamp(gs.al_dk * 60, NY)
+        if (t.hour, t.minute) < FILTRE_SAAT:
+            return f"sinyal {t:%H:%M} — {FILTRE_SAAT[0]}:{FILTRE_SAAT[1]:02d}'dan önce (sabah sinyalleri testte zararda)"
+    if dolum_var and FILTRE_KIRMIZI_MAX is not None:
+        if kirmizi is None:
+            return "geri çekilme tek mumda geldi (sert düşüş)"
+        if kirmizi > FILTRE_KIRMIZI_MAX:
+            return f"sert geri çekilme: mumların %{kirmizi * 100:.0f}'i kırmızı (> %{FILTRE_KIRMIZI_MAX * 100:.0f})"
+    return None
 
 
 def degerlendir(gs, dks, o, h, l, c, seans_son_dk: int | None = None, simdi_dk: int | None = None) -> str | None:

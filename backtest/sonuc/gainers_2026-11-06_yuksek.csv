@@ -1,0 +1,101 @@
+﻿sira,hisse,gun_kapanis,fiyat,gun_tepe,durum,sinyal,sinyal_gun,fiyat_sinyal,dolum,kirmizi,karar,sonra_tepe,pine,site,son
+1,SDA,144.8,0.38,212.03,sinyal,09:30,12.55,0.17,09:31,,ALMA: sinyal 09:30 — 11:30'dan önce (sabah sinyalleri testte zararda),177.24,5.0,12.5,hedef
+2,STAK,82.12,3.26,83.8,sinyal,04:55,6.7,1.91,,,ALMA: sinyal 04:55 — 11:30'dan önce (sabah sinyalleri testte zararda),72.25,,,yok
+3,GOGO,71.52,3.88,74.39,sinyal yok,,,,,,,,,,
+4,CDT,54.85,1.31,90.31,sinyal,09:15,25.3,1.06,09:45,0.48,ALMA: sinyalde gün +25% > %20,51.89,5.0,12.5,hedef
+5,CIIT,54.84,2.4,102.58,sinyal yok,,,,,,,,,,
+6,VSA,52.6,2.35,75.32,sinyal,10:30,38.96,2.14,10:34,0.0,ALMA: sinyalde gün +39% > %20,9.35,-8.51,-8.51,stop
+7,SKIN,51.79,15.71,54.11,sinyal yok,,,,,,,,,,
+8,SNT,46.15,1.9,66.15,sinyal,08:34,28.08,1.66,09:04,0.55,ALMA: sinyalde gün +28% > %20,29.72,5.0,12.5,hedef
+9,OBX,44.43,13.86,53.85,sinyal yok,,,,,,,,,,
+10,KRMN,42.13,45.61,43.04,sinyal yok,,,,,,,,,,
+11,RCT,41.33,0.04,149.0,sinyal yok,,,,,,,,,,
+12,GIBO,38.86,175.35,44.12,sinyal yok,,,,,,,,,,
+13,SERV,38.79,3.22,40.09,sinyal,08:56,13.36,2.63,,,ALMA: sinyal 08:56 — 11:30'dan önce (sabah sinyalleri testte zararda),23.57,,,yok
+14,FLY,36.8,20.76,37.59,sinyal,07:30,11.63,16.94,,,ALMA: sinyal 07:30 — 11:30'dan önce (sabah sinyalleri testte zararda),23.26,,,yok
+15,CABR,36.0,1.02,37.33,sinyal,13:27,25.92,0.94,13:36,0.25,ALMA: sinyalde gün +26% > %20,9.06,5.0,9.34,seans
+16,FROG,35.33,100.98,36.96,sinyal,08:58,28.48,95.87,,,ALMA: sinyalde gün +28% > %20,6.6,,,yok
+17,KDK,34.58,1.28,45.62,sinyal,09:44,19.84,1.14,,,ALMA: sinyal 09:44 — 11:30'dan önce (sabah sinyalleri testte zararda),21.51,,,yok
+18,SMX,34.35,1.76,45.04,sinyal,13:55,16.09,1.52,,,—,24.93,,,yok
+19,VIVK,34.11,0.5,156.65,sinyal,04:05,14.81,0.42,04:10,,ALMA: sinyal 04:05 — 11:30'dan önce (sabah sinyalleri testte zararda),123.54,5.0,12.5,hedef
+20,RDGT,34.08,1.0,43.47,sinyal yok,,,,,,,,,,
+21,INDI,33.58,1.81,37.26,sinyal,10:13,32.84,1.8,,,ALMA: sinyalde gün +33% > %20,3.33,,,yok
+22,HPAI,32.98,0.37,37.85,sinyal,07:02,10.28,0.31,,,ALMA: sinyal 07:02 — 11:30'dan önce (sabah sinyalleri testte zararda),25.0,,,yok
+23,OPTU,32.06,0.75,41.58,sinyal,13:03,24.67,0.71,,,ALMA: sinyalde gün +25% > %20,13.56,,,yok
+24,MTVA,31.19,1.43,32.11,sinyal,09:37,7.56,1.17,,,ALMA: sinyal 09:37 — 11:30'dan önce (sabah sinyalleri testte zararda),22.82,,,yok
+25,HTCO,30.6,1.75,40.29,sinyal,06:49,11.19,1.49,,,ALMA: sinyal 06:49 — 11:30'dan önce (sabah sinyalleri testte zararda),26.17,,,yok
+26,POM,30.22,1.81,33.09,sinyal,10:50,7.19,1.49,,,ALMA: sinyal 10:50 — 11:30'dan önce (sabah sinyalleri testte zararda),24.16,,,yok
+27,VAI,30.06,2.18,30.06,sinyal,14:40,20.24,2.02,,,ALMA: sinyalde gün +20% > %20,8.17,,,yok
+28,ARQQ,29.97,15.96,30.7,sinyal,09:39,7.49,13.2,,,ALMA: sinyal 09:39 — 11:30'dan önce (sabah sinyalleri testte zararda),21.59,,,yok
+29,LASR,29.58,38.02,31.32,sinyal,09:27,25.6,36.85,,,ALMA: sinyalde gün +26% > %20,4.56,,,yok
+30,CHSN,29.36,3.04,41.27,sinyal,09:42,8.94,2.56,,,ALMA: sinyal 09:42 — 11:30'dan önce (sabah sinyalleri testte zararda),29.68,,,yok
+31,OPTX,29.35,4.87,30.94,sinyal,14:09,18.19,4.45,,,—,10.79,,,yok
+32,LYNX,28.66,14.59,28.66,sinyal,09:49,8.6,12.32,,,ALMA: sinyal 09:49 — 11:30'dan önce (sabah sinyalleri testte zararda),18.47,,,yok
+33,SPRU,28.35,1.63,28.35,sinyal,10:27,10.24,1.4,,,ALMA: sinyal 10:27 — 11:30'dan önce (sabah sinyalleri testte zararda),15.71,,,yok
+34,TMDX,27.92,88.24,28.2,sinyal,09:27,16.77,80.55,09:31,0.5,ALMA: sinyal 09:27 — 11:30'dan önce (sabah sinyalleri testte zararda),9.79,5.0,10.07,seans
+35,BBCI,27.83,1.47,27.83,sinyal,09:36,23.48,1.42,09:37,,ALMA: sinyalde gün +23% > %20,3.52,5.0,3.39,seans
+36,AOSL,27.76,23.61,28.46,sinyal yok,,,,,,,,,,
+37,FLGT,27.22,23.74,27.81,sinyal yok,,,,,,,,,,
+38,NAAS,27.04,1.95,112.38,sinyal,11:10,27.04,1.95,11:12,0.0,ALMA: sinyalde gün +27% > %20,2.56,5.0,4.05,seans
+39,NUAI,26.99,2.07,33.13,sinyal,09:11,11.01,1.81,09:30,0.56,ALMA: sinyal 09:11 — 11:30'dan önce (sabah sinyalleri testte zararda),19.92,-8.09,-8.09,stop
+40,ONCO,26.59,6.95,42.44,sinyal,09:32,9.11,5.99,,,ALMA: sinyal 09:32 — 11:30'dan önce (sabah sinyalleri testte zararda),30.55,,,yok
+41,CLNE,26.49,1.91,31.13,sinyal,09:28,15.89,1.75,,,ALMA: sinyal 09:28 — 11:30'dan önce (sabah sinyalleri testte zararda),13.14,,,yok
+42,ANVS,26.31,0.84,27.48,sinyal,09:30,6.16,0.71,09:46,0.67,ALMA: sinyal 09:30 — 11:30'dan önce (sabah sinyalleri testte zararda),20.08,5.0,12.5,hedef
+43,QNT,25.99,37.57,27.6,sinyal yok,,,,,,,,,,
+44,BLNK,25.85,0.51,32.98,sinyal,10:29,23.74,0.5,,,ALMA: sinyalde gün +24% > %20,7.47,,,yok
+45,BKHA,25.11,5.63,26.22,sinyal yok,,,,,,,,,,
+46,XELB,24.43,0.43,26.13,sinyal,16:00,19.01,0.42,,,—,,,,yok
+47,NEOV,23.46,2.6,23.7,sinyal yok,,,,,,,,,,
+48,IONQ,23.42,32.62,23.65,sinyal,04:05,9.61,28.97,,,ALMA: sinyal 04:05 — 11:30'dan önce (sabah sinyalleri testte zararda),12.53,,,yok
+49,FISN,23.33,1.85,23.33,sinyal,10:06,7.67,1.62,10:22,0.4,ALMA: sinyal 10:06 — 11:30'dan önce (sabah sinyalleri testte zararda),14.55,5.0,12.5,hedef
+50,ONMD,23.26,5.14,25.9,sinyal,14:57,17.39,4.89,,,—,7.25,,,yok
+51,DWTX,23.08,1.28,31.73,sinyal,10:55,22.12,1.27,11:08,0.0,ALMA: sinyalde gün +22% > %20,7.87,5.0,5.13,seans
+52,SLQT,23.07,0.48,35.86,sinyal,11:57,34.58,0.52,,,ALMA: sinyalde gün +35% > %20,0.95,,,yok
+53,SES,22.81,0.83,26.82,sinyal,09:39,7.34,0.73,,,ALMA: sinyal 09:39 — 11:30'dan önce (sabah sinyalleri testte zararda),18.15,,,yok
+54,OKLO,22.66,23.55,25.16,sinyal,07:38,14.11,21.91,08:01,0.55,ALMA: sinyal 07:38 — 11:30'dan önce (sabah sinyalleri testte zararda),9.68,5.0,9.07,seans
+55,XYF,22.34,5.75,23.4,sinyal yok,,,,,,,,,,
+56,FTCI,21.88,1.56,23.83,sinyal,09:34,9.38,1.4,,,ALMA: sinyal 09:34 — 11:30'dan önce (sabah sinyalleri testte zararda),13.21,,,yok
+57,LUNR,21.46,10.47,23.72,sinyal,09:46,10.21,9.5,,,ALMA: sinyal 09:46 — 11:30'dan önce (sabah sinyalleri testte zararda),12.26,,,yok
+58,PDC,21.43,2.55,30.95,sinyal yok,,,,,,,,,,
+59,EP,21.39,2.44,27.61,sinyal yok,,,,,,,,,,
+60,DAVI,21.37,1.59,27.48,sinyal,04:04,5.34,1.38,,,ALMA: sinyal 04:04 — 11:30'dan önce (sabah sinyalleri testte zararda),21.01,,,yok
+61,GRI,21.29,1.88,25.15,sinyal,09:40,8.39,1.68,,,ALMA: sinyal 09:40 — 11:30'dan önce (sabah sinyalleri testte zararda),15.47,,,yok
+62,ASPI,20.64,2.08,20.93,sinyal yok,,,,,,,,,,
+63,MNTS,20.59,2.05,24.71,sinyal,15:39,17.06,1.99,,,—,6.53,,,yok
+64,WETO,20.45,1.01,25.22,sinyal,15:51,16.89,0.98,,,—,7.13,,,yok
+65,NRSN,20.43,1.68,20.43,sinyal yok,,,,,,,,,,
+66,SATL,20.42,3.48,21.11,sinyal,09:40,6.23,3.07,,,ALMA: sinyal 09:40 — 11:30'dan önce (sabah sinyalleri testte zararda),14.01,,,yok
+67,IREN,20.02,21.64,24.57,sinyal,04:05,18.52,21.37,,,ALMA: sinyal 04:05 — 11:30'dan önce (sabah sinyalleri testte zararda),5.1,,,yok
+68,LGCL,20.0,1.44,24.3,sinyal,09:43,18.33,1.42,,,ALMA: sinyal 09:43 — 11:30'dan önce (sabah sinyalleri testte zararda),5.04,,,yok
+69,EVC,19.87,8.99,21.2,sinyal,10:14,13.0,8.48,,,ALMA: sinyal 10:14 — 11:30'dan önce (sabah sinyalleri testte zararda),7.26,,,yok
+70,JSPR,19.78,16.86,20.74,sinyal yok,,,,,,,,,,
+71,ETON,19.75,56.46,25.11,sinyal yok,,,,,,,,,,
+72,BGDE,19.7,3.16,25.0,sinyal yok,,,,,,,,,,
+73,AEVA,19.7,11.0,19.7,sinyal,09:30,7.4,9.87,,,ALMA: sinyal 09:30 — 11:30'dan önce (sabah sinyalleri testte zararda),11.45,,,yok
+74,ASBP,19.67,8.09,23.08,sinyal,15:45,12.13,7.58,,,—,9.76,,,yok
+75,INFQ,19.49,8.89,22.18,sinyal yok,,,,,,,,,,
+76,SAGT,19.46,0.96,21.3,sinyal,10:43,9.0,0.88,,,ALMA: sinyal 10:43 — 11:30'dan önce (sabah sinyalleri testte zararda),11.29,,,yok
+77,RGTI,19.29,11.75,20.81,sinyal yok,,,,,,,,,,
+78,SLVM,19.08,39.38,24.46,sinyal yok,,,,,,,,,,
+79,POET,19.01,5.07,19.48,sinyal yok,,,,,,,,,,
+80,CYRX,19.0,19.1,21.68,sinyal yok,,,,,,,,,,
+81,FUSE,18.8,0.33,20.51,sinyal yok,,,,,,,,,,
+82,GYRE,18.7,4.76,19.45,sinyal yok,,,,,,,,,,
+83,RCAT,18.65,4.04,18.94,sinyal,09:43,7.34,3.66,,,ALMA: sinyal 09:43 — 11:30'dan önce (sabah sinyalleri testte zararda),10.53,,,yok
+84,CCSI,18.32,43.15,19.17,sinyal yok,,,,,,,,,,
+85,RHLD,18.3,153.71,22.65,sinyal yok,,,,,,,,,,
+86,PSQH,18.18,1.95,45.45,sinyal,07:10,10.3,1.82,,,ALMA: sinyal 07:10 — 11:30'dan önce (sabah sinyalleri testte zararda),31.87,,,yok
+87,CLAR,18.12,5.02,21.88,sinyal yok,,,,,,,,,,
+88,ONDS,18.03,5.34,20.58,sinyal yok,,,,,,,,,,
+89,FIP,18.03,3.47,18.37,sinyal,09:30,13.27,3.33,09:35,1.0,ALMA: sinyal 09:30 — 11:30'dan önce (sabah sinyalleri testte zararda),4.5,5.0,7.42,seans
+90,QBTS,18.01,10.68,19.34,sinyal yok,,,,,,,,,,
+91,VOYG,17.95,23.98,20.35,sinyal,09:59,8.97,22.15,,,ALMA: sinyal 09:59 — 11:30'dan önce (sabah sinyalleri testte zararda),10.44,,,yok
+92,CIFR,17.93,6.54,18.92,sinyal,04:05,9.55,6.08,,,ALMA: sinyal 04:05 — 11:30'dan önce (sabah sinyalleri testte zararda),8.55,,,yok
+93,EVEX,17.83,1.85,19.11,sinyal,13:32,14.97,1.8,,,—,3.6,,,yok
+94,INM,17.79,15.56,24.45,sinyal yok,,,,,,,,,,
+95,NVCT,17.74,20.91,18.52,sinyal yok,,,,,,,,,,
+96,SPPL,17.62,2.87,25.0,sinyal yok,,,,,,,,,,
+97,LEU,17.49,104.6,20.11,sinyal,09:30,8.85,96.91,,,ALMA: sinyal 09:30 — 11:30'dan önce (sabah sinyalleri testte zararda),10.34,,,yok
+98,SITM,17.44,416.92,19.04,sinyal yok,,,,,,,,,,
+99,CGON,17.27,75.99,23.5,sinyal,09:59,8.63,70.39,,,ALMA: sinyal 09:59 — 11:30'dan önce (sabah sinyalleri testte zararda),13.7,,,yok
+100,ARMP,17.0,3.51,17.0,sinyal,16:00,17.0,3.51,,,—,,,,yok
